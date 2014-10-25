@@ -1,6 +1,6 @@
 package raceCollection;
-import dndProject.CharacterCreation;
+import dndProject.RaceMenu;
 
-public class Human extends CharacterCreation {
+public class Human extends RaceMenu {
 
 }

@@ -1,3 +1,4 @@
+package dndProject;
 import java.awt.EventQueue;
 import java.awt.GridLayout;
 

@@ -2,7 +2,7 @@ package raceCollection;
 
 import dndProject.RaceMenu;
 
-public class HalfOrc extends RaceMenu{
+public class HalfOrc extends RaceMenu {
 
 	// HalfOrc traits
 	String abilityScoreIncrease = "Your Strength score increases by 2, and your Constitution score increases by 1."; 
@@ -14,4 +14,13 @@ public class HalfOrc extends RaceMenu{
 	String relentlessEndurance = "When you are reduced to 0 hit points but not killed outright, you can drop to 1 hit point instead. You can't use this feature again until you finish a long rest.";
 	String savageAttacks = "When you score a critical hit with a weapoin attack, you can roll one of the weapon's damage dice one additional time and add it to the extra damage of the critical hit.";
 	String languages = "You can speak, read, and write Common and Orc. Orc is a harsh, grating language with hard consonants. It has no script of its own but is written in the Dwarvish script.";
+
+	
+	/**
+	 * Create the panel.
+	 */
+	public HalfOrc() {
+
+	}
+
 }

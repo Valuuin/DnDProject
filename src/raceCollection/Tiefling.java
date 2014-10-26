@@ -2,7 +2,7 @@ package raceCollection;
 
 import dndProject.RaceMenu;
 
-public class Tiefling extends RaceMenu{
+public class Tiefling extends RaceMenu {
 	
 	// Tiefling traits
 	String abilityScoreIncrease = "Your Intelligence score increases by 1, and your Charisma score increases by 2.";
@@ -13,4 +13,12 @@ public class Tiefling extends RaceMenu{
 	String hellishResistance = "You have resistance to fire damage.";
 	String infernalLegacy = "You know the thaumaturgy cantrip. Once you reach 3rd level, you can cast the hellish rebuke spell once per day as a 2nd-level spell. Once you reach 5th level, you can also cast the darkness spell once per day. Charisma is your spellcasting ability for these spells. ";
 	String languages = "You can speak, read, and write Common and Infernal";
+	
+	/**
+	 * Create the panel.
+	 */
+	public Tiefling() {
+
+	}
+
 }

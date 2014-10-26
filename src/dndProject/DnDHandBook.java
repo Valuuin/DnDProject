@@ -7,12 +7,12 @@ import javax.swing.JFrame;
 import java.awt.CardLayout;
 
 import javax.swing.JPanel;
-
 import javax.swing.JList;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+
 import java.awt.Font;
 
 import javax.swing.JSplitPane;
@@ -22,22 +22,30 @@ import java.awt.event.ActionEvent;
 
 
 
+
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
+
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+
+import raceCollection.Human;
 
 import java.awt.Label;
 
 import net.miginfocom.swing.MigLayout;
+
+import javax.swing.SpringLayout;
 
 
 public class DnDHandBook implements ListSelectionListener{
 
 	private JFrame frame;
 	private String[] raceNames = { "Human", "Elf" };
-	private String[] humanNames = { "Royal", "Bum" };
 	private String[] elfNames = { "Dark Elf", "High Elf" };
-	private JList<String[]> list, humanList, elfList; 
-	private JSplitPane raceMenu, humanMenu, elfMenu;
+	private JList<String[]> list, elfList; 
+	private JSplitPane raceMenu, elfMenu;
+	private JScrollPane human;
 	
 	private ListSelectionListener raceListener = new ListSelectionListener() {
 		@Override
@@ -52,14 +60,6 @@ public class DnDHandBook implements ListSelectionListener{
 		public void valueChanged(ListSelectionEvent e) {
 			JList list = (JList) e.getSource();
 			updateSubElfRightPane(list.getSelectedIndex());
-		}
-	};
-	
-	private ListSelectionListener humanListener = new ListSelectionListener() {
-		@Override
-		public void valueChanged(ListSelectionEvent e) {
-			JList list = (JList) e.getSource();
-			updateSubHumanRightPane(list.getSelectedIndex());
 		}
 	};
 	
@@ -91,7 +91,9 @@ public class DnDHandBook implements ListSelectionListener{
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 532, 300);
+		//frame.setBounds(100, 100, 532, 300);
+		frame.setSize(640, 480);
+		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new CardLayout(0, 0));
 		
@@ -127,6 +129,10 @@ public class DnDHandBook implements ListSelectionListener{
         
 		JScrollPane raceList = new JScrollPane(list);
 		raceMenu.setLeftComponent(raceList);
+		
+		JPanel panel = new JPanel();
+		frame.getContentPane().add(panel, "name_874988037314692");
+		panel.setLayout(new MigLayout("fill"));
 		updateRaceRightPane(0);
 	}
 
@@ -139,19 +145,9 @@ public class DnDHandBook implements ListSelectionListener{
 	public void updateRaceRightPane(int index){
 		switch(index){
 		case 0: // human
-			humanMenu = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
-			humanMenu.setDividerLocation(100);
-			raceMenu.setRightComponent(humanMenu);
+			//Human hm = new Human();
+			//raceMenu.setRightComponent(hm.getScrollPane());
 			
-			humanList = new JList(humanNames);
-			humanList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-			humanList.setSelectedIndex(0);
-			humanList.addListSelectionListener(humanListener);
-			
-			JScrollPane human_List = new JScrollPane(humanList);
-			humanMenu.setLeftComponent(human_List);
-			updateSubHumanRightPane(0);
-
 			break;
 		case 1: // elf
 			elfMenu = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
@@ -171,27 +167,7 @@ public class DnDHandBook implements ListSelectionListener{
 		default: break;
 		}
 	}
-	
-	public void updateSubHumanRightPane(int index){
-		switch(index){
-		case 0:
-			Label royalTitle = new Label("Royal Humans");
-			JPanel jpRoyal = new JPanel();
-			jpRoyal.setLayout(new GridLayout());
-			jpRoyal.add(royalTitle);
-			humanMenu.setRightComponent(jpRoyal);
-			break;
-		case 1:
-			Label bumTitle = new Label("Bum Humans");
-			JPanel jpBum = new JPanel();
-			jpBum.setLayout(new GridLayout());
-			jpBum.add(bumTitle);
-			humanMenu.setRightComponent(jpBum);
-			break;
-		default: break;
-		}
-	}
-	
+		
 	public void updateSubElfRightPane(int index){
 		switch(index){
 		case 0:

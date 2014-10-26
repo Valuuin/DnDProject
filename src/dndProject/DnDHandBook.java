@@ -129,10 +129,6 @@ public class DnDHandBook implements ListSelectionListener{
         
 		JScrollPane raceList = new JScrollPane(list);
 		raceMenu.setLeftComponent(raceList);
-		
-		JPanel panel = new JPanel();
-		frame.getContentPane().add(panel, "name_874988037314692");
-		panel.setLayout(new MigLayout("fill"));
 		updateRaceRightPane(0);
 	}
 
@@ -145,8 +141,8 @@ public class DnDHandBook implements ListSelectionListener{
 	public void updateRaceRightPane(int index){
 		switch(index){
 		case 0: // human
-			//Human hm = new Human();
-			//raceMenu.setRightComponent(hm.getScrollPane());
+			Human hm = new Human();
+			raceMenu.setRightComponent(hm.getJPanel());
 			
 			break;
 		case 1: // elf

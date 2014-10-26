@@ -120,7 +120,7 @@ public class DnDHandBook implements ListSelectionListener{
 				startMenu.setVisible(false);
 				raceMenu.setVisible(true);
 			}
-		});
+		}); 
 		
         list = new JList(raceNames);
         list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);

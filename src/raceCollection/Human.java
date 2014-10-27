@@ -57,6 +57,6 @@ public class Human {
 	}
 
 	public JPanel getJPanel(){return jp;}
-	public JButton getAcceptedHumanButton(){return acceptHuman;}
+	public JButton getAcceptedRace(){return acceptHuman;}
 	
 }

@@ -56,6 +56,5 @@ public class DragonBorn  {
 	}
 	
 	public JPanel getJPanel(){return jp;}
-	public JButton getAcceptedDragonBornButton(){return acceptDragonBorn;}
-
+	public JButton getAcceptedRace(){return acceptDragonBorn;}
 }

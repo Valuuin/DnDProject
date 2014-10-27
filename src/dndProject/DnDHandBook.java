@@ -16,6 +16,7 @@ import javax.swing.JSplitPane;
 
 import raceCollection.DragonBorn;
 import raceCollection.Human;
+import raceCollection.Tiefling;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -30,6 +31,7 @@ public class DnDHandBook {
 	public JPanel cCreationPanel;
 	public Human hm;
 	public DragonBorn dB;
+	public Tiefling tF;
 	private JSplitPane raceMenu;
 	
 	/**
@@ -65,6 +67,7 @@ public class DnDHandBook {
 		rM = new RaceMenu();
 		hm = rM.getHuman();
 		dB = rM.getDragonBorn();
+		tF = rM.getTiefing();
 
 		//frame.setBounds(100, 100, 532, 300);
 		frame.setSize(640, 480);
@@ -104,22 +107,20 @@ public class DnDHandBook {
 			}
 		});
 		
-		JButton humanSelected = hm.getAcceptedHumanButton();
-		humanSelected.addActionListener(new ActionListener() {
+		waitForRaceAcceptance(hm.getAcceptedRace(), "Human");
+		waitForRaceAcceptance(dB.getAcceptedRace(), "DragonBorn");
+		waitForRaceAcceptance(tF.getAcceptedRace(), "Tiefling");
+
+	}
+	
+	public void waitForRaceAcceptance( JButton race, String name){
+			race.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				raceMenu.setVisible(false);
-				cC.setRace("Human");
-				cCreationPanel.setVisible(true);
-			}
-		});
-		
-		JButton dragonBornSelected = dB.getAcceptedDragonBornButton();
-		dragonBornSelected.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				raceMenu.setVisible(false);
-				cC.setRace("Dragonborn");
+				cC.setRace(name);
 				cCreationPanel.setVisible(true);
 			}
 		});
 	}
+	
 }

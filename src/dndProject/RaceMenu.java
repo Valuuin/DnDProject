@@ -13,15 +13,17 @@ import javax.swing.event.ListSelectionListener;
 
 import raceCollection.DragonBorn;
 import raceCollection.Human;
+import raceCollection.Tiefling;
 
 public class RaceMenu {
 
-	private String[] raceNames = { "Human", "Elf", "DragonBorn" };
+	private String[] raceNames = { "Human", "Elf", "DragonBorn", "Tiefling" };
 	private String[] elfNames = { "Dark Elf", "High Elf" };
 	private JList<String[]> list, elfList; 
 	private JSplitPane raceMenu, elfMenu;
 	private Human hm;
 	private DragonBorn dB;
+	private Tiefling tF;
 	
 	private ListSelectionListener raceListener = new ListSelectionListener() {
 		@Override
@@ -46,6 +48,7 @@ public class RaceMenu {
 		
 		hm = new Human();
 		dB = new DragonBorn();
+		tF = new Tiefling();
 		
 		raceMenu = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
 		raceMenu.setOneTouchExpandable(true);
@@ -90,6 +93,11 @@ public class RaceMenu {
 		case 2: // DragonBorn
 			raceMenu.setDividerLocation(100);
 			raceMenu.setRightComponent(dB.getJPanel());
+			break;
+		case 3: // Tiefling
+			raceMenu.setDividerLocation(100);
+			raceMenu.setRightComponent(tF.getJPanel());
+			break;
 		default: break;
 		}
 	}
@@ -120,4 +128,5 @@ public class RaceMenu {
 	
 	public Human getHuman(){return hm;}
 	public DragonBorn getDragonBorn(){return dB;}
+	public Tiefling getTiefing(){return tF;}
 }

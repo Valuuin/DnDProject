@@ -1,8 +1,6 @@
 package raceCollection;
 
-import dndProject.RaceMenu;
-
-public class Elf extends RaceMenu{
+public class Elf {
 	
 	// Elf traits
 	String abilityScoreIncrease = "Your dexterity score increases by 2.";

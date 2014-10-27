@@ -3,11 +3,7 @@ package raceCollection;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
-import dndProject.RaceMenu;
 import net.miginfocom.swing.MigLayout;
-
-import java.awt.Button;
 
 public class Human {
 	
@@ -42,7 +38,7 @@ public class Human {
 		// Alignment
 		jp.add(new JLabel("<html><b>Alignment:</b></html>"), "cell 0 2,alignx right, aligny top");
 		jp.add(new JLabel(alignment), "cell 1 2,alignx left, aligny top");
-		
+		//
 		//Size
 		jp.add(new JLabel("<html><b>Size:</b></html>"), "cell 0 3,alignx right, aligny top");
 		jp.add(new JLabel(size), "cell 1 3,alignx left, aligny top");

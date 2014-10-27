@@ -2,6 +2,7 @@ package dndProject;
 
 import java.awt.GridLayout;
 import java.awt.Label;
+
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -9,15 +10,18 @@ import javax.swing.JSplitPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+
+import raceCollection.DragonBorn;
 import raceCollection.Human;
 
 public class RaceMenu {
 
-	private String[] raceNames = { "Human", "Elf" };
+	private String[] raceNames = { "Human", "Elf", "DragonBorn" };
 	private String[] elfNames = { "Dark Elf", "High Elf" };
 	private JList<String[]> list, elfList; 
 	private JSplitPane raceMenu, elfMenu;
 	private Human hm;
+	private DragonBorn dB;
 	
 	private ListSelectionListener raceListener = new ListSelectionListener() {
 		@Override
@@ -41,7 +45,8 @@ public class RaceMenu {
 	public RaceMenu() {
 		
 		hm = new Human();
-
+		dB = new DragonBorn();
+		
 		raceMenu = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
 		raceMenu.setOneTouchExpandable(true);
 		raceMenu.setDividerLocation(100);
@@ -82,6 +87,9 @@ public class RaceMenu {
 			updateSubElfRightPane(0);
 			
 			break;
+		case 2: // DragonBorn
+			raceMenu.setDividerLocation(100);
+			raceMenu.setRightComponent(dB.getJPanel());
 		default: break;
 		}
 	}
@@ -110,5 +118,6 @@ public class RaceMenu {
 		}
 	}
 	
-	public Human getHuman(){return hm;} 
+	public Human getHuman(){return hm;}
+	public DragonBorn getDragonBorn(){return dB;}
 }

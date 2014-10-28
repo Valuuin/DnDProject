@@ -3,9 +3,7 @@ package raceCollection;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
 import net.miginfocom.swing.MigLayout;
-import dndProject.RaceMenu;
 
 public class Tiefling {
 	
@@ -63,7 +61,7 @@ public class Tiefling {
 		
 		//Hellish Resistace
 		jp.add(new JLabel("<html><b>Hellish Resistance:</b></html>"), "cell 1 7,alignx right, aligny top");
-		jp.add(new JLabel(hellishResistance), "cell 2 7,alignx left, aligny top");
+		jp.add(new JLabel(hellishResistance), "cell 2 7,alignx left, aligny bottom");
 		
 		//Infernal Legacy
 		jp.add(new JLabel("<html><b>Infernal Legacy:</b></html>"), "cell 1 8,alignx right, aligny top");

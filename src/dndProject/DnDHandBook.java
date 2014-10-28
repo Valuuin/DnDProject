@@ -15,6 +15,8 @@ import java.awt.Font;
 import javax.swing.JSplitPane;
 
 import raceCollection.DragonBorn;
+import raceCollection.HalfElf;
+import raceCollection.HalfOrc;
 import raceCollection.Human;
 import raceCollection.Tiefling;
 
@@ -30,6 +32,8 @@ public class DnDHandBook {
 	public RaceMenu rM;
 	public JPanel cCreationPanel;
 	public Human hm;
+	public HalfElf hE;
+	public HalfOrc hO;
 	public DragonBorn dB;
 	public Tiefling tF;
 	private JSplitPane raceMenu;
@@ -68,9 +72,11 @@ public class DnDHandBook {
 		hm = rM.getHuman();
 		dB = rM.getDragonBorn();
 		tF = rM.getTiefing();
-
+		hE = rM.getHalfElf();
+		hO = rM.getHalfOrc();
+		
 		//frame.setBounds(100, 100, 532, 300);
-		frame.setSize(640, 480);
+		frame.setSize(720, 540);
 		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new CardLayout(0, 0));
@@ -110,7 +116,8 @@ public class DnDHandBook {
 		waitForRaceAcceptance(hm.getAcceptedRace(), "Human");
 		waitForRaceAcceptance(dB.getAcceptedRace(), "DragonBorn");
 		waitForRaceAcceptance(tF.getAcceptedRace(), "Tiefling");
-
+		waitForRaceAcceptance(hE.getAcceptedRace(), "HalfElf");
+		waitForRaceAcceptance(hO.getAcceptedRace(), "HalfOrc");
 	}
 	
 	public void waitForRaceAcceptance( JButton race, String name){

@@ -12,18 +12,26 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import raceCollection.DragonBorn;
+import raceCollection.HalfElf;
+import raceCollection.HalfOrc;
 import raceCollection.Human;
 import raceCollection.Tiefling;
 
 public class RaceMenu {
 
-	private String[] raceNames = { "Human", "Elf", "DragonBorn", "Tiefling" };
+	private String[] raceNames = { "Human", "Elf", "DragonBorn", "Tiefling", "HalfElf", "HalfOrc", "Gnome", "Dwarf", "Halfing" };
 	private String[] elfNames = { "Dark Elf", "High Elf" };
+	private String[] gnomeNames = { "Forrest Gnomes", "Rock Gnomes" };
+	private String[] dwarfNames = { "Hill Dwarf", "Mountian Dwarf" };
+	private String[] halfingNames = { "LightFoot Halfings", "Stout Halfings" };
+	
 	private JList<String[]> list, elfList; 
 	private JSplitPane raceMenu, elfMenu;
 	private Human hm;
 	private DragonBorn dB;
 	private Tiefling tF;
+	private HalfElf hE;
+	private HalfOrc hO;
 	
 	private ListSelectionListener raceListener = new ListSelectionListener() {
 		@Override
@@ -49,6 +57,8 @@ public class RaceMenu {
 		hm = new Human();
 		dB = new DragonBorn();
 		tF = new Tiefling();
+		hE = new HalfElf();
+		hO = new HalfOrc();
 		
 		raceMenu = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
 		raceMenu.setOneTouchExpandable(true);
@@ -98,6 +108,14 @@ public class RaceMenu {
 			raceMenu.setDividerLocation(100);
 			raceMenu.setRightComponent(tF.getJPanel());
 			break;
+		case 4: // HalfElf
+			raceMenu.setDividerLocation(100);
+			raceMenu.setRightComponent(hE.getJPanel());
+			break;
+		case 5: // HalfOrc
+			raceMenu.setDividerLocation(100);
+			raceMenu.setRightComponent(hO.getJPanel());
+			break;
 		default: break;
 		}
 	}
@@ -129,4 +147,6 @@ public class RaceMenu {
 	public Human getHuman(){return hm;}
 	public DragonBorn getDragonBorn(){return dB;}
 	public Tiefling getTiefing(){return tF;}
+	public HalfElf getHalfElf(){return hE;}
+	public HalfOrc getHalfOrc(){return hO;}
 }

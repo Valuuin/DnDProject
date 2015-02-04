@@ -31,7 +31,7 @@ public class DnDHandBook {
 	public CharacterCreation cC;
 	public RaceMenu rM;
 	public JPanel cCreationPanel;
-	public Human hm;
+	public Human hm; // memory location 5
 	public HalfElf hE;
 	public HalfOrc hO;
 	public DragonBorn dB;
@@ -69,7 +69,8 @@ public class DnDHandBook {
 
 		cC = new CharacterCreation();
 		rM = new RaceMenu();
-		hm = rM.getHuman();
+		hm = rM.getHuman(); // take loc 32's object and save it to loc 5
+		// DnDHandBook Hm and a RaceMenu hm 
 		dB = rM.getDragonBorn();
 		tF = rM.getTiefing();
 		hE = rM.getHalfElf();

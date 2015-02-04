@@ -27,7 +27,7 @@ public class RaceMenu {
 	
 	private JList<String[]> list, elfList; 
 	private JSplitPane raceMenu, elfMenu;
-	private Human hm;
+	private Human hm; // memory lcoation 32
 	private DragonBorn dB;
 	private Tiefling tF;
 	private HalfElf hE;
@@ -54,7 +54,7 @@ public class RaceMenu {
 	 */
 	public RaceMenu() {
 		
-		hm = new Human();
+		hm = new Human(); /// save Humaon object into location 32
 		dB = new DragonBorn();
 		tF = new Tiefling();
 		hE = new HalfElf();
@@ -144,7 +144,7 @@ public class RaceMenu {
 		}
 	}
 	
-	public Human getHuman(){return hm;}
+	public Human getHuman(){return hm;} // take location 32's object and return it to where ever it was called
 	public DragonBorn getDragonBorn(){return dB;}
 	public Tiefling getTiefing(){return tF;}
 	public HalfElf getHalfElf(){return hE;}

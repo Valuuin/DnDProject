@@ -14,6 +14,31 @@ import java.awt.Font;
 
 import javax.swing.JSplitPane;
 
+import backgroundCollection.Artisan;
+import backgroundCollection.Charlatan;
+import backgroundCollection.Criminal;
+import backgroundCollection.Entertainer;
+import backgroundCollection.FolkHero;
+import backgroundCollection.GuildArtisan;
+import backgroundCollection.Hermit;
+import backgroundCollection.Noble;
+import backgroundCollection.Outlander;
+import backgroundCollection.Sage;
+import backgroundCollection.Sailor;
+import backgroundCollection.Soldier;
+import backgroundCollection.Urchin;
+import classCollection.Barbarian;
+import classCollection.Bard;
+import classCollection.Cleric;
+import classCollection.Druid;
+import classCollection.Fighter;
+import classCollection.Monk;
+import classCollection.Paladin;
+import classCollection.Ranger;
+import classCollection.Rogue;
+import classCollection.Sorcerer;
+import classCollection.Warlock;
+import classCollection.Wizzard;
 import raceCollection.DragonBorn;
 import raceCollection.HalfElf;
 import raceCollection.HalfOrc;
@@ -28,15 +53,49 @@ import net.miginfocom.swing.MigLayout;
 public class DnDHandBook {
 
 	public JFrame frame;
-	public CharacterCreation cC;
-	public RaceMenu rM;
+	private JSplitPane raceMenu, classMenu, backgroundMenu;
 	public JPanel cCreationPanel;
-	public Human hm; // memory location 5
-	public HalfElf hE;
-	public HalfOrc hO;
+
+	public CharacterCreation cC;
+	public RaceMenu          rM;
+	public ClassMenu         cM;
+	public BackgroundMenu    bM;
+	
+	// Races
+	public Human      hm; 
+	public HalfElf    hE;
+	public HalfOrc    hO;
 	public DragonBorn dB;
-	public Tiefling tF;
-	private JSplitPane raceMenu;
+	public Tiefling   tF;
+	
+	// Classes
+	public Barbarian bB;
+	public Bard      b;
+	public Cleric    c;
+	public Druid     d;
+	public Fighter   f;
+	public Monk      m;
+	public Paladin   p;
+	public Ranger    rA;
+	public Rogue     rO;
+	public Sorcerer  sO;
+	public Warlock   wA;
+	public Wizzard   wI;
+	
+	// Background
+	public Artisan      a;
+	public Criminal     crM;
+	public Charlatan    cL;
+	public Entertainer  e;
+	public FolkHero     fH;
+	public GuildArtisan gA;
+	public Hermit       h;
+	public Noble        n;
+	public Outlander    o;
+	public Sage         sG;
+	public Sailor       sA;
+	public Soldier      sD;
+	public Urchin       u;
 	
 	/**
 	 * Launch the application.
@@ -67,14 +126,47 @@ public class DnDHandBook {
 	private void initialize() {
 		frame = new JFrame();
 
+		// Menues 
 		cC = new CharacterCreation();
 		rM = new RaceMenu();
-		hm = rM.getHuman(); // take loc 32's object and save it to loc 5
-		// DnDHandBook Hm and a RaceMenu hm 
+		cM = new ClassMenu();
+		bM = new BackgroundMenu();
+		
+		// Races
+		hm = rM.getHuman(); 
 		dB = rM.getDragonBorn();
 		tF = rM.getTiefing();
 		hE = rM.getHalfElf();
 		hO = rM.getHalfOrc();
+		
+		//Classes
+		bB = cM.getBarbarian();
+		b  = cM.getBard();
+		c  = cM.getCleric();
+		d  = cM.getDruid();
+		f  = cM.getFighter();
+		m  = cM.getMonk();
+		p  = cM.getPaladin();
+		rA = cM.getRanger();
+		rO = cM.getRogue();
+		sO = cM.getSorcerer();
+		wA = cM.getWarlock();
+		wI = cM.getWizzard();
+		
+		//Backgrounds
+		a   = bM.getArtisan();
+		crM = bM.getCriminal();
+		cL  = bM.getCharlatan();
+		e   = bM.getEntertainer();
+		fH  = bM.getFolkHero();
+		gA  = bM.getGuildArtisan();
+		h   = bM.getHermit();
+		n   = bM.getNoble();
+		o   = bM.getOutlander();
+		sG  = bM.getSage();
+		sA  = bM.getSailor();
+		sD  = bM.getSoldier();
+		u   = bM.getUrchin();
 		
 		//frame.setBounds(100, 100, 532, 300);
 		frame.setSize(720, 540);
@@ -82,7 +174,7 @@ public class DnDHandBook {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new CardLayout(0, 0));
 		
-		JPanel startMenu = new JPanel();
+		final JPanel startMenu = new JPanel();
 		frame.getContentPane().add(startMenu, "name_730638497947775");
 		startMenu.setLayout(new MigLayout("", "[100%,center]", "[10%][10%][10%][10%][10%][10%][10%][10%][10%][10%]"));
 
@@ -113,15 +205,65 @@ public class DnDHandBook {
 				raceMenu.setVisible(true);	
 			}
 		});
+
+		JButton classMenuOpen = cC.getOpenClassMenu();
+		classMenuOpen.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				classMenu = cM.getClassMenuSplitPane();
+				frame.getContentPane().add(classMenu);
+				cCreationPanel.setVisible(false);
+				classMenu.setVisible(true);	
+			}
+		});
 		
+		JButton backgroundMenuOpen = cC.getOpenBackgroundMenu();
+		backgroundMenuOpen.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				backgroundMenu = bM.getBackgroundMenuSplitPane();
+				frame.getContentPane().add(backgroundMenu);
+				cCreationPanel.setVisible(false);
+				backgroundMenu.setVisible(true);	
+			}
+		});
+		
+		// Waiting for Chosen Race
 		waitForRaceAcceptance(hm.getAcceptedRace(), "Human");
 		waitForRaceAcceptance(dB.getAcceptedRace(), "DragonBorn");
 		waitForRaceAcceptance(tF.getAcceptedRace(), "Tiefling");
-		waitForRaceAcceptance(hE.getAcceptedRace(), "HalfElf");
-		waitForRaceAcceptance(hO.getAcceptedRace(), "HalfOrc");
+		waitForRaceAcceptance(hE.getAcceptedRace(), "Half Elf");
+		waitForRaceAcceptance(hO.getAcceptedRace(), "Half Orc");
+		
+		// Waiting for Chosen Class
+		waitForClassAcceptance(bB.getAcceptedClass(), "Barbarian");
+		waitForClassAcceptance( b.getAcceptedClass(), "Bard");
+		waitForClassAcceptance( c.getAcceptedClass(), "Cleric");
+		waitForClassAcceptance( d.getAcceptedClass(), "Druid");
+		waitForClassAcceptance( f.getAcceptedClass(), "Fighter");
+		waitForClassAcceptance( m.getAcceptedClass(), "Monk");
+		waitForClassAcceptance( p.getAcceptedClass(), "Paladin");
+		waitForClassAcceptance(rA.getAcceptedClass(), "Ranger");
+		waitForClassAcceptance(rO.getAcceptedClass(), "Rogue");
+		waitForClassAcceptance(sO.getAcceptedClass(), "Sorcerer");
+		waitForClassAcceptance(wA.getAcceptedClass(), "Warlock");
+		waitForClassAcceptance(wI.getAcceptedClass(), "Wizzard");
+		
+		// Waiting for Chosen Background
+		waitForBackgroundAcceptance(  a.getAcceptedBackground(),"Artisan");
+		waitForBackgroundAcceptance(crM.getAcceptedBackground(),"Criminal");
+		waitForBackgroundAcceptance( cL.getAcceptedBackground(),"Charlatan");
+		waitForBackgroundAcceptance(  e.getAcceptedBackground(),"Entertainer");
+		waitForBackgroundAcceptance( fH.getAcceptedBackground(),"Folk Hero");
+		waitForBackgroundAcceptance( gA.getAcceptedBackground(),"Guild Artisan");
+		waitForBackgroundAcceptance(  h.getAcceptedBackground(),"Hermit");
+		waitForBackgroundAcceptance(  n.getAcceptedBackground(),"Noble");
+		waitForBackgroundAcceptance(  o.getAcceptedBackground(),"Outlander");
+		waitForBackgroundAcceptance( sG.getAcceptedBackground(),"Sage");
+		waitForBackgroundAcceptance( sA.getAcceptedBackground(),"Sailor");
+		waitForBackgroundAcceptance( sD.getAcceptedBackground(),"Soldier");
+		waitForBackgroundAcceptance(  u.getAcceptedBackground(),"Urchin");
 	}
 	
-	public void waitForRaceAcceptance( JButton race, String name){
+	public void waitForRaceAcceptance( JButton race, final String name){
 			race.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				raceMenu.setVisible(false);
@@ -131,4 +273,23 @@ public class DnDHandBook {
 		});
 	}
 	
+	public void waitForClassAcceptance( JButton classButton, final String className){
+		classButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				classMenu.setVisible(false);
+				cC.setClass(className);
+				cCreationPanel.setVisible(true);
+			}
+		});
+	}
+	
+	public void waitForBackgroundAcceptance( JButton backgroundButton, final String backgroundName){
+		backgroundButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				backgroundMenu.setVisible(false);
+				cC.setBackground(backgroundName);
+				cCreationPanel.setVisible(true);
+			}
+		});
+	}
 }

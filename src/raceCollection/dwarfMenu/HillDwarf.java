@@ -13,6 +13,7 @@ public class HillDwarf extends Dwarf {
 	private JButton acceptHillDwarf;
 	
 	// Create the Strings unique to HillDwarf
+	String ASI = abilityScoreIncrease;
 	String hillDwarf_ASI = "Your Wisdom score increases by 1.";
 	String dwarvenToughness = "Your hit point maximum increases by 1, and it increases by 1 every time you gain a level.";
 	/**
@@ -26,7 +27,7 @@ public class HillDwarf extends Dwarf {
 
 		// Ability Score Increase
 		jp.add(new JLabel("<html><b>Ability Score</b><br><div align=\"right\"><b>Increase:</b></html>"), "cell 0 1,alignx right,aligny bottom");
-		jp.add(new JLabel("<html>"+abilityScoreIncrease+"<br><div align=\"left\">"+hillDwarf_ASI+"</html>"), "cell 1 1,alignx left,aligny bottom");
+		jp.add(new JLabel("<html>"+ASI+"<br><div align=\"left\">"+hillDwarf_ASI+"</html>"), "cell 1 1,alignx left,aligny bottom");
 		
 		// alignment
 		jp.add(new JLabel("<html><b>Alignment:</b></html>"), "cell 0 2,alignx right,aligny bottom");

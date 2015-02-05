@@ -15,13 +15,13 @@ public class CharacterCreation {
 
 	private JPanel cC;
 	private JButton openRaceMenu, openClassMenu, openBackgroundMenu;
-	private JLabel selectedRace, selectedClass, backgroundSelected;
+	private JLabel selectedRace, selectedClass, selectedBackground;
 	
 	/**
 	 * Create the panel.
 	 */
 	public CharacterCreation() {
-		
+	
 		cC = new JPanel();
 		cC.setSize(620, 480);
 		cC.setLayout(new MigLayout("", "[25%][25%][25%][25%]", "[10%][10%][10%][10%][10%][10%][10%][10%][10%][10%][10%]"));
@@ -53,16 +53,22 @@ public class CharacterCreation {
 		selectedClass = new JLabel("None Selected");
 		cC.add(selectedClass, "cell 2 3 2 1,alignx center,aligny center");
 		
-		backgroundSelected = new JLabel("None Selected");
-		cC.add(backgroundSelected, "cell 2 4 2 1,alignx center,aligny center");
+		selectedBackground = new JLabel("None Selected");
+		cC.add(selectedBackground, "cell 2 4 2 1,alignx center,aligny center");
 	}
 
 	public JPanel getCharacterCreationPanel(){return cC;}
 	public JButton getOpenRaceMenuButton(){return openRaceMenu;}
-	public JButton getOpenClassMenun(){return openClassMenu;}
+	public JButton getOpenClassMenu(){return openClassMenu;}
 	public JButton getOpenBackgroundMenu(){return openBackgroundMenu;}
 	
 	public void setRace(String race){
 		selectedRace.setText(race);
+	}
+	public void setClass(String className){
+		selectedClass.setText(className);
+	}
+	public void setBackground(String backgroundName){
+		selectedBackground.setText(backgroundName);
 	}
 }

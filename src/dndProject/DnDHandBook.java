@@ -1,13 +1,19 @@
 package dndProject;
 
 import java.awt.EventQueue;
+
 import javax.swing.JFrame;
+
 import java.awt.CardLayout;
+
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+
 import java.awt.Font;
+
 import javax.swing.JSplitPane;
+
 import backgroundCollection.Artisan;
 import backgroundCollection.Charlatan;
 import backgroundCollection.Criminal;
@@ -38,8 +44,19 @@ import raceCollection.HalfElf;
 import raceCollection.HalfOrc;
 import raceCollection.Human;
 import raceCollection.Tiefling;
+import raceCollection.dwarfMenu.HillDwarf;
+import raceCollection.dwarfMenu.MountainDwarf;
+import raceCollection.elfMenu.Drow;
+import raceCollection.elfMenu.HighElf;
+import raceCollection.elfMenu.WoodElf;
+import raceCollection.gnomeMenu.ForrestGnome;
+import raceCollection.gnomeMenu.RockGnome;
+import raceCollection.halflingMenu.LightfootHalfling;
+import raceCollection.halflingMenu.StoutHalfling;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 import net.miginfocom.swing.MigLayout;
 
 public class DnDHandBook {
@@ -54,11 +71,20 @@ public class DnDHandBook {
 	public BackgroundMenu    bM;
 	
 	// Races
-	public Human      hm; 
-	public HalfElf    hE;
-	public HalfOrc    hO;
-	public DragonBorn dB;
-	public Tiefling   tF;
+	public Human             hm;
+	public Drow              dW;
+	public HighElf           hiE;
+	public WoodElf           wE;
+	public HalfElf           hE;
+	public HalfOrc           hO;
+	public DragonBorn        dB;
+	public Tiefling          tF;
+	public ForrestGnome      fG;
+	public RockGnome         rG;
+	public HillDwarf         hD;
+	public MountainDwarf     mD;
+	public LightfootHalfling lfH;
+	public StoutHalfling     sH;
 	
 	// Classes
 	public Barbarian bB;
@@ -125,11 +151,20 @@ public class DnDHandBook {
 		bM = new BackgroundMenu();
 		
 		// Races
-		hm = rM.getHuman(); 
-		dB = rM.getDragonBorn();
-		tF = rM.getTiefing();
-		hE = rM.getHalfElf();
-		hO = rM.getHalfOrc();
+		hm  = rM.getHuman(); 
+		dW  = rM.getDrow();
+		hiE = rM.getHighElf();
+		wE  = rM.getWoodElf(); 
+		dB  = rM.getDragonBorn();
+		tF  = rM.getTiefing();
+		hE  = rM.getHalfElf();
+		hO  = rM.getHalfOrc();
+		fG  = rM.getForrestGnome();
+		rG  = rM.getRockGnome();
+		hD  = rM.getHillDwarf();
+		mD  = rM.getMountainDwarf(); 
+		lfH = rM.getLightfootHalfling();
+		sH  = rM.getStoutHalfling(); 
 		
 		//Classes
 		bB = cM.getBarbarian();
@@ -219,11 +254,20 @@ public class DnDHandBook {
 		});
 		
 		// Waiting for Chosen Race
-		waitForRaceAcceptance(hm.getAcceptedRace(), "Human");
-		waitForRaceAcceptance(dB.getAcceptedRace(), "DragonBorn");
-		waitForRaceAcceptance(tF.getAcceptedRace(), "Tiefling");
-		waitForRaceAcceptance(hE.getAcceptedRace(), "Half Elf");
-		waitForRaceAcceptance(hO.getAcceptedRace(), "Half Orc");
+		waitForRaceAcceptance( hm.getAcceptedRace(), "Human");
+		waitForRaceAcceptance( dW.getAcceptedRace(), "Drow");
+		waitForRaceAcceptance(hiE.getAcceptedRace(), "High Elf");
+		waitForRaceAcceptance( wE.getAcceptedRace(), "Wood Elf");
+		waitForRaceAcceptance( dB.getAcceptedRace(), "DragonBorn");
+		waitForRaceAcceptance( tF.getAcceptedRace(), "Tiefling");
+		waitForRaceAcceptance( hE.getAcceptedRace(), "Half Elf");
+		waitForRaceAcceptance( hO.getAcceptedRace(), "Half Orc");
+		waitForRaceAcceptance( rG.getAcceptedRace(), "Rock Gnome");
+		waitForRaceAcceptance( fG.getAcceptedRace(), "Forrest Gnome");
+		waitForRaceAcceptance( hD.getAcceptedRace(), "Hill Dwarf");
+		waitForRaceAcceptance( mD.getAcceptedRace(), "Mountain Dwarf");
+		waitForRaceAcceptance(lfH.getAcceptedRace(), "LightFoot Halfling");
+		waitForRaceAcceptance( sH.getAcceptedRace(), "Stout Halfling");
 		
 		// Waiting for Chosen Class
 		waitForClassAcceptance(bB.getAcceptedClass(), "Barbarian");

@@ -16,14 +16,23 @@ import raceCollection.HalfElf;
 import raceCollection.HalfOrc;
 import raceCollection.Human;
 import raceCollection.Tiefling;
+import raceCollection.dwarfMenu.HillDwarf;
+import raceCollection.dwarfMenu.MountainDwarf;
+import raceCollection.elfMenu.Drow;
+import raceCollection.elfMenu.HighElf;
+import raceCollection.elfMenu.WoodElf;
+import raceCollection.gnomeMenu.ForrestGnome;
+import raceCollection.gnomeMenu.RockGnome;
+import raceCollection.halflingMenu.LightfootHalfling;
+import raceCollection.halflingMenu.StoutHalfling;
 
 public class RaceMenu {
 
 	private String[] raceNames = { "Human", "Elf", "DragonBorn", "Tiefling", "HalfElf", "HalfOrc", "Gnome", "Dwarf", "Halfing" };
-	private String[] elfNames = { "Dark Elf", "High Elf" };
+	private String[] elfNames = { "Drow", "High Elf", "Wood Elf" };
 	private String[] gnomeNames = { "Forrest Gnomes", "Rock Gnomes" };
 	private String[] dwarfNames = { "Hill Dwarf", "Mountian Dwarf" };
-	private String[] halflingNames = { "LightFoot Halfings", "Stout Halfings" };
+	private String[] halflingNames = { "LightFoot Halflings", "Stout Halflings" };
 	
 	private JList<String[]> list, elfList, gnomeList, dwarfList, halfingList; 
 	private JSplitPane raceMenu, elfMenu, gnomeMenu, dwarfMenu, halfingMenu;
@@ -32,6 +41,15 @@ public class RaceMenu {
 	private Tiefling tF;
 	private HalfElf hE;
 	private HalfOrc hO;
+	private Drow dO;
+	private HighElf hiE;
+	private WoodElf wE;
+	private ForrestGnome fG;
+	private RockGnome rG;
+	private HillDwarf hD;
+	private MountainDwarf mD;
+	private LightfootHalfling lfH;
+	private StoutHalfling sH;
 	
 	int raceListenerIndex = 0;
 	
@@ -55,11 +73,20 @@ public class RaceMenu {
 	 */
 	public RaceMenu() {
 		
-		hm = new Human(); /// save Humaon object into location 32
-		dB = new DragonBorn();
-		tF = new Tiefling();
-		hE = new HalfElf();
-		hO = new HalfOrc();
+		hm =  new Human(); 
+		dB =  new DragonBorn();
+		tF =  new Tiefling();
+		hE =  new HalfElf();
+		hO =  new HalfOrc();
+		dO =  new Drow();
+		hiE = new HighElf();
+		wE =  new WoodElf();
+		fG =  new ForrestGnome();
+		rG =  new RockGnome();
+		hD =  new HillDwarf();
+		mD =  new MountainDwarf();
+		lfH = new LightfootHalfling();
+		sH =  new StoutHalfling();
 		
 		raceMenu = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
 		raceMenu.setOneTouchExpandable(true);
@@ -170,23 +197,17 @@ public class RaceMenu {
 		switch(raceIndex){
 		case 1: // Elf
 			switch(subRaceIndex){
-			case 0: // Dark Elf
-				// Content Filler Needs to be Relpaced
+			case 0: // Drow
 				elfMenu.setDividerLocation(100);
-				Label darkElfTitle = new Label("Dark Elf");
-				JPanel jpDarkElf = new JPanel();
-				jpDarkElf.setLayout(new GridLayout());
-				jpDarkElf.add(darkElfTitle);
-				elfMenu.setRightComponent(jpDarkElf);
+				elfMenu.setRightComponent(dO.getJPanel());
 				break;
 			case 1: // High Elf
-				// Content Filler Needs to be Relpaced
 				elfMenu.setDividerLocation(100);
-				Label highElfTitle = new Label("High Elf");
-				JPanel jpHighElf = new JPanel();
-				jpHighElf.setLayout(new GridLayout());
-				jpHighElf.add(highElfTitle);
-				elfMenu.setRightComponent(jpHighElf);
+				elfMenu.setRightComponent(hiE.getJPanel());
+				break;
+			case 2: // Wood Elf
+				elfMenu.setDividerLocation(100);
+				elfMenu.setRightComponent(wE.getJPanel());
 				break;
 			default: break;
 			}
@@ -194,69 +215,38 @@ public class RaceMenu {
 		case 6: // Gnome
 			switch(subRaceIndex){
 			case 0: // Forrest Gnome
-				// Content Filler Needs to be Relpaced
 				gnomeMenu.setDividerLocation(100);
-				Label forrestGnomeTitle = new Label("Forrest Gnome");
-				JPanel jpForrestGnome = new JPanel();
-				jpForrestGnome.setLayout(new GridLayout());
-				jpForrestGnome.add(forrestGnomeTitle);
-				gnomeMenu.setRightComponent(jpForrestGnome);
+				gnomeMenu.setRightComponent(fG.getJPanel());
 				break;
 			case 1: // Rock Gnome
-				// Content Filler Needs to be Relpaced
 				gnomeMenu.setDividerLocation(100);
-				Label rockGnomeTitle = new Label("Rock Gnome");
-				JPanel jpRockGnome = new JPanel();
-				jpRockGnome.setLayout(new GridLayout());
-				jpRockGnome.add(rockGnomeTitle);
-				gnomeMenu.setRightComponent(jpRockGnome);
+				gnomeMenu.setRightComponent(rG.getJPanel());
 				break;
 			default: break;
 			}
 			break;
 		case 7: // Dwarf
 			switch(subRaceIndex){
-			case 0: // Forrest Gnome
-				// Content Filler Needs to be Relpaced
+			case 0: // Hill Dwarf
 				dwarfMenu.setDividerLocation(100);
-				Label hillDwarfTitle = new Label("Hill Dwarf");
-				JPanel jpHillDwarf = new JPanel();
-				jpHillDwarf.setLayout(new GridLayout());
-				jpHillDwarf.add(hillDwarfTitle);
-				dwarfMenu.setRightComponent(jpHillDwarf);
+				dwarfMenu.setRightComponent(hD.getJPanel());
 				break;
-			case 1: // Rock Gnome
-				// Content Filler Needs to be Relpaced
+			case 1: // Mountain Dwarf
 				dwarfMenu.setDividerLocation(100);
-				Label mountianDwarfTitle = new Label("Mountian Dwarf");
-				JPanel jpMountianDwarf = new JPanel();
-				jpMountianDwarf.setLayout(new GridLayout());
-				jpMountianDwarf.add(mountianDwarfTitle);
-				dwarfMenu.setRightComponent(jpMountianDwarf);
+				dwarfMenu.setRightComponent(mD.getJPanel());
 				break;
 			default: break;
 			}
 			break;
 		case 8: // Halfling
 			switch(subRaceIndex){
-			case 0: // Forrest Gnome
-				// Content Filler Needs to be Relpaced
+			case 0: // LightFoot Halfings
 				halfingMenu.setDividerLocation(120);
-				Label lightFootHalfingTitle = new Label("LightFoot Halfings");
-				JPanel jpLightfootHalfing = new JPanel();
-				jpLightfootHalfing.setLayout(new GridLayout());
-				jpLightfootHalfing.add(lightFootHalfingTitle);
-				halfingMenu.setRightComponent(jpLightfootHalfing);
+				halfingMenu.setRightComponent(lfH.getJPanel());
 				break;
-			case 1: // Rock Gnome
-				// Content Filler Needs to be Relpaced
+			case 1: // Stout Halfings
 				halfingMenu.setDividerLocation(120);
-				Label stoutHalfingTitle = new Label("Stout Halfings");
-				JPanel jpStoutHalfing = new JPanel();
-				jpStoutHalfing.setLayout(new GridLayout());
-				jpStoutHalfing.add(stoutHalfingTitle);
-				halfingMenu.setRightComponent(jpStoutHalfing);
-				break;
+				halfingMenu.setRightComponent(sH.getJPanel());
 			default: break;
 			}
 			break;
@@ -264,9 +254,18 @@ public class RaceMenu {
 		}
 	}
 	
-	public Human getHuman(){return hm;} 
+	public Human getHuman(){return hm;}
+	public Drow getDrow(){return dO;}
+	public HighElf getHighElf(){return hiE;}
+	public WoodElf getWoodElf(){return wE;}
 	public DragonBorn getDragonBorn(){return dB;}
 	public Tiefling getTiefing(){return tF;}
 	public HalfElf getHalfElf(){return hE;}
 	public HalfOrc getHalfOrc(){return hO;}
+	public ForrestGnome getForrestGnome(){return fG;}
+	public RockGnome getRockGnome(){return rG;}
+	public HillDwarf getHillDwarf(){return hD;}
+	public MountainDwarf getMountainDwarf(){return mD;}
+	public LightfootHalfling getLightfootHalfling(){return lfH;}
+	public StoutHalfling getStoutHalfling(){return sH;}
 }

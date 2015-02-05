@@ -47,6 +47,18 @@ public class HighElf extends Elf {
 		jp.add(new JLabel("<html><b>Languages:</b></html>"), "cell 0 5,alignx right, aligny top");
 		jp.add(new JLabel(languages), "cell 1 5,alignx left, aligny top");
 		
+		//elf weapon training
+		jp.add(new JLabel("<html><b>Elf Weapon Training:</b></html>"), "cell 0 6,alignx right, aligny top");
+		jp.add(new JLabel(elfWeaponTraining), "cell 1 6,alignx left, aligny top");
+		
+		//cantrips
+		jp.add(new JLabel("<html><b>Cantrips:</b></html>"), "cell 0 7,alignx right, aligny top");
+		jp.add(new JLabel(cantrips), "cell 1 7,alignx left, aligny top");
+		
+		//extra languages
+		jp.add(new JLabel("<html><b>Extra Language:</b></html>"), "cell 0 8,alignx right, aligny top");
+		jp.add(new JLabel(extraLanguage), "cell 1 8,alignx left, aligny top");
+		
 		
 		acceptRace = new JButton("Accept High Elf as Your Race");
 		jp.add(acceptRace, "cell 0 9 2 1,alignx center,aligny center");

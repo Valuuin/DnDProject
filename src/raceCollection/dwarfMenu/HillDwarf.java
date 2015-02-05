@@ -45,6 +45,11 @@ public class HillDwarf extends Dwarf {
 		jp.add(new JLabel("<html><b>Languages:</b></html>"), "cell 0 5,alignx right, aligny top");
 		jp.add(new JLabel(languages), "cell 1 5,alignx left, aligny top");
 		
+		//Dwarven Toughness
+		jp.add(new JLabel("<html><b>Dwarven Toughness:</b></html>"), "cell 0 6,alignx right, aligny top");
+		jp.add(new JLabel(dwarvenToughness), "cell 1 6,alignx left, aligny top");
+		
+		
 		acceptHillDwarf = new JButton("Accept Hill Dwarf as Your Race");
 		jp.add(acceptHillDwarf, "cell 0 9 2 1,alignx center,aligny center");
 	}

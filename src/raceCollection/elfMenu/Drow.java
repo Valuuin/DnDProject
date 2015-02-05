@@ -49,6 +49,23 @@ public class Drow extends Elf{
 		jp.add(new JLabel("<html><b>Languages:</b></html>"), "cell 0 5,alignx right, aligny top");
 		jp.add(new JLabel(languages), "cell 1 5,alignx left, aligny top");
 		
+		//Superior Dark vision
+		jp.add(new JLabel("<html><b>Superior Dark Vision:</b></html>"), "cell 0 6,alignx right, aligny top");
+		jp.add(new JLabel(superiorDarkvision), "cell 1 6,alignx left, aligny top");
+		
+		//Sunlight Sensitivity
+		jp.add(new JLabel("<html><b>Sunlight Sensitivity:</b></html>"), "cell 0 7,alignx right, aligny top");
+		jp.add(new JLabel(sunlightSensitivity), "cell 1 7,alignx left, aligny top");
+		
+		//Drow Magic
+		jp.add(new JLabel("<html><b>Drow Magic:</b></html>"), "cell 0 8,alignx right, aligny top");
+		jp.add(new JLabel(drowMagic), "cell 1 8,alignx left, aligny top");
+		
+		
+		//Drow Weapon Training
+		jp.add(new JLabel("<html><b>Drow Weapon Training:</b></html>"), "cell 0 9,alignx right, aligny top");
+		jp.add(new JLabel(drowWeaponTraining), "cell 1 9,alignx left, aligny top");
+		
 		acceptRace = new JButton("Accept Drow as Your Race");
 		jp.add(acceptRace, "cell 0 9 2 1,alignx center,aligny center");
 		

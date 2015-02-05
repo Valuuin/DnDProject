@@ -47,6 +47,11 @@ public class LightfootHalfling extends Halfling{
 		jp.add(new JLabel("<html><b>Languages:</b></html>"), "cell 0 5,alignx right, aligny top");
 		jp.add(new JLabel(languages), "cell 1 5,alignx left, aligny top");
 		
+		//Naturally stealthy
+		jp.add(new JLabel("<html><b>Naturally Stealthy:</b></html>"), "cell 0 5,alignx right, aligny top");
+		jp.add(new JLabel(naturallyStealthy), "cell 1 5,alignx left, aligny top");
+				
+		
 		//accept race button
 		acceptRace = new JButton("Accept Lightfoot Halfling as Your Race");
 		jp.add(acceptRace, "cell 0 9 2 1,alignx center,aligny center");

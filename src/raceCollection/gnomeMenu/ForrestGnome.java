@@ -46,6 +46,14 @@ public class ForrestGnome extends Gnome{
 		jp.add(new JLabel("<html><b>Languages:</b></html>"), "cell 0 5,alignx right, aligny top");
 		jp.add(new JLabel(languages), "cell 1 5,alignx left, aligny top");
 		
+		//Natural Illusionist
+		jp.add(new JLabel("<html><b>Natural Illusionist:</b></html>"), "cell 0 6,alignx right, aligny top");
+		jp.add(new JLabel(naturalIllusionist), "cell 1 6,alignx left, aligny top");
+			
+		//Speak With small beasts
+		jp.add(new JLabel("<html><b>Speak With Small Beasts:</b></html>"), "cell 0 7,alignx right, aligny top");
+		jp.add(new JLabel(speakWithSmallBeasts), "cell 1 7,alignx left, aligny top");
+		
 		
 		acceptRace = new JButton("Accept Forrest Gnome as Your Race");
 		jp.add(acceptRace, "cell 0 9 2 1,alignx center,aligny center");

@@ -45,7 +45,10 @@ public class StoutHalfling extends Halfling {
 		jp.add(new JLabel("<html><b>Languages:</b></html>"), "cell 0 5,alignx right, aligny top");
 		jp.add(new JLabel(languages), "cell 1 5,alignx left, aligny top");
 				
-		
+		//Resilience
+		jp.add(new JLabel("<html><b>Resilience:</b></html>"), "cell 0 5,alignx right, aligny top");
+		jp.add(new JLabel(resilience), "cell 1 5,alignx left, aligny top");
+						
 		
 		acceptRace = new JButton("Accept Stout Halfling as Your Race");
 		jp.add(acceptRace, "cell 0 9 2 1,alignx center,aligny center");

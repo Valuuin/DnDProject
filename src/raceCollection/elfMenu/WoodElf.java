@@ -47,6 +47,18 @@ public class WoodElf extends Elf {
 		jp.add(new JLabel("<html><b>Languages:</b></html>"), "cell 0 5,alignx right, aligny top");
 		jp.add(new JLabel(languages), "cell 1 5,alignx left, aligny top");
 		
+		//Elf Weapon Training
+		jp.add(new JLabel("<html><b>Elf Weapon Training:</b></html>"), "cell 0 6,alignx right, aligny top");
+		jp.add(new JLabel(elfWeaponTraining), "cell 1 6,alignx left, aligny top");
+		
+		//Fleet of Foot
+		jp.add(new JLabel("<html><b>Fleet of Foot:</b></html>"), "cell 0 7,alignx right, aligny top");
+		jp.add(new JLabel(fleetOfFoot), "cell 1 7,alignx left, aligny top");
+		
+		//mask of the wild
+		jp.add(new JLabel("<html><b>Mask of the Wild:</b></html>"), "cell 0 8,alignx right, aligny top");
+		jp.add(new JLabel(maskOfTheWild), "cell 1 8,alignx left, aligny top");
+		
 		
 		acceptRace = new JButton("Accept Wood Elf as Your Race");
 		jp.add(acceptRace, "cell 0 9 2 1,alignx center,aligny center");

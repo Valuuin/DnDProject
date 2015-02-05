@@ -45,6 +45,10 @@ public class MountainDwarf extends Dwarf {
 		jp.add(new JLabel("<html><b>Languages:</b></html>"), "cell 0 5,alignx right, aligny top");
 		jp.add(new JLabel(languages), "cell 1 5,alignx left, aligny top");
 						
+		//dwarven armor training
+		jp.add(new JLabel("<html><b>Dwarven Armor Training:</b></html>"), "cell 0 5,alignx right, aligny top");
+		jp.add(new JLabel(dwarvenArmorTraining), "cell 1 5,alignx left, aligny top");
+		
 		
 		acceptRace = new JButton("Accept MountainDwarf as Your Race");
 		jp.add(acceptRace, "cell 0 9 2 1,alignx center,aligny center");

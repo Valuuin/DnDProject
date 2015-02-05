@@ -45,6 +45,10 @@ public class RockGnome extends Gnome {
 		//languages
 		jp.add(new JLabel("<html><b>Languages:</b></html>"), "cell 0 5,alignx right, aligny top");
 		jp.add(new JLabel(languages), "cell 1 5,alignx left, aligny top");
+		
+		//Artificer's lore
+		jp.add(new JLabel("<html><b>Artificer's Lore:</b></html>"), "cell 0 6,alignx right, aligny top");
+		jp.add(new JLabel(artificersLore), "cell 1 6,alignx left, aligny top");
 				
 		
 		acceptRace = new JButton("Accept Rock Gnome as Your Race");

@@ -2,7 +2,7 @@ package raceCollection;
 
 import dndProject.RaceMenu;
 
-public class Halfling extends RaceMenu{
+public class Halfling {
 	
 	// Halfling traits
 	protected String abilityScoreIncrease = "Your Dexterity score increases by 2";

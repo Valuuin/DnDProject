@@ -1,8 +1,6 @@
 package raceCollection;
 
-import dndProject.RaceMenu;
-
-public class Gnome extends RaceMenu{
+public class Gnome {
 	
 	//Gnome traits
 	protected String abilityScoreIncrease = "Your Intelligence score increase by 2.";

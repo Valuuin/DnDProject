@@ -33,6 +33,8 @@ public class HillDwarf extends Dwarf {
 		jp.add(new JLabel("<html><b>Alignment:</b></html>"), "cell 0 2,alignx right,aligny bottom");
 		jp.add(new JLabel(alignment), "cell 1 2,alignx left,aligny bottom");
 		
+		acceptHillDwarf = new JButton("Accept Hill Dwarf as Your Race");
+		jp.add(acceptHillDwarf, "cell 0 9 2 1,alignx center,aligny center");
 	}
 
 	// Create one method to return the JPanel created up top

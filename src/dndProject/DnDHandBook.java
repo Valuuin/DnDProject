@@ -1,19 +1,13 @@
 package dndProject;
 
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
-
 import java.awt.CardLayout;
-
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-
 import java.awt.Font;
-
 import javax.swing.JSplitPane;
-
 import backgroundCollection.Artisan;
 import backgroundCollection.Charlatan;
 import backgroundCollection.Criminal;
@@ -44,10 +38,8 @@ import raceCollection.HalfElf;
 import raceCollection.HalfOrc;
 import raceCollection.Human;
 import raceCollection.Tiefling;
-
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-
 import net.miginfocom.swing.MigLayout;
 
 public class DnDHandBook {

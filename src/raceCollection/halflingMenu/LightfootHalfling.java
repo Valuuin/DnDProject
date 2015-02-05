@@ -26,5 +26,5 @@ public class LightfootHalfling extends Halfling{
 	}
 
 	public JPanel getJPanel(){return jp;}
-	public JButton getAcceptedClass(){return acceptRace;}
+	public JButton getAcceptedRace(){return acceptRace;}
 }

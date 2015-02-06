@@ -1,19 +1,13 @@
 package dndProject;
 
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
-
 import java.awt.CardLayout;
-
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-
 import java.awt.Font;
-
 import javax.swing.JSplitPane;
-
 import backgroundCollection.Artisan;
 import backgroundCollection.Charlatan;
 import backgroundCollection.Criminal;
@@ -53,22 +47,23 @@ import raceCollection.gnomeMenu.ForrestGnome;
 import raceCollection.gnomeMenu.RockGnome;
 import raceCollection.halflingMenu.LightfootHalfling;
 import raceCollection.halflingMenu.StoutHalfling;
-
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-
 import net.miginfocom.swing.MigLayout;
 
 public class DnDHandBook {
 
 	public JFrame frame;
 	private JSplitPane raceMenu, classMenu, backgroundMenu;
-	public JPanel cCreationPanel;
+	public JPanel cCreationPanel, attributeMenu;
 
-	public CharacterCreation cC;
-	public RaceMenu          rM;
-	public ClassMenu         cM;
-	public BackgroundMenu    bM;
+	
+	// Main Windows 
+	public CharacterCreation  cC;
+	public RaceMenu           rM;
+	public ClassMenu          cM;
+	public BackgroundMenu     bM;
+	public AttributeSelection aS;
 	
 	// Races
 	public Human             hm;
@@ -149,6 +144,7 @@ public class DnDHandBook {
 		rM = new RaceMenu();
 		cM = new ClassMenu();
 		bM = new BackgroundMenu();
+		aS = new AttributeSelection();
 		
 		// Races
 		hm  = rM.getHuman(); 
@@ -251,6 +247,16 @@ public class DnDHandBook {
 				frame.getContentPane().add(backgroundMenu);
 				cCreationPanel.setVisible(false);
 				backgroundMenu.setVisible(true);	
+			}
+		});
+
+		JButton attributeSelectionMenu = cC.getOpenAttributes();
+		attributeSelectionMenu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				attributeMenu = aS.getAttributeSelectionPanel();
+				frame.getContentPane().add(attributeMenu);
+				cCreationPanel.setVisible(false);
+				attributeMenu.setVisible(true);	
 			}
 		});
 		

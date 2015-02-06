@@ -214,6 +214,7 @@ public class DnDHandBook {
 		
 		JButton createCharacter = new JButton("Create Character");
 		startMenu.add(createCharacter, "cell 0 7,alignx center,aligny center");
+		
 		createCharacter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				cCreationPanel = cC.getCharacterCreationPanel();

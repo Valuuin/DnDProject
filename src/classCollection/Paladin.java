@@ -10,12 +10,41 @@ public class Paladin {
 	private JPanel jp;
 	private JButton acceptClass;
 
+	//Strings unique to Paladin
+	String hitPoints = "1d10 + Constitution modifier per Paladin level";
+	String armor = "Proficient in all armors and shields.";
+	String weapons = "Proficient in all simple weapons and martial weapons.";
+	String savingThrows = "Wisdom and Charisma are the Paladin's saving throws.";
+	String skills = "Choose two from Athletics, Insight, Intimidation, Medicine, Persuasion, and Religion.";
+	
+	
 	public Paladin() {
 
 		jp = new JPanel();
 		jp.setSize(640, 480);
 		jp.setLayout(new MigLayout("", "[25%][75%]", "[10%][10%][10%][10%][10%][10%][10%][10%][10%][10%][10%]"));
 		jp.add(new JLabel("<html><font size=\"6\">Paladin</font></html>"), "cell 0 0 2 1,alignx center,aligny center");
+		
+		
+		// Hitpoints
+		jp.add(new JLabel("<html><b>Hit Points:</b></html>"), "cell 0 1,alignx right,aligny bottom");
+		jp.add(new JLabel(hitPoints), "cell 1 1,alignx left,aligny bottom");
+				
+		// Armor
+		jp.add(new JLabel("<html><b>Armor:</b></html>"), "cell 0 2,alignx right,aligny bottom");
+		jp.add(new JLabel(armor), "cell 1 2,alignx left,aligny bottom");
+				
+		// Weapons
+		jp.add(new JLabel("<html><b>Weapons:</b></html>"), "cell 0 3,alignx right,aligny bottom");
+		jp.add(new JLabel(weapons), "cell 1 3,alignx left,aligny bottom");
+				
+		// Saving Throws
+		jp.add(new JLabel("<html><b>Saving Throws:</b></html>"), "cell 0 4,alignx right,aligny bottom");
+		jp.add(new JLabel(savingThrows), "cell 1 4,alignx left,aligny bottom");
+				
+		// Skills
+		jp.add(new JLabel("<html><b>Skills:</b></html>"), "cell 0 5,alignx right,aligny bottom");
+		jp.add(new JLabel(skills), "cell 1 5,alignx left,aligny bottom");
 		
 		
 		acceptClass = new JButton("Accept Paladin as Your Class");

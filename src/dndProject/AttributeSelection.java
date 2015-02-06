@@ -10,8 +10,11 @@ public class AttributeSelection {
 
 	private JPanel aS;
 	
+	public Character c;
+	
 	public AttributeSelection(){
 	
+		
 		aS = new JPanel();
 		aS.setSize(620, 480);
 		aS.setLayout(new MigLayout("", "[2%][8%][8%][8%][8%][8%][8%][8%][8%][8%][8%][8%][8%][2%]", "[10%][10%][10%][10%][10%][10%][10%][10%][10%][10%]"));
@@ -57,4 +60,5 @@ public class AttributeSelection {
 	}
 	
 	public JPanel getAttributeSelectionPanel(){return aS;}
+	public void setCharacter(Character ch){c = ch;}
 }

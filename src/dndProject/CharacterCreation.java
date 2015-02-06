@@ -1,12 +1,9 @@
 package dndProject;
 
 import javax.swing.JPanel;
-
 import net.miginfocom.swing.MigLayout;
-
 import javax.swing.JLabel;
 import javax.swing.JButton;
-
 
 public class CharacterCreation {
 
@@ -14,7 +11,7 @@ public class CharacterCreation {
 	private JButton openRaceMenu, openClassMenu, openBackgroundMenu;
 	private JLabel selectedClass, selectedBackground, selectedRace;
 	private JLabel selectionResults;
-	private JButton openAPS;
+	private JButton openAttributes;
 	
 	/**
 	 * Create the panel.
@@ -41,9 +38,9 @@ public class CharacterCreation {
 		selectionResults = new JLabel("New label");
 		selectionResults.setVisible(false);
 		cC.add(selectionResults, "cell 0 6 4 1,alignx center,aligny center");
-		openAPS = new JButton("Open Attributes");
-		openAPS.setVisible(false);
-		cC.add(openAPS, "cell 0 7 4 1,alignx center,aligny center");
+		openAttributes = new JButton("Open Attributes");
+		openAttributes.setVisible(false);
+		cC.add(openAttributes, "cell 0 7 4 1,alignx center,aligny center");
 
 
 		openRaceMenu = new JButton("Open Race Menu");
@@ -67,12 +64,6 @@ public class CharacterCreation {
 				
 	}
 			
-
-	public JPanel getCharacterCreationPanel(){return cC;}
-	public JButton getOpenRaceMenuButton(){return openRaceMenu;}
-	public JButton getOpenClassMenu(){return openClassMenu;}
-	public JButton getOpenBackgroundMenu(){return openBackgroundMenu;}
-	
 	public void setRace(String race){
 		selectedRace.setText(race);
 		displaySelectionResults();
@@ -93,7 +84,13 @@ public class CharacterCreation {
 			
 				selectionResults.setText("Are you Sure you want to be a "+selectedRace.getText()+" "+selectedClass.getText()+" "+"with a background in "+selectedBackground.getText());
 				selectionResults.setVisible(true);
-				openAPS.setVisible(true);
+				openAttributes.setVisible(true);
 			}
 	}
+	
+	public JPanel getCharacterCreationPanel(){return cC;}
+	public JButton getOpenRaceMenuButton(){return openRaceMenu;}
+	public JButton getOpenClassMenu(){return openClassMenu;}
+	public JButton getOpenBackgroundMenu(){return openBackgroundMenu;}
+	public JButton getOpenAttributes(){return openAttributes;}
 }

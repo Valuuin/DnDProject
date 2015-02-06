@@ -58,6 +58,9 @@ public class DnDHandBook {
 	public JPanel cCreationPanel, attributeMenu;
 
 	
+	//Character
+	public Character character;
+	
 	// Main Windows 
 	public CharacterCreation  cC;
 	public RaceMenu           rM;
@@ -139,6 +142,9 @@ public class DnDHandBook {
 	private void initialize() {
 		frame = new JFrame();
 
+		//Character
+		character = new Character();
+		
 		// Menues 
 		cC = new CharacterCreation();
 		rM = new RaceMenu();
@@ -254,6 +260,7 @@ public class DnDHandBook {
 		attributeSelectionMenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				attributeMenu = aS.getAttributeSelectionPanel();
+				aS.setCharacter(character);
 				frame.getContentPane().add(attributeMenu);
 				cCreationPanel.setVisible(false);
 				attributeMenu.setVisible(true);	
@@ -261,20 +268,20 @@ public class DnDHandBook {
 		});
 		
 		// Waiting for Chosen Race
-		waitForRaceAcceptance( hm.getAcceptedRace(), "Human");
-		waitForRaceAcceptance( dW.getAcceptedRace(), "Drow");
-		waitForRaceAcceptance(hiE.getAcceptedRace(), "High Elf");
-		waitForRaceAcceptance( wE.getAcceptedRace(), "Wood Elf");
-		waitForRaceAcceptance( dB.getAcceptedRace(), "DragonBorn");
-		waitForRaceAcceptance( tF.getAcceptedRace(), "Tiefling");
-		waitForRaceAcceptance( hE.getAcceptedRace(), "Half Elf");
-		waitForRaceAcceptance( hO.getAcceptedRace(), "Half Orc");
-		waitForRaceAcceptance( rG.getAcceptedRace(), "Rock Gnome");
-		waitForRaceAcceptance( fG.getAcceptedRace(), "Forrest Gnome");
-		waitForRaceAcceptance( hD.getAcceptedRace(), "Hill Dwarf");
-		waitForRaceAcceptance( mD.getAcceptedRace(), "Mountain Dwarf");
-		waitForRaceAcceptance(lfH.getAcceptedRace(), "LightFoot Halfling");
-		waitForRaceAcceptance( sH.getAcceptedRace(), "Stout Halfling");
+		waitForRaceAcceptance( hm.getAcceptedRace(), "Human", hm);
+		waitForRaceAcceptance( dW.getAcceptedRace(), "Drow", dW);
+		waitForRaceAcceptance(hiE.getAcceptedRace(), "High Elf", hiE);
+		waitForRaceAcceptance( wE.getAcceptedRace(), "Wood Elf", wE);
+		waitForRaceAcceptance( dB.getAcceptedRace(), "DragonBorn", dB);
+		waitForRaceAcceptance( tF.getAcceptedRace(), "Tiefling", tF);
+		waitForRaceAcceptance( hE.getAcceptedRace(), "Half Elf", hE);
+		waitForRaceAcceptance( hO.getAcceptedRace(), "Half Orc", hO);
+		waitForRaceAcceptance( rG.getAcceptedRace(), "Rock Gnome", rG);
+		waitForRaceAcceptance( fG.getAcceptedRace(), "Forrest Gnome", fG);
+		waitForRaceAcceptance( hD.getAcceptedRace(), "Hill Dwarf", hD);
+		waitForRaceAcceptance( mD.getAcceptedRace(), "Mountain Dwarf", mD);
+		waitForRaceAcceptance(lfH.getAcceptedRace(), "LightFoot Halfling", lfH);
+		waitForRaceAcceptance( sH.getAcceptedRace(), "Stout Halfling", sH);
 		
 		// Waiting for Chosen Class
 		waitForClassAcceptance(bB.getAcceptedClass(), "Barbarian");
@@ -306,10 +313,11 @@ public class DnDHandBook {
 		waitForBackgroundAcceptance(  u.getAcceptedBackground(),"Urchin");
 	}
 	
-	public void waitForRaceAcceptance( JButton race, final String name){
+	public void waitForRaceAcceptance( JButton race, final String name, Object r){
 			race.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				raceMenu.setVisible(false);
+				character.setRace(r);
 				cC.setRace(name);
 				cCreationPanel.setVisible(true);
 			}
@@ -335,4 +343,5 @@ public class DnDHandBook {
 			}
 		});
 	}
+
 }

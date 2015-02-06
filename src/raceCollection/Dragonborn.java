@@ -20,6 +20,8 @@ public class DragonBorn  {
 	String speed = "Your base walking speed is 30 feet.";
 	String languages = "You can speak, read and write Common and Draconic.";
 	
+	// Info  {Strength,Dexterity,Constitution,Intelligence,Wisdom,Charisma }
+	String[] atri = {"2","0","0","0","0","1"};
 	/**
 	 * Create the panel.
 	 */
@@ -57,4 +59,5 @@ public class DragonBorn  {
 	
 	public JPanel getJPanel(){return jp;}
 	public JButton getAcceptedRace(){return acceptDragonBorn;}
+	public String[] getAttributes(){return atri;}
 }

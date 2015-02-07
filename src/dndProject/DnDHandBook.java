@@ -1,13 +1,19 @@
 package dndProject;
 
 import java.awt.EventQueue;
+
 import javax.swing.JFrame;
+
 import java.awt.CardLayout;
+
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+
 import java.awt.Font;
+
 import javax.swing.JSplitPane;
+
 import backgroundCollection.Artisan;
 import backgroundCollection.Charlatan;
 import backgroundCollection.Criminal;
@@ -33,6 +39,9 @@ import classCollection.Rogue;
 import classCollection.Sorcerer;
 import classCollection.Warlock;
 import classCollection.Wizzard;
+import dndProject.Character.Race;
+import dndProject.Character.bGround;
+import dndProject.Character.cClass;
 import raceCollection.DragonBorn;
 import raceCollection.HalfElf;
 import raceCollection.HalfOrc;
@@ -47,18 +56,19 @@ import raceCollection.gnomeMenu.ForrestGnome;
 import raceCollection.gnomeMenu.RockGnome;
 import raceCollection.halflingMenu.LightfootHalfling;
 import raceCollection.halflingMenu.StoutHalfling;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 import net.miginfocom.swing.MigLayout;
 
-public class DnDHandBook {
+public class DnDHandBook  {
 
 	public JFrame frame;
 	private JSplitPane raceMenu, classMenu, backgroundMenu;
 	public JPanel cCreationPanel, attributeMenu;
-
 	
-	//Character
+	//Character 
 	public Character character;
 	
 	// Main Windows 
@@ -66,7 +76,7 @@ public class DnDHandBook {
 	public RaceMenu           rM;
 	public ClassMenu          cM;
 	public BackgroundMenu     bM;
-	public AttributeSelection aS;
+	public AttributeSelection aS, aSv2;
 	
 	// Races
 	public Human             hm;
@@ -141,8 +151,8 @@ public class DnDHandBook {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-
-		//Character
+	
+		// Character
 		character = new Character();
 		
 		// Menues 
@@ -259,8 +269,8 @@ public class DnDHandBook {
 		JButton attributeSelectionMenu = cC.getOpenAttributes();
 		attributeSelectionMenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				aS.updateTextFields(character);
 				attributeMenu = aS.getAttributeSelectionPanel();
-				aS.setCharacter(character);
 				frame.getContentPane().add(attributeMenu);
 				cCreationPanel.setVisible(false);
 				attributeMenu.setVisible(true);	
@@ -268,76 +278,78 @@ public class DnDHandBook {
 		});
 		
 		// Waiting for Chosen Race
-		waitForRaceAcceptance( hm.getAcceptedRace(), "Human", hm);
-		waitForRaceAcceptance( dW.getAcceptedRace(), "Drow", dW);
-		waitForRaceAcceptance(hiE.getAcceptedRace(), "High Elf", hiE);
-		waitForRaceAcceptance( wE.getAcceptedRace(), "Wood Elf", wE);
-		waitForRaceAcceptance( dB.getAcceptedRace(), "DragonBorn", dB);
-		waitForRaceAcceptance( tF.getAcceptedRace(), "Tiefling", tF);
-		waitForRaceAcceptance( hE.getAcceptedRace(), "Half Elf", hE);
-		waitForRaceAcceptance( hO.getAcceptedRace(), "Half Orc", hO);
-		waitForRaceAcceptance( rG.getAcceptedRace(), "Rock Gnome", rG);
-		waitForRaceAcceptance( fG.getAcceptedRace(), "Forrest Gnome", fG);
-		waitForRaceAcceptance( hD.getAcceptedRace(), "Hill Dwarf", hD);
-		waitForRaceAcceptance( mD.getAcceptedRace(), "Mountain Dwarf", mD);
-		waitForRaceAcceptance(lfH.getAcceptedRace(), "LightFoot Halfling", lfH);
-		waitForRaceAcceptance( sH.getAcceptedRace(), "Stout Halfling", sH);
+		waitForRaceAcceptance( hm.getAcceptedRace(), "Human",              hm,  Race.HUMAN);
+		waitForRaceAcceptance( dW.getAcceptedRace(), "Drow",               dW,  Race.DROW);
+		waitForRaceAcceptance(hiE.getAcceptedRace(), "High Elf",           hiE, Race.HIGH_ELF);
+		waitForRaceAcceptance( wE.getAcceptedRace(), "Wood Elf",           wE,  Race.WOOD_ELF);
+		waitForRaceAcceptance( dB.getAcceptedRace(), "DragonBorn",         dB,  Race.DRAGONBORN);
+		waitForRaceAcceptance( tF.getAcceptedRace(), "Tiefling",           tF,  Race.TIEFLING);
+		waitForRaceAcceptance( hE.getAcceptedRace(), "Half Elf",           hE,  Race.HALF_ELF);
+		waitForRaceAcceptance( hO.getAcceptedRace(), "Half Orc",           hO,  Race.HALF_ORC);
+		waitForRaceAcceptance( rG.getAcceptedRace(), "Rock Gnome",         rG,  Race.ROCK_GNOME);
+		waitForRaceAcceptance( fG.getAcceptedRace(), "Forrest Gnome",      fG,  Race.FORREST_GNOME);
+		waitForRaceAcceptance( hD.getAcceptedRace(), "Hill Dwarf",         hD,  Race.HILL_DWARF);
+		waitForRaceAcceptance( mD.getAcceptedRace(), "Mountain Dwarf",     mD,  Race.MOUNTAIN_DWARF);
+		waitForRaceAcceptance(lfH.getAcceptedRace(), "LightFoot Halfling", lfH, Race.LIGHTFOOT_HALFLING);
+		waitForRaceAcceptance( sH.getAcceptedRace(), "Stout Halfling",     sH,  Race.STOUT_HALFLING);
 		
 		// Waiting for Chosen Class
-		waitForClassAcceptance(bB.getAcceptedClass(), "Barbarian");
-		waitForClassAcceptance( b.getAcceptedClass(), "Bard");
-		waitForClassAcceptance( c.getAcceptedClass(), "Cleric");
-		waitForClassAcceptance( d.getAcceptedClass(), "Druid");
-		waitForClassAcceptance( f.getAcceptedClass(), "Fighter");
-		waitForClassAcceptance( m.getAcceptedClass(), "Monk");
-		waitForClassAcceptance( p.getAcceptedClass(), "Paladin");
-		waitForClassAcceptance(rA.getAcceptedClass(), "Ranger");
-		waitForClassAcceptance(rO.getAcceptedClass(), "Rogue");
-		waitForClassAcceptance(sO.getAcceptedClass(), "Sorcerer");
-		waitForClassAcceptance(wA.getAcceptedClass(), "Warlock");
-		waitForClassAcceptance(wI.getAcceptedClass(), "Wizzard");
+		waitForClassAcceptance(bB.getAcceptedClass(), "Barbarian", bB, cClass.BARBARIAN);
+		waitForClassAcceptance( b.getAcceptedClass(), "Bard",      b,  cClass.BARD);
+		waitForClassAcceptance( c.getAcceptedClass(), "Cleric",    c,  cClass.CLERIC);
+		waitForClassAcceptance( d.getAcceptedClass(), "Druid",     d,  cClass.DRUID);
+		waitForClassAcceptance( f.getAcceptedClass(), "Fighter",   f,  cClass.FIGHTER);
+		waitForClassAcceptance( m.getAcceptedClass(), "Monk",      m,  cClass.MONK);
+		waitForClassAcceptance( p.getAcceptedClass(), "Paladin",   p,  cClass.PALADIN);
+		waitForClassAcceptance(rA.getAcceptedClass(), "Ranger",    rA, cClass.RANGER);
+		waitForClassAcceptance(rO.getAcceptedClass(), "Rogue",     rO, cClass.ROGUE);
+		waitForClassAcceptance(sO.getAcceptedClass(), "Sorcerer",  sO, cClass.SORCERER);
+		waitForClassAcceptance(wA.getAcceptedClass(), "Warlock",   wA, cClass.WARLOCK);
+		waitForClassAcceptance(wI.getAcceptedClass(), "Wizzard",   wI, cClass.WIZZARD);
 		
 		// Waiting for Chosen Background
-		waitForBackgroundAcceptance(  a.getAcceptedBackground(),"Artisan");
-		waitForBackgroundAcceptance(crM.getAcceptedBackground(),"Criminal");
-		waitForBackgroundAcceptance( cL.getAcceptedBackground(),"Charlatan");
-		waitForBackgroundAcceptance(  e.getAcceptedBackground(),"Entertainer");
-		waitForBackgroundAcceptance( fH.getAcceptedBackground(),"Folk Hero");
-		waitForBackgroundAcceptance( gA.getAcceptedBackground(),"Guild Artisan");
-		waitForBackgroundAcceptance(  h.getAcceptedBackground(),"Hermit");
-		waitForBackgroundAcceptance(  n.getAcceptedBackground(),"Noble");
-		waitForBackgroundAcceptance(  o.getAcceptedBackground(),"Outlander");
-		waitForBackgroundAcceptance( sG.getAcceptedBackground(),"Sage");
-		waitForBackgroundAcceptance( sA.getAcceptedBackground(),"Sailor");
-		waitForBackgroundAcceptance( sD.getAcceptedBackground(),"Soldier");
-		waitForBackgroundAcceptance(  u.getAcceptedBackground(),"Urchin");
+		waitForBackgroundAcceptance(  a.getAcceptedBackground(),"Artisan",       a,   bGround.ARTISAN);
+		waitForBackgroundAcceptance(crM.getAcceptedBackground(),"Criminal",      crM, bGround.CHARLATAN);
+		waitForBackgroundAcceptance( cL.getAcceptedBackground(),"Charlatan",     cL,  bGround.CRIMINAL);
+		waitForBackgroundAcceptance(  e.getAcceptedBackground(),"Entertainer",   e,   bGround.ENTERTAINER);
+		waitForBackgroundAcceptance( fH.getAcceptedBackground(),"Folk Hero",     fH,  bGround.FOLKHERO);
+		waitForBackgroundAcceptance( gA.getAcceptedBackground(),"Guild Artisan", gA,  bGround.GUILDARTISAN);
+		waitForBackgroundAcceptance(  h.getAcceptedBackground(),"Hermit",        h,   bGround.HERMIT);
+		waitForBackgroundAcceptance(  n.getAcceptedBackground(),"Noble",         n,   bGround.NOBLE);
+		waitForBackgroundAcceptance(  o.getAcceptedBackground(),"Outlander",     o,   bGround.OUTLANDER);
+		waitForBackgroundAcceptance( sG.getAcceptedBackground(),"Sage",          sG,  bGround.SAGE);
+		waitForBackgroundAcceptance( sA.getAcceptedBackground(),"Sailor",        sA,  bGround.SAILOR);
+		waitForBackgroundAcceptance( sD.getAcceptedBackground(),"Soldier",       sD,  bGround.SOLDIER);
+		waitForBackgroundAcceptance(  u.getAcceptedBackground(),"Urchin",        u,   bGround.URCHIN);
 	}
 	
-	public void waitForRaceAcceptance( JButton race, final String name, Object r){
+	public void waitForRaceAcceptance( JButton race, final String name, final Object r, final Race rName){
 			race.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				raceMenu.setVisible(false);
-				character.setRace(r);
+				character.setRace(r,name,rName);
 				cC.setRace(name);
 				cCreationPanel.setVisible(true);
 			}
 		});
 	}
 	
-	public void waitForClassAcceptance( JButton classButton, final String className){
+	public void waitForClassAcceptance( JButton classButton, final String className, final Object c, final cClass cName){
 		classButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				classMenu.setVisible(false);
+				character.setClass(c,className,cName);
 				cC.setClass(className);
 				cCreationPanel.setVisible(true);
 			}
 		});
 	}
 	
-	public void waitForBackgroundAcceptance( JButton backgroundButton, final String backgroundName){
+	public void waitForBackgroundAcceptance( JButton backgroundButton, final String backgroundName, final Object b, final bGround bName){
 		backgroundButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				backgroundMenu.setVisible(false);
+				character.setBackground(b, backgroundName,bName);
 				cC.setBackground(backgroundName);
 				cCreationPanel.setVisible(true);
 			}

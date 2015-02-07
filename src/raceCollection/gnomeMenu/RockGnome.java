@@ -1,5 +1,7 @@
 package raceCollection.gnomeMenu;
 
+import java.util.ArrayList;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -18,11 +20,22 @@ public class RockGnome extends Gnome {
 	String rockGnome_ASI = "Your constitution score increases by 1.";
 	String artificersLore = "Whenever you make an Intelligence (History) check related to magic items, alchemical objects, or technological devices, you can add twice your proficiency bonus, instead of any proficiency bonus you normally apply.";
 	
+	ArrayList<String> atri = new ArrayList<String>();
+	
 	// Info  {Strength,Dexterity,Constitution,Intelligence,Wisdom,Charisma }
-	String[] atri = {"0","0","1","2","0","0"};
+	// String[] atri = {"0","0","1","2","0","0"};
 	
 	public RockGnome() {
-
+		
+		atri.add("0"); //Strength
+		atri.add("0"); //Dexterity
+		atri.add("1"); //Constitution
+		atri.add("2"); //Intelligence
+		atri.add("0"); //Wisdom
+		atri.add("0"); //Charisma
+		createJPanel();
+	}
+		public void createJPanel(){
 		jp = new JPanel();
 		jp.setSize(640, 480);
 		jp.setLayout(new MigLayout("", "[25%][75%]", "[10%][10%][10%][10%][10%][10%][10%][10%][10%][10%][10%]"));
@@ -60,5 +73,5 @@ public class RockGnome extends Gnome {
 
 	public JPanel getJPanel(){return jp;}
 	public JButton getAcceptedRace(){return acceptRace;}
-	public String[] getAttributes(){return atri;}
+	public ArrayList<String> getAttributes(){return atri;}
 }

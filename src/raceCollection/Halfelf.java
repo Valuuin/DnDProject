@@ -1,5 +1,7 @@
 package raceCollection;
 
+import java.util.ArrayList;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -26,13 +28,25 @@ public class HalfElf  {
 	String skillVersatility = "You gain proficiency in two skills of your choice.";
 	String languages = "You can speak, read, and write Common, Elvish, and one extra language of your choice.";
 	
+	ArrayList<String> atri = new ArrayList<String>();
+	
 	// Info  {Strength,Dexterity,Constitution,Intelligence,Wisdom,Charisma }
-	String[] atri = {"0","0","0","1","1","2"};
+	//String[] atri = {"0","0","0","1","1","2"};
 	
 	/**
 	 * Create the panel.
 	 */
 	public HalfElf() {
+	
+		atri.add("0"); //Strength
+		atri.add("0"); //Dexterity
+		atri.add("0"); //Constitution
+		atri.add("1"); //Intelligence
+		atri.add("1"); //Wisdom
+		atri.add("2"); //Charisma
+		createJPanel();
+	}
+		public void createJPanel(){
 		jp = new JPanel();
 		jp.setSize(640, 480);
 		jp.setLayout(new MigLayout("", "[5%][20%][70%][5%]", "[10%][10%][10%][10%][10%][10%][10%][10%][10%][10%][10%]"));
@@ -77,6 +91,6 @@ public class HalfElf  {
 
 	public JPanel getJPanel(){return jp;}
 	public JButton getAcceptedRace(){return acceptHalfElf;}
-	public String[] getAttributes(){return atri;}
+	public ArrayList<String> getAttributes(){return atri;}
 	
 }

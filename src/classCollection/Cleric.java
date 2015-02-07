@@ -1,5 +1,7 @@
 package classCollection;
 
+import java.util.ArrayList;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -17,9 +19,22 @@ public class Cleric {
 	String savingThrows = "Wisdom and Charisma are a Cleric's saving throws";
 	String skills = "Choose two from History, Insight, Medicine, Persuasion, and Religion";
 	
+	ArrayList<String> skillList = new ArrayList<String>();
+	
 	
 	public Cleric() {
-
+		
+		skillList.add("History");
+		skillList.add("Insight");
+		skillList.add("Medicine");
+		skillList.add("Persuasion");
+		skillList.add("Religion");
+		createJPanel();
+		
+		
+	}
+		
+		public void createJPanel(){
 		jp = new JPanel();
 		jp.setSize(640, 480);
 		jp.setLayout(new MigLayout("", "[25%][75%]", "[10%][10%][10%][10%][10%][10%][10%][10%][10%][10%][10%]"));
@@ -54,4 +69,5 @@ public class Cleric {
 
 	public JPanel getJPanel(){return jp;}
 	public JButton getAcceptedClass(){return acceptClass;}
+	public ArrayList<String> getSkillList(){return skillList;}
 }

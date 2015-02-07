@@ -1,5 +1,7 @@
 package classCollection;
 
+import java.util.ArrayList;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -18,8 +20,24 @@ public class Druid {
 	String savingThrows = "Intelligence and Wisdom are a Druid's saving throws";
 	String tools = "Druids are proficient with Herbalism kits";
 	String skills = "Choose two from Arcana, Animal Handling, Insight, Medicine, Nature, Perception, Religion and Survival.";
+	
+	ArrayList<String> skillList = new ArrayList<String>();
+	
 	public Druid() {
+		skillList.add("Arcana");
+		skillList.add("Animal Handling");
+		skillList.add("Insight");
+		skillList.add("Medicine");
+		skillList.add("Nature");
+		skillList.add("Nature");
+		skillList.add("Perception");
+		skillList.add("Religion");
+		skillList.add("Survival");
+		createJPanel();
+		
 
+	}
+	public void createJPanel(){
 		jp = new JPanel();
 		jp.setSize(640, 480);
 		jp.setLayout(new MigLayout("", "[25%][75%]", "[10%][10%][10%][10%][10%][10%][10%][10%][10%][10%][10%]"));
@@ -58,4 +76,5 @@ public class Druid {
 
 	public JPanel getJPanel(){return jp;}
 	public JButton getAcceptedClass(){return acceptClass;}
+	public ArrayList<String> getSkillList(){return skillList;}
 }

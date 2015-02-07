@@ -1,5 +1,7 @@
 package raceCollection;
 
+import java.util.ArrayList;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -33,13 +35,26 @@ public class HalfOrc {
 	String languages = "<html>You can speak, read, and write Common and Orc. Orc is a harsh, grating language"
 			+          "<br> with hard consonants. It has no script of its own but is written in the Dwarvish script.</html>";
 
+	
+	ArrayList<String> atri = new ArrayList<String>();
+	
 	// Info  {Strength,Dexterity,Constitution,Intelligence,Wisdom,Charisma }
-	String[] atri = {"2","0","1","0","0","0"};
+	//String[] atri = {"2","0","1","0","0","0"};
 	
 	/**
 	 * Create the panel.
 	 */
 	public HalfOrc() {
+	
+		atri.add("2"); //Strength
+		atri.add("0"); //Dexterity
+		atri.add("1"); //Constitution
+		atri.add("0"); //Intelligence
+		atri.add("0"); //Wisdom
+		atri.add("0"); //Charisma
+		createJPanel();
+	}
+		public void createJPanel(){
 		jp = new JPanel();
 		jp.setSize(640, 480);
 		jp.setLayout(new MigLayout("", "[5%][20%][70%][5%]", "[10%][10%][10%][10%][10%][10%][10%][10%][10%][10%][10%]"));
@@ -88,6 +103,6 @@ public class HalfOrc {
 
 	public JPanel getJPanel(){return jp;}
 	public JButton getAcceptedRace(){return acceptHalfOrc;}
-	public String[] getAttributes(){return atri;}
+	public ArrayList<String> getAttributes(){return atri;}
 	
 }

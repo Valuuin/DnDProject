@@ -1,5 +1,7 @@
 package raceCollection.dwarfMenu;
 
+import java.util.ArrayList;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -17,13 +19,25 @@ public class HillDwarf extends Dwarf {
 	String hillDwarf_ASI = "Your Wisdom score increases by 1.";
 	String dwarvenToughness = "Your hit point maximum increases by 1, and it increases by 1 every time you gain a level.";
 
+	ArrayList<String> atri = new ArrayList<String>();
 	// Info  {Strength,Dexterity,Constitution,Intelligence,Wisdom,Charisma }
-	String[] atri = {"0","0","2","0","1","0"};
+	//String[] atri = {"0","0","2","0","1","0"};
 	
 	/**
 	 * Create the panel.
 	 */
 	public HillDwarf() {
+		
+		atri.add("0"); //Strength
+		atri.add("0"); //Dexterity
+		atri.add("2"); //Constitution
+		atri.add("0"); //Intelligence
+		atri.add("1"); //Wisdom
+		atri.add("0"); //Charisma
+		createJPanel();
+		
+	}
+	public void createJPanel(){
 		jp = new JPanel();
 		jp.setSize(640, 480);
 		jp.setLayout(new MigLayout("", "[25%][75%]", "[10%][10%][10%][10%][10%][10%][10%][10%][10%][10%][10%]"));
@@ -62,5 +76,5 @@ public class HillDwarf extends Dwarf {
 	public JPanel getJPanel(){return jp;}
 	// Create one method to return the JButton created up top
 	public JButton getAcceptedRace(){return acceptHillDwarf;}
-	public String[] getAttributes(){return atri;}
+	public ArrayList<String> getAttributes(){return atri;}
 }

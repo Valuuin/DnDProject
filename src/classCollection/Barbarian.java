@@ -1,5 +1,7 @@
 package classCollection;
 
+import java.util.ArrayList;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -17,9 +19,25 @@ public class Barbarian {
 	String savingThrows = "Strength and Constitution are a Barbarian's saving throws";
 	String skills = "Choose two from Animal Handling, Athletics, Intimidation, Nature, Perception, and Survival.";
 	
+	ArrayList<String> skillList = new ArrayList<String>();
+	
+	
+	
 	
 	public Barbarian() {
-
+		
+		skillList.add("Animal Handling");
+		skillList.add("Athletics");
+		skillList.add("Intimidation");
+		skillList.add("Nature");
+		skillList.add("Perception");
+		skillList.add("Survival");
+		createJPanel();	
+			
+		}
+		
+		
+	public void createJPanel(){
 		jp = new JPanel();
 		jp.setSize(640, 480);
 		jp.setLayout(new MigLayout("", "[25%][75%]", "[10%][10%][10%][10%][10%][10%][10%][10%][10%][10%][10%]"));
@@ -52,4 +70,5 @@ public class Barbarian {
 
 	public JPanel getJPanel(){return jp;}
 	public JButton getAcceptedClass(){return acceptClass;}
+	public ArrayList<String> getSkillList(){return skillList;}
 }

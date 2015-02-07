@@ -1,5 +1,7 @@
 package classCollection;
 
+import java.util.ArrayList;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -18,9 +20,23 @@ public class Warlock {
 	String savingThrows = "Wisdom and Charisma are the Warlock's saving throws.";
 	String skills = "Choose two skills from Arcana, Deception, History, Intimidation, Investigation, Nature, and Religion.";
 	
+	ArrayList<String> skillList = new ArrayList<String>();
+	
 	
 	public Warlock() {
-
+		
+		skillList.add("Arcana");
+		skillList.add("Deception");
+		skillList.add("History");
+		skillList.add("Intimidation");
+		skillList.add("Investigation");
+		skillList.add("Nature");
+		skillList.add("Religion");
+		createJPanel();
+		
+	}
+	
+		public void createJPanel(){
 		jp = new JPanel();
 		jp.setSize(640, 480);
 		jp.setLayout(new MigLayout("", "[25%][75%]", "[10%][10%][10%][10%][10%][10%][10%][10%][10%][10%][10%]"));
@@ -53,5 +69,6 @@ public class Warlock {
 
 	public JPanel getJPanel(){return jp;}
 	public JButton getAcceptedClass(){return acceptClass;}
+	public ArrayList<String> getSkillList(){return skillList;}
 }
 

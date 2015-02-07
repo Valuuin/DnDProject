@@ -1,5 +1,7 @@
 package classCollection;
 
+import java.util.ArrayList;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -20,9 +22,25 @@ public class Rogue {
 	String savingThrows = "Dexterity and Intelligence are the Rogue's saving throws.";
 	String skills = "Choose four from Acrobatics, Athletics, Deception, Insight, Intimidation, Investigation, Perception, Performance, Persuasion, Sleight of Hand, and Stealth.";
 	
+	ArrayList<String> skillList = new ArrayList<String>();
 	
 	public Rogue() {
-
+		
+		skillList.add("Acrobatics");
+		skillList.add("Athletics");
+		skillList.add("Deception");
+		skillList.add("Insight");
+		skillList.add("Intimidation");
+		skillList.add("Perception");
+		skillList.add("Performance");
+		skillList.add("Persuasion");
+		skillList.add("Sleight of Hand");
+		skillList.add("Stealth");
+		createJPanel();
+		
+	}
+	
+		public void createJPanel(){
 		jp = new JPanel();
 		jp.setSize(640, 480);
 		jp.setLayout(new MigLayout("", "[25%][75%]", "[10%][10%][10%][10%][10%][10%][10%][10%][10%][10%][10%]"));
@@ -60,5 +78,6 @@ public class Rogue {
 
 	public JPanel getJPanel(){return jp;}
 	public JButton getAcceptedClass(){return acceptClass;}
+	public ArrayList<String> getSkillList(){return skillList;}
 }
 

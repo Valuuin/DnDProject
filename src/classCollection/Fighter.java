@@ -1,5 +1,7 @@
 package classCollection;
 
+import java.util.ArrayList;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -18,11 +20,27 @@ public class Fighter {
 	String savingThrows = "Strength and Constitution are the Fighter's saving throws";
 	String skills = "Choose two skills from Acrobatics, Animal Handling, Athletics, History, Insight, Intimidation, Perception, and Survival.";
 	
+	ArrayList<String> skillList = new ArrayList<String>();
+	
 	
 	
 	
 	public Fighter() {
-
+		
+		skillList.add("Acrobatics");
+		skillList.add("Animal Handling");
+		skillList.add("Athletics");
+		skillList.add("History");
+		skillList.add("Insight");
+		skillList.add("Intimidation");
+		skillList.add("Perception");
+		skillList.add("Survival");
+		createJPanel();
+		
+		
+	}
+		
+		public void createJPanel(){
 		jp = new JPanel();
 		jp.setSize(640, 480);
 		jp.setLayout(new MigLayout("", "[25%][75%]", "[10%][10%][10%][10%][10%][10%][10%][10%][10%][10%][10%]"));
@@ -55,4 +73,5 @@ public class Fighter {
 
 	public JPanel getJPanel(){return jp;}
 	public JButton getAcceptedClass(){return acceptClass;}
+	public ArrayList<String> getSkillList(){return skillList;}
 }

@@ -1,5 +1,7 @@
 package raceCollection.elfMenu;
 
+import java.util.ArrayList;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -16,12 +18,23 @@ public class WoodElf extends Elf {
 	String fleetOfFoot = "Your base walking speed increases to 35 feet.";
 	String maskOfTheWild = "You can attempt to hide even when you are only lightly obscured by foliage, heavy rain, falling snow, mist and other natural phenomena.";
 	
+	ArrayList<String> atri = new ArrayList<String>();
 	// Info  {Strength,Dexterity,Constitution,Intelligence,Wisdom,Charisma }
-	String[] atri = {"0","2","0","0","1","0"};
+	//String[] atri = {"0","2","0","0","1","0"};
 		
 	
 	public WoodElf() {
-
+	
+		
+		atri.add("0"); //Strength
+		atri.add("2"); //Dexterity
+		atri.add("0"); //Constitution
+		atri.add("0"); //Intelligence
+		atri.add("1"); //Wisdom
+		atri.add("0"); //Charisma
+		createJPanel();
+	}
+		public void createJPanel(){
 		jp = new JPanel();
 		jp.setSize(640, 480);
 		jp.setLayout(new MigLayout("", "[25%][75%]", "[10%][10%][10%][10%][10%][10%][10%][10%][10%][10%][10%]"));
@@ -69,6 +82,6 @@ public class WoodElf extends Elf {
 
 	public JPanel getJPanel(){return jp;}
 	public JButton getAcceptedRace(){return acceptRace;}
-	public String[] getAttributes(){return atri;}
+	public ArrayList<String> getAttributes(){return atri;}
 }
 

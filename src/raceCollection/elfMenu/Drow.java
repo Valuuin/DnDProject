@@ -1,5 +1,7 @@
 package raceCollection.elfMenu;
 
+import java.util.ArrayList;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -20,11 +22,23 @@ public class Drow extends Elf{
 	String drowMagic = "You know the dancing lights cantrip. When you reach 3rd level, you can cast the faerie fire spell once per day. When you reach 5th level, you can also cast the darkness spell once per day. Charisma is your spellcasting ability for these spells.";
 	String drowWeaponTraining = "You have proficiency with rapiers, shortswords, and hand crossbows.";
 	
+	ArrayList<String> atri = new ArrayList<String>();
 	// Info  {Strength,Dexterity,Constitution,Intelligence,Wisdom,Charisma }
-	String[] atri = {"0","2","0","0","0","1"};
+	//String[] atri = {"0","2","0","0","0","1"};
 	
 	public Drow() {
 
+		atri.add("0"); //Strength
+		atri.add("2"); //Dexterity
+		atri.add("0"); //Constitution
+		atri.add("0"); //Intelligence
+		atri.add("0"); //Wisdom
+		atri.add("1"); //Charisma
+		createJPanel();
+		
+	}
+	
+		public void createJPanel(){
 		jp = new JPanel();
 		jp.setSize(640, 480);
 		jp.setLayout(new MigLayout("", "[25%][75%]", "[10%][10%][10%][10%][10%][10%][10%][10%][10%][10%][10%]"));
@@ -75,5 +89,5 @@ public class Drow extends Elf{
 
 	public JPanel getJPanel(){return jp;}
 	public JButton getAcceptedRace(){return acceptRace;}
-	public String[] getAttributes(){return atri;}
+	public ArrayList<String> getAttributes(){return atri;}
 }

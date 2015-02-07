@@ -1,5 +1,7 @@
 package raceCollection.halflingMenu;
 
+import java.util.ArrayList;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -17,12 +19,22 @@ public class StoutHalfling extends Halfling {
 	String stoutHalfling_ASI = "Your Constitution score increases by 1.";
 	String resilience = "You have advantage on saving throws against poison, and you have resistance against poison damage";
 	
+	ArrayList<String> atri = new ArrayList<String>();
 	// Info  {Strength,Dexterity,Constitution,Intelligence,Wisdom,Charisma }
-	String[] atri = {"0","2","1","0","0","0"};
+	// String[] atri = {"0","2","1","0","0","0"};
 	
 	
 	public StoutHalfling() {
-
+		
+		atri.add("0"); //Strength
+		atri.add("2"); //Dexterity
+		atri.add("1"); //Constitution
+		atri.add("0"); //Intelligence
+		atri.add("0"); //Wisdom
+		atri.add("0"); //Charisma
+		createJPanel();
+	}
+		public void createJPanel(){
 		jp = new JPanel();
 		jp.setSize(640, 480);
 		jp.setLayout(new MigLayout("", "[25%][75%]", "[10%][10%][10%][10%][10%][10%][10%][10%][10%][10%][10%]"));
@@ -60,5 +72,5 @@ public class StoutHalfling extends Halfling {
 
 	public JPanel getJPanel(){return jp;}
 	public JButton getAcceptedRace(){return acceptRace;}
-	public String[] getAttributes(){return atri;}
+	public ArrayList<String> getAttributes(){return atri;}
 }

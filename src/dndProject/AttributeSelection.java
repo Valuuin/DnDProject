@@ -14,6 +14,7 @@ import net.miginfocom.swing.MigLayout;
 import javax.swing.JTextField;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.NumberFormatter;
+import javax.swing.JButton;
 
 public class AttributeSelection implements PropertyChangeListener {
 
@@ -131,6 +132,9 @@ public class AttributeSelection implements PropertyChangeListener {
 		totalCharismaValue = new JTextField();
 		totalCharismaValue.setEditable(false);
 		aS.add(totalCharismaValue,"cell 12 5,growx" );
+		
+		JButton btnNewButton = new JButton("Back");
+		aS.add(btnNewButton, "cell 2 8 3 1,alignx center,aligny center");
 		
 	}
 	

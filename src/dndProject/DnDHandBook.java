@@ -247,7 +247,7 @@ public class DnDHandBook  {
 		});
 
 		JButton classMenuOpen = cC.getOpenClassMenu();
-		classMenuOpen.addActionListener(new ActionListener() {
+		classMenuOpen.addActionListener(new ActionListener() {            // LOOK AT THIS
 			public void actionPerformed(ActionEvent arg0) {
 				classMenu = cM.getClassMenuSplitPane();
 				frame.getContentPane().add(classMenu);

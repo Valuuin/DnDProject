@@ -1,5 +1,7 @@
 package classCollection;
 
+import java.util.ArrayList;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -18,9 +20,21 @@ public class Wizzard {
 	String savingThrows = "Intelligence and Wisdom are the Wizard's saving throws.";
 	String skills = "Choose two from Arcana, History, Insight, Investigation, Medicine, and Religion.";
 	
+	ArrayList<String> skillList = new ArrayList<String>();
+	
 	
 	public Wizzard() {
-
+	
+		skillList.add("Arcana");
+		skillList.add("History");
+		skillList.add("Insight");
+		skillList.add("Investigation");
+		skillList.add("Medicine");
+		skillList.add("Religion");
+		createJPanel();
+		
+	}
+		public void createJPanel(){
 		jp = new JPanel();
 		jp.setSize(640, 480);
 		jp.setLayout(new MigLayout("", "[25%][75%]", "[10%][10%][10%][10%][10%][10%][10%][10%][10%][10%][10%]"));
@@ -54,4 +68,5 @@ public class Wizzard {
 
 	public JPanel getJPanel(){return jp;}
 	public JButton getAcceptedClass(){return acceptClass;}
+	public ArrayList<String> getSkillList(){return skillList;}
 }

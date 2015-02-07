@@ -1,5 +1,7 @@
 package raceCollection.elfMenu;
 
+import java.util.ArrayList;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -19,11 +21,24 @@ public class HighElf extends Elf {
 	String cantrips = "You know one cantrip of your choice from the wizard spell list. Intelligence is your spellcasting ability for it.";
 	String extraLanguage = "You can speak, read, and write one extra language of your choice.";
 	
+	ArrayList<String> atri = new ArrayList<String>();
+	
 	// Info  {Strength,Dexterity,Constitution,Intelligence,Wisdom,Charisma }
-	String[] atri = {"0","2","0","1","0","0"};
+	//String[] atri = {"0","2","0","1","0","0"};
 	
 	public HighElf() {
 
+		
+		atri.add("0"); //Strength
+		atri.add("2"); //Dexterity
+		atri.add("0"); //Constitution
+		atri.add("1"); //Intelligence
+		atri.add("0"); //Wisdom
+		atri.add("0"); //Charisma
+		createJPanel();
+		
+	}
+		public void createJPanel(){
 		jp = new JPanel();
 		jp.setSize(640, 480);
 		jp.setLayout(new MigLayout("", "[25%][75%]", "[10%][10%][10%][10%][10%][10%][10%][10%][10%][10%][10%]"));
@@ -69,5 +84,5 @@ public class HighElf extends Elf {
 
 	public JPanel getJPanel(){return jp;}
 	public JButton getAcceptedRace(){return acceptRace;}
-	public String[] getAttributes(){return atri;}
+	public ArrayList<String> getAttributes(){return atri;}
 }

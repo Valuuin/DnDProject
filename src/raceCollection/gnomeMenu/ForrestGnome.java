@@ -1,5 +1,7 @@
 package raceCollection.gnomeMenu;
 
+import java.util.ArrayList;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -18,11 +20,21 @@ public class ForrestGnome extends Gnome{
 	String naturalIllusionist = "You know the minor illusion cantrip. Intelligence is your spellcasting ability for it.";
 	String speakWithSmallBeasts = "Through sounds and gestures, you can communicate simple ideas with Small or smaller beasts. Forest gnomes love animals and often keep squirrels, badgers, rabbits, moles, woodpeckers, and other creatures as beloved pets.";
 	
+	ArrayList<String> atri = new ArrayList<String>();
 	// Info  {Strength,Dexterity,Constitution,Intelligence,Wisdom,Charisma }
-	String[] atri = {"0","1","0","2","0","0"};
+	//String[] atri = {"0","1","0","2","0","0"};
 	
 	public ForrestGnome() {
 
+		atri.add("0"); //Strength
+		atri.add("1"); //Dexterity
+		atri.add("0"); //Constitution
+		atri.add("2"); //Intelligence
+		atri.add("0"); //Wisdom
+		atri.add("0"); //Charisma
+		createJPanel();
+	}
+		public void createJPanel(){
 		jp = new JPanel();
 		jp.setSize(640, 480);
 		jp.setLayout(new MigLayout("", "[25%][75%]", "[10%][10%][10%][10%][10%][10%][10%][10%][10%][10%][10%]"));
@@ -64,5 +76,5 @@ public class ForrestGnome extends Gnome{
 
 	public JPanel getJPanel(){return jp;}
 	public JButton getAcceptedRace(){return acceptRace;}
-	public String[] getAttributes(){return atri;}
+	public ArrayList<String> getAttributes(){return atri;}
 }

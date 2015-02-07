@@ -1,5 +1,7 @@
 package classCollection;
 
+import java.util.ArrayList;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -18,9 +20,24 @@ public class Monk {
 	String savingThrows = "Strength and Dexterity are the Monk's saving throws.";
 	String skills = "Choose two from Acrobatics, Athletics, History, Insight, Religion, and Stealth.";
 	
+	ArrayList<String> skillList = new ArrayList<String>();
+	
 	
 	public Monk() {
+		
+		skillList.add("Acrobatics");
+		skillList.add("Athletics");
+		skillList.add("History");
+		skillList.add("Insight");
+		skillList.add("Religion");
+		skillList.add("Stealth");
+		createJPanel();
+		
+		
+	}
 
+	
+		public void createJPanel(){
 		jp = new JPanel();
 		jp.setSize(640, 480);
 		jp.setLayout(new MigLayout("", "[25%][75%]", "[10%][10%][10%][10%][10%][10%][10%][10%][10%][10%][10%]"));
@@ -57,5 +74,6 @@ public class Monk {
 
 	public JPanel getJPanel(){return jp;}
 	public JButton getAcceptedClass(){return acceptClass;}
+	public ArrayList<String> getSkillList(){return skillList;}
 }
 

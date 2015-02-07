@@ -1,5 +1,7 @@
 package raceCollection.halflingMenu;
 
+import java.util.ArrayList;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -17,12 +19,23 @@ public class LightfootHalfling extends Halfling{
 	String lightFootHalfling_ASI = "Your Charisma score increases by 1.";
 	String naturallyStealthy = "You can attempt to hide even when you are obscured only by a creature that is at least one size larger than you.";
 	
+	ArrayList<String> atri = new ArrayList<String>();
 	// Info  {Strength,Dexterity,Constitution,Intelligence,Wisdom,Charisma }
-	String[] atri = {"0","2","0","0","0","1"};
+	// String[] atri = {"0","2","0","0","0","1"};
 	
 	
 	public LightfootHalfling() {
 
+		atri.add("0"); //Strength
+		atri.add("2"); //Dexterity
+		atri.add("0"); //Constitution
+		atri.add("0"); //Intelligence
+		atri.add("0"); //Wisdom
+		atri.add("1"); //Charisma
+		createJPanel();
+		
+	}
+		public void createJPanel(){
 		jp = new JPanel();
 		jp.setSize(640, 480);
 		jp.setLayout(new MigLayout("", "[25%][75%]", "[10%][10%][10%][10%][10%][10%][10%][10%][10%][10%][10%]"));
@@ -62,5 +75,5 @@ public class LightfootHalfling extends Halfling{
 
 	public JPanel getJPanel(){return jp;}
 	public JButton getAcceptedRace(){return acceptRace;}
-	public String[] getAttributes(){return atri;}
+	public ArrayList<String> getAttributes(){return atri;}
 }

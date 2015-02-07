@@ -1,5 +1,7 @@
 package classCollection;
 
+import java.util.ArrayList;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -16,11 +18,23 @@ public class Sorcerer {
 	String armor = "Proficient in no armors.";
 	String weapons = "Proficient in daggers, darts, slings, quarterstaffs, and light crossbows.";
 	String savingThrows = "Constitution and Charisma are the Sorcerer's saving throws.";
-	String skills = "Choose two from Arcana, Deception, Insight, Intimidation, Persuasion, and Relgion.";
+	String skills = "Choose two from Arcana, Deception, Insight, Intimidation, Persuasion, and Religion.";
 			
+	ArrayList<String> skillList = new ArrayList<String>();
+	
 	
 	public Sorcerer() {
 
+		skillList.add("Arcana");
+		skillList.add("Deception");
+		skillList.add("Insight");
+		skillList.add("Intimidation");
+		skillList.add("Persuasion");
+		skillList.add("Religion");
+		createJPanel();
+		
+	}
+		public void createJPanel(){
 		jp = new JPanel();
 		jp.setSize(640, 480);
 		jp.setLayout(new MigLayout("", "[25%][75%]", "[10%][10%][10%][10%][10%][10%][10%][10%][10%][10%][10%]"));
@@ -54,4 +68,5 @@ public class Sorcerer {
 
 	public JPanel getJPanel(){return jp;}
 	public JButton getAcceptedClass(){return acceptClass;}
+	public ArrayList<String> getSkillList(){return skillList;}
 }

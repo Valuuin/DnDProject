@@ -96,7 +96,7 @@ public class Character {
 		if (selectedRace != null){
 			switch(rName){
 			case DRAGONBORN:         return (ArrayList<String>)((DragonBorn)        selectedRace).getAttributes();
-			/*case HUMAN:              return (ArrayList<String>)((Human)             selectedRace).getAttributes();
+			case HUMAN:              return (ArrayList<String>)((Human)             selectedRace).getAttributes();
 			case DROW:               return (ArrayList<String>)((Drow)              selectedRace).getAttributes();
 			case HIGH_ELF:           return (ArrayList<String>)((HighElf)           selectedRace).getAttributes();
 			case WOOD_ELF:           return (ArrayList<String>)((WoodElf)           selectedRace).getAttributes();
@@ -109,7 +109,7 @@ public class Character {
 			case MOUNTAIN_DWARF:     return (ArrayList<String>)((MountainDwarf)     selectedRace).getAttributes();
 			case LIGHTFOOT_HALFLING: return (ArrayList<String>)((LightfootHalfling) selectedRace).getAttributes();
 			case STOUT_HALFLING:     return (ArrayList<String>)((StoutHalfling)     selectedRace).getAttributes();
-			*/default: return s;
+			default: return s;
 			}
 		}
 		return s;

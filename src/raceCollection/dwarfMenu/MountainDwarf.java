@@ -1,5 +1,7 @@
 package raceCollection.dwarfMenu;
 
+import java.util.ArrayList;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -17,11 +19,22 @@ public class MountainDwarf extends Dwarf {
 	String mountainDwarf_ASI = "Your Strength score increases by 2.";
 	String dwarvenArmorTraining = "You have proficiency with light and medium armor";
 	
+	ArrayList<String> atri = new ArrayList<String>();
+	
 	// Info  {Strength,Dexterity,Constitution,Intelligence,Wisdom,Charisma }
-	String[] atri = {"2","0","2","0","0","0"};
+	//String[] atri = {"2","0","2","0","0","0"};
 	
 	public MountainDwarf() {
 
+		atri.add("2"); //Strength
+		atri.add("0"); //Dexterity
+		atri.add("2"); //Constitution
+		atri.add("0"); //Intelligence
+		atri.add("0"); //Wisdom
+		atri.add("0"); //Charisma
+		createJPanel();
+	}
+		public void createJPanel(){
 		jp = new JPanel();
 		jp.setSize(640, 480);
 		jp.setLayout(new MigLayout("", "[25%][75%]", "[10%][10%][10%][10%][10%][10%][10%][10%][10%][10%][10%]"));
@@ -59,5 +72,5 @@ public class MountainDwarf extends Dwarf {
 
 	public JPanel getJPanel(){return jp;}
 	public JButton getAcceptedRace(){return acceptRace;}
-	public String[] getAttributes(){return atri;}
+	public ArrayList<String> getAttributes(){return atri;}
 }

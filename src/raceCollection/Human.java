@@ -1,5 +1,7 @@
 package raceCollection;
 
+import java.util.ArrayList;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -22,14 +24,25 @@ public class Human {
 			+ "<br>They are fond of sprinkling their speech with words borrowed from other tongues:"
 			+ "<br>Orc curses, Elvish musical expressions, Dwarvish military phrases, and so on.<html>";
 	
+	ArrayList<String> atri = new ArrayList<String>();
 	// Info  {Strength,Dexterity,Constitution,Intelligence,Wisdom,Charisma }
-	String[] atri = {"1","1","1","1","1","1"};
+	//String[] atri = {"1","1","1","1","1","1"};
 	
 	/**
 	 * Create the panel.
 	 */
 	public Human() {
 
+		atri.add("1"); //Strength
+		atri.add("1"); //Dexterity
+		atri.add("1"); //Constitution
+		atri.add("1"); //Intelligence
+		atri.add("1"); //Wisdom
+		atri.add("1"); //Charisma
+		createJPanel();
+	}
+		
+		public void createJPanel(){
 		jp = new JPanel();
 		jp.setSize(640, 480);
 		jp.setLayout(new MigLayout("", "[25%][75%]", "[10%][10%][10%][10%][10%][10%][10%][10%][10%][10%][10%]"));
@@ -62,6 +75,6 @@ public class Human {
 
 	public JPanel getJPanel(){return jp;}
 	public JButton getAcceptedRace(){return acceptHuman;}
-	public String[] getAttributes(){return atri;}
+	public ArrayList<String> getAttributes(){return atri;}
 	
 }

@@ -1,5 +1,7 @@
 package classCollection;
 
+import java.util.ArrayList;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -18,8 +20,34 @@ public class Bard {
 	String skills = "Choose any three skills and become proficient in them.";
 	String tools = "Three musical instruments of your choice";
 	
+	ArrayList<String> skillList = new ArrayList<String>();
+	
+	
 	public Bard() {
-
+		
+		skillList.add("Acrobatics");
+		skillList.add("Sleight of Hand");
+		skillList.add("Stealth");
+		skillList.add("Athletics");
+		skillList.add("Arcana");
+		skillList.add("History");
+		skillList.add("Investigation");
+		skillList.add("Nature");
+		skillList.add("Religion");
+		skillList.add("Animal Handling");
+		skillList.add("Insight");
+		skillList.add("Medicine");
+		skillList.add("Perception");
+		skillList.add("Survival");
+		skillList.add("Deception");
+		skillList.add("Intimidation");
+		skillList.add("Performance");
+		skillList.add("Persuasion");
+		createJPanel();
+	}
+	
+		
+		public void createJPanel(){
 		jp = new JPanel();
 		jp.setSize(640, 480);
 		jp.setLayout(new MigLayout("", "[25%][75%]", "[10%][10%][10%][10%][10%][10%][10%][10%][10%][10%][10%]"));
@@ -56,5 +84,6 @@ public class Bard {
 
 	public JPanel getJPanel(){return jp;}
 	public JButton getAcceptedClass(){return acceptClass;}
+	public ArrayList<String> getSkillList(){return skillList;}
 }
 

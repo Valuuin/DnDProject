@@ -3,6 +3,7 @@ package raceCollection;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
 import net.miginfocom.swing.MigLayout;
 
 public class HalfElf  {
@@ -24,6 +25,9 @@ public class HalfElf  {
 	String feyAncestry = "You have advantage on saving throws against being charmed, and magic can't put you to sleep.";
 	String skillVersatility = "You gain proficiency in two skills of your choice.";
 	String languages = "You can speak, read, and write Common, Elvish, and one extra language of your choice.";
+	
+	// Info  {Strength,Dexterity,Constitution,Intelligence,Wisdom,Charisma }
+	String[] atri = {"0","0","0","1","1","2"};
 	
 	/**
 	 * Create the panel.
@@ -73,5 +77,6 @@ public class HalfElf  {
 
 	public JPanel getJPanel(){return jp;}
 	public JButton getAcceptedRace(){return acceptHalfElf;}
+	public String[] getAttributes(){return atri;}
 	
 }

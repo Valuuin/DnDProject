@@ -19,6 +19,8 @@ public class HighElf extends Elf {
 	String cantrips = "You know one cantrip of your choice from the wizard spell list. Intelligence is your spellcasting ability for it.";
 	String extraLanguage = "You can speak, read, and write one extra language of your choice.";
 	
+	// Info  {Strength,Dexterity,Constitution,Intelligence,Wisdom,Charisma }
+	String[] atri = {"0","2","0","1","0","0"};
 	
 	public HighElf() {
 
@@ -67,4 +69,5 @@ public class HighElf extends Elf {
 
 	public JPanel getJPanel(){return jp;}
 	public JButton getAcceptedRace(){return acceptRace;}
+	public String[] getAttributes(){return atri;}
 }

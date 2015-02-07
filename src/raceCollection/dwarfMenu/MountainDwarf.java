@@ -17,6 +17,8 @@ public class MountainDwarf extends Dwarf {
 	String mountainDwarf_ASI = "Your Strength score increases by 2.";
 	String dwarvenArmorTraining = "You have proficiency with light and medium armor";
 	
+	// Info  {Strength,Dexterity,Constitution,Intelligence,Wisdom,Charisma }
+	String[] atri = {"2","0","2","0","0","0"};
 	
 	public MountainDwarf() {
 
@@ -57,4 +59,5 @@ public class MountainDwarf extends Dwarf {
 
 	public JPanel getJPanel(){return jp;}
 	public JButton getAcceptedRace(){return acceptRace;}
+	public String[] getAttributes(){return atri;}
 }

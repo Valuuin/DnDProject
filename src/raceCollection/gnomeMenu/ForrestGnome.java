@@ -18,6 +18,8 @@ public class ForrestGnome extends Gnome{
 	String naturalIllusionist = "You know the minor illusion cantrip. Intelligence is your spellcasting ability for it.";
 	String speakWithSmallBeasts = "Through sounds and gestures, you can communicate simple ideas with Small or smaller beasts. Forest gnomes love animals and often keep squirrels, badgers, rabbits, moles, woodpeckers, and other creatures as beloved pets.";
 	
+	// Info  {Strength,Dexterity,Constitution,Intelligence,Wisdom,Charisma }
+	String[] atri = {"0","1","0","2","0","0"};
 	
 	public ForrestGnome() {
 
@@ -62,4 +64,5 @@ public class ForrestGnome extends Gnome{
 
 	public JPanel getJPanel(){return jp;}
 	public JButton getAcceptedRace(){return acceptRace;}
+	public String[] getAttributes(){return atri;}
 }

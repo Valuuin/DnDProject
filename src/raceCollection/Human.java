@@ -3,6 +3,7 @@ package raceCollection;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
 import net.miginfocom.swing.MigLayout;
 
 public class Human {
@@ -20,6 +21,9 @@ public class Human {
 			+ "<br>Humans typically learn the languages of other peoples they deal with, including obscure dialects."
 			+ "<br>They are fond of sprinkling their speech with words borrowed from other tongues:"
 			+ "<br>Orc curses, Elvish musical expressions, Dwarvish military phrases, and so on.<html>";
+	
+	// Info  {Strength,Dexterity,Constitution,Intelligence,Wisdom,Charisma }
+	String[] atri = {"1","1","1","1","1","1"};
 	
 	/**
 	 * Create the panel.
@@ -58,5 +62,6 @@ public class Human {
 
 	public JPanel getJPanel(){return jp;}
 	public JButton getAcceptedRace(){return acceptHuman;}
+	public String[] getAttributes(){return atri;}
 	
 }

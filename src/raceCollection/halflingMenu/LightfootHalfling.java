@@ -17,6 +17,8 @@ public class LightfootHalfling extends Halfling{
 	String lightFootHalfling_ASI = "Your Charisma score increases by 1.";
 	String naturallyStealthy = "You can attempt to hide even when you are obscured only by a creature that is at least one size larger than you.";
 	
+	// Info  {Strength,Dexterity,Constitution,Intelligence,Wisdom,Charisma }
+	String[] atri = {"0","2","0","0","0","1"};
 	
 	
 	public LightfootHalfling() {
@@ -60,4 +62,5 @@ public class LightfootHalfling extends Halfling{
 
 	public JPanel getJPanel(){return jp;}
 	public JButton getAcceptedRace(){return acceptRace;}
+	public String[] getAttributes(){return atri;}
 }

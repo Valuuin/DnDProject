@@ -3,6 +3,7 @@ package raceCollection;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
 import net.miginfocom.swing.MigLayout;
 
 public class HalfOrc {
@@ -32,6 +33,8 @@ public class HalfOrc {
 	String languages = "<html>You can speak, read, and write Common and Orc. Orc is a harsh, grating language"
 			+          "<br> with hard consonants. It has no script of its own but is written in the Dwarvish script.</html>";
 
+	// Info  {Strength,Dexterity,Constitution,Intelligence,Wisdom,Charisma }
+	String[] atri = {"2","0","1","0","0","0"};
 	
 	/**
 	 * Create the panel.
@@ -85,5 +88,6 @@ public class HalfOrc {
 
 	public JPanel getJPanel(){return jp;}
 	public JButton getAcceptedRace(){return acceptHalfOrc;}
+	public String[] getAttributes(){return atri;}
 	
 }

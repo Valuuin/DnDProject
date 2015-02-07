@@ -17,6 +17,9 @@ public class StoutHalfling extends Halfling {
 	String stoutHalfling_ASI = "Your Constitution score increases by 1.";
 	String resilience = "You have advantage on saving throws against poison, and you have resistance against poison damage";
 	
+	// Info  {Strength,Dexterity,Constitution,Intelligence,Wisdom,Charisma }
+	String[] atri = {"0","2","1","0","0","0"};
+	
 	
 	public StoutHalfling() {
 
@@ -57,4 +60,5 @@ public class StoutHalfling extends Halfling {
 
 	public JPanel getJPanel(){return jp;}
 	public JButton getAcceptedRace(){return acceptRace;}
+	public String[] getAttributes(){return atri;}
 }

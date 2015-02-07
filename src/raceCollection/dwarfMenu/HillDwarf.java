@@ -16,6 +16,10 @@ public class HillDwarf extends Dwarf {
 	String ASI = abilityScoreIncrease;
 	String hillDwarf_ASI = "Your Wisdom score increases by 1.";
 	String dwarvenToughness = "Your hit point maximum increases by 1, and it increases by 1 every time you gain a level.";
+
+	// Info  {Strength,Dexterity,Constitution,Intelligence,Wisdom,Charisma }
+	String[] atri = {"0","0","2","0","1","0"};
+	
 	/**
 	 * Create the panel.
 	 */
@@ -58,4 +62,5 @@ public class HillDwarf extends Dwarf {
 	public JPanel getJPanel(){return jp;}
 	// Create one method to return the JButton created up top
 	public JButton getAcceptedRace(){return acceptHillDwarf;}
+	public String[] getAttributes(){return atri;}
 }

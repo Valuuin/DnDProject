@@ -18,6 +18,8 @@ public class RockGnome extends Gnome {
 	String rockGnome_ASI = "Your constitution score increases by 1.";
 	String artificersLore = "Whenever you make an Intelligence (History) check related to magic items, alchemical objects, or technological devices, you can add twice your proficiency bonus, instead of any proficiency bonus you normally apply.";
 	
+	// Info  {Strength,Dexterity,Constitution,Intelligence,Wisdom,Charisma }
+	String[] atri = {"0","0","1","2","0","0"};
 	
 	public RockGnome() {
 
@@ -58,4 +60,5 @@ public class RockGnome extends Gnome {
 
 	public JPanel getJPanel(){return jp;}
 	public JButton getAcceptedRace(){return acceptRace;}
+	public String[] getAttributes(){return atri;}
 }

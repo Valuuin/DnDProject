@@ -3,6 +3,7 @@ package raceCollection;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
 import net.miginfocom.swing.MigLayout;
 
 public class Tiefling {
@@ -25,6 +26,9 @@ public class Tiefling {
 			+               "<br> Once you reach 5th level, you can also cast the darkness spell once per day."
 			+               "<br> Charisma is your spellcasting ability for these spells.</html>";
 	String languages = "You can speak, read, and write Common and Infernal";
+	
+	// Info  {Strength,Dexterity,Constitution,Intelligence,Wisdom,Charisma }
+	String[] atri = {"0","0","0","1","0","2"};
 	
 	/**
 	 * Create the panel.
@@ -74,5 +78,5 @@ public class Tiefling {
 
 	public JPanel getJPanel(){return jp;}
 	public JButton getAcceptedRace(){return acceptTiefling;}
-	
+	public String[] getAttributes(){return atri;}
 }

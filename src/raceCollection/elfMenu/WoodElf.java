@@ -16,6 +16,8 @@ public class WoodElf extends Elf {
 	String fleetOfFoot = "Your base walking speed increases to 35 feet.";
 	String maskOfTheWild = "You can attempt to hide even when you are only lightly obscured by foliage, heavy rain, falling snow, mist and other natural phenomena.";
 	
+	// Info  {Strength,Dexterity,Constitution,Intelligence,Wisdom,Charisma }
+	String[] atri = {"0","2","0","0","1","0"};
 		
 	
 	public WoodElf() {
@@ -67,5 +69,6 @@ public class WoodElf extends Elf {
 
 	public JPanel getJPanel(){return jp;}
 	public JButton getAcceptedRace(){return acceptRace;}
+	public String[] getAttributes(){return atri;}
 }
 

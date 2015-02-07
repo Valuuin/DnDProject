@@ -20,6 +20,8 @@ public class Drow extends Elf{
 	String drowMagic = "You know the dancing lights cantrip. When you reach 3rd level, you can cast the faerie fire spell once per day. When you reach 5th level, you can also cast the darkness spell once per day. Charisma is your spellcasting ability for these spells.";
 	String drowWeaponTraining = "You have proficiency with rapiers, shortswords, and hand crossbows.";
 	
+	// Info  {Strength,Dexterity,Constitution,Intelligence,Wisdom,Charisma }
+	String[] atri = {"0","2","0","0","0","1"};
 	
 	public Drow() {
 
@@ -73,4 +75,5 @@ public class Drow extends Elf{
 
 	public JPanel getJPanel(){return jp;}
 	public JButton getAcceptedRace(){return acceptRace;}
+	public String[] getAttributes(){return atri;}
 }

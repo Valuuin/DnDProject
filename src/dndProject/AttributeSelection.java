@@ -19,15 +19,16 @@ import javax.swing.JButton;
 public class AttributeSelection implements PropertyChangeListener {
 
 	private JPanel aS;
+	private JButton btnNewButton;
 	private NumberFormat amountDisplayed = NumberFormat.getIntegerInstance();
 	Character c;
 	
-	JLabel strBonus = new JLabel("Str:+");
-	JLabel dexBonus = new JLabel("Dex:+");
-	JLabel conBonus = new JLabel("Con:+");
-	JLabel intBonus = new JLabel("Int:+");
-	JLabel wizBonus = new JLabel("Wiz:+");
-	JLabel chrBonus = new JLabel("Chr:+");
+	JLabel strBonus = new JLabel();
+	JLabel dexBonus = new JLabel();
+	JLabel conBonus = new JLabel();
+	JLabel intBonus = new JLabel();
+	JLabel wizBonus = new JLabel();
+	JLabel chrBonus = new JLabel();
 	JLabel raceChoiseResults = new JLabel();
 	
 	JFormattedTextField strengthValue, dexterityValue, constitutionValue, intelligenceValue, wisdomValue, charismaValue;
@@ -133,21 +134,21 @@ public class AttributeSelection implements PropertyChangeListener {
 		totalCharismaValue.setEditable(false);
 		aS.add(totalCharismaValue,"cell 12 5,growx" );
 		
-		JButton btnNewButton = new JButton("Back");
+		btnNewButton = new JButton("Back");
 		aS.add(btnNewButton, "cell 2 8 3 1,alignx center,aligny center");
 		
 	}
-	
+	public JButton backToCC(){return btnNewButton;}
 	public void updateTextFields(Character c){
 		
 		raceChoiseResults.setText("As a "+c.getRaceName()+" you Recieve These Atribute bonuses:");
 		this.c = c;
-		strBonus.setText(strBonus.getText()+c.getAtributes().get(0));
-		dexBonus.setText(dexBonus.getText()+c.getAtributes().get(1));
-		conBonus.setText(conBonus.getText()+c.getAtributes().get(2));
-		intBonus.setText(intBonus.getText()+c.getAtributes().get(3));
-		wizBonus.setText(wizBonus.getText()+c.getAtributes().get(4));
-		chrBonus.setText(chrBonus.getText()+c.getAtributes().get(5));
+		strBonus.setText("Str:+"+c.getAtributes().get(0));
+		dexBonus.setText("Dex:+"+c.getAtributes().get(1));
+		conBonus.setText("Con:+"+c.getAtributes().get(2));
+		intBonus.setText("Int:+"+c.getAtributes().get(3));
+		wizBonus.setText("Wiz:+"+c.getAtributes().get(4));
+		chrBonus.setText("Chr:+"+c.getAtributes().get(5));
 	
 	}
 	

@@ -1,5 +1,7 @@
 package backgroundCollection;
 
+import java.util.ArrayList;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -11,14 +13,21 @@ public class Artisan {
 	private JButton acceptBackground;
 
 	//artisan strings
-	String[] skillProf = {"Insight", "Religion"};
+	ArrayList<String> skillProf = new ArrayList<String>();
 	String language = "Two of your choice";
 	String equipment = "A holy symbol, a prayer book or prayer wheel, 5 sticks of incense, vestments, a set of common clothes, and a belt pouch containing 15 GP";
 	
 			
 	
 	public Artisan() {
-
+	
+		skillProf.add("Insight");
+		skillProf.add("Religion");
+		createJPanel();
+	}
+	
+	public void createJPanel(){
+		
 		jp = new JPanel();
 		jp.setSize(640, 480);
 		jp.setLayout(new MigLayout("", "[25%][75%]", "[10%][10%][10%][10%][10%][10%][10%][10%][10%][10%][10%]"));
@@ -26,7 +35,7 @@ public class Artisan {
 		
 		//Proficiencies
 		jp.add(new JLabel("<html><b>Proficiencies:</b></html>"), "cell 0 1,alignx right,aligny bottom");
-		jp.add(new JLabel(skillProf[0] +", "+skillProf[1]), "cell 1 1,alignx left,aligny bottom");
+		jp.add(new JLabel(skillProf.get(0) +", "+skillProf.get(1)), "cell 1 1,alignx left,aligny bottom");
 		
 		//tools
 		jp.add(new JLabel("<html><b>Languages:</b></html>"), "cell 0 2,alignx right,aligny bottom");
@@ -43,5 +52,11 @@ public class Artisan {
 
 	public JPanel getJPanel(){return jp;}
 	public JButton getAcceptedBackground(){return acceptBackground;}
+	public ArrayList<String> getSkillProf(){return skillProf;}
+
+	public ArrayList<String> getProficiencies() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
 

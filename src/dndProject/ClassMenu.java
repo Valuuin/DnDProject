@@ -42,7 +42,7 @@ public class ClassMenu {
 	
 	private ListSelectionListener classListener = new ListSelectionListener() {
 		public void valueChanged(ListSelectionEvent e) {
-			JList list = (JList) e.getSource();
+			JList<?> list = (JList<?>) e.getSource();
 			updateClassRightPane(list.getSelectedIndex());
 		}
 	};

@@ -2,6 +2,19 @@ package dndProject;
 
 import java.util.ArrayList;
 
+import backgroundCollection.Artisan;
+import backgroundCollection.Charlatan;
+import backgroundCollection.Criminal;
+import backgroundCollection.Entertainer;
+import backgroundCollection.FolkHero;
+import backgroundCollection.GuildArtisan;
+import backgroundCollection.Hermit;
+import backgroundCollection.Noble;
+import backgroundCollection.Outlander;
+import backgroundCollection.Sage;
+import backgroundCollection.Sailor;
+import backgroundCollection.Soldier;
+import backgroundCollection.Urchin;
 import raceCollection.DragonBorn;
 import raceCollection.HalfElf;
 import raceCollection.HalfOrc;
@@ -114,5 +127,27 @@ public class Character {
 		}
 		return s;
 	}
-	
+	public ArrayList<String> getProficiencies(){
+		if (selectedBackground != null){
+			switch(bName){
+			case ARTISAN:            return (ArrayList<String>)((Artisan)           selectedBackground).getProficiencies();
+			case CHARLATAN:          return (ArrayList<String>)((Charlatan)         selectedBackground).getProficiencies();
+			/*case CRIMINAL:			 return (ArrayList<String>)((Criminal)			selectedBackground).getProficiencies();
+			case ENTERTAINER:		 return (ArrayList<String>)((Entertainer)       selectedBackground).getProficiencies();
+			case FOLKHERO:           return (ArrayList<String>)((FolkHero)          selectedBackground).getProficiencies();
+			case GUILDARTISAN:		 return (ArrayList<String>)((GuildArtisan)      selectedBackground).getProficiencies();
+			case HERMIT:			 return (ArrayList<String>)((Hermit)            selectedBackground).getProficiencies();
+			case NOBLE:				 return (ArrayList<String>)((Noble)             selectedBackground).getProficiencies();
+			case OUTLANDER:			 return (ArrayList<String>)((Outlander)         selectedBackground).getProficiencies();
+			case SAGE:				 return (ArrayList<String>)((Sage)       		selectedBackground).getProficiencies();
+			case SAILOR:			 return (ArrayList<String>)((Sailor)            selectedBackground).getProficiencies();
+			case SOLDIER:			 return (ArrayList<String>)((Soldier)     	    selectedBackground).getProficiencies();
+			case URCHIN:			 return (ArrayList<String>)((Urchin)            selectedBackground).getProficiencies();
+			*/default:
+				break;
+		}
+		
+	}
+		return s;
+}
 }

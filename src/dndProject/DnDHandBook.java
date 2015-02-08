@@ -277,6 +277,16 @@ public class DnDHandBook  {
 			}
 		});
 		
+		JButton attributeSelectionBack = aS.backToCC();
+		attributeSelectionBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				attributeMenu.setVisible(false);
+				cCreationPanel.setVisible(true);
+				
+				
+			}
+		});
+		
 		// Waiting for Chosen Race
 		waitForRaceAcceptance( hm.getAcceptedRace(), "Human",              hm,  Race.HUMAN);
 		waitForRaceAcceptance( dW.getAcceptedRace(), "Drow",               dW,  Race.DROW);

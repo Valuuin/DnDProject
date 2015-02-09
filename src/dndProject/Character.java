@@ -36,6 +36,8 @@ public class Character {
 	public enum Race{HUMAN, DROW, HIGH_ELF, WOOD_ELF, DRAGONBORN, TIEFLING, HALF_ELF, HALF_ORC, ROCK_GNOME, FORREST_GNOME, HILL_DWARF, MOUNTAIN_DWARF, LIGHTFOOT_HALFLING, STOUT_HALFLING}
 	public enum cClass{BARBARIAN, BARD, CLERIC, DRUID, FIGHTER, MONK, PALADIN, RANGER, ROGUE, SORCERER, WARLOCK, WIZZARD}
 	public enum bGround{ARTISAN, CHARLATAN, CRIMINAL, ENTERTAINER, FOLKHERO, GUILDARTISAN, HERMIT, NOBLE, OUTLANDER, SAGE, SAILOR, SOLDIER, URCHIN}
+	public enum Proficiences{ACROBATICS, ANIMAL_HANDELING, ARCANA, ATHETICS, DECEPTION, HISTORY, INSIGHT, INTIMIDATION, INVESTIGATION, MEDICINE, NATURE, PERCEPTION, PERFORMANCE, PERSUASION, REGLIGION, SLEIGHT_OF_HAND, STEALTH, SURVIVAL}
+	
 	
 	Race rName;
 	cClass cName;
@@ -49,18 +51,19 @@ public class Character {
 	String newClass;
 	String newBackground;
 	
-	ArrayList<String> s = new ArrayList<String>();
+	ArrayList<String> errorString = new ArrayList<String>();
+	ArrayList<Proficiences> errorProficiences= new ArrayList<Proficiences>();
 	
 	public Character(){
 		selectedRace = null;
 		selectedClass = null;
 		selectedBackground = null;
-		s.add("0");
-		s.add("0");
-		s.add("0");
-		s.add("0");
-		s.add("0");
-		s.add("0");
+		errorString.add("0");
+		errorString.add("0");
+		errorString.add("0");
+		errorString.add("0");
+		errorString.add("0");
+		errorString.add("0");
 	}
 	
 	public Character ( Object rc, Object cs, Object bg){
@@ -122,16 +125,17 @@ public class Character {
 			case MOUNTAIN_DWARF:     return (ArrayList<String>)((MountainDwarf)     selectedRace).getAttributes();
 			case LIGHTFOOT_HALFLING: return (ArrayList<String>)((LightfootHalfling) selectedRace).getAttributes();
 			case STOUT_HALFLING:     return (ArrayList<String>)((StoutHalfling)     selectedRace).getAttributes();
-			default: return s;
+			default: return errorString;
 			}
 		}
-		return s;
+		return errorString;
 	}
-	public ArrayList<String> getProficiencies(){
+	
+	public ArrayList<Proficiences> getProficiencies(){
 		if (selectedBackground != null){
 			switch(bName){
-			case ARTISAN:            return (ArrayList<String>)((Artisan)           selectedBackground).getProficiencies();
-			case CHARLATAN:          return (ArrayList<String>)((Charlatan)         selectedBackground).getProficiencies();
+			case ARTISAN:            return (ArrayList<Proficiences>)((Artisan)           selectedBackground).getProficiencies();
+			case CHARLATAN:          return (ArrayList<Proficiences>)((Charlatan)         selectedBackground).getProficiencies();
 			/*case CRIMINAL:			 return (ArrayList<String>)((Criminal)			selectedBackground).getProficiencies();
 			case ENTERTAINER:		 return (ArrayList<String>)((Entertainer)       selectedBackground).getProficiencies();
 			case FOLKHERO:           return (ArrayList<String>)((FolkHero)          selectedBackground).getProficiencies();
@@ -143,11 +147,10 @@ public class Character {
 			case SAILOR:			 return (ArrayList<String>)((Sailor)            selectedBackground).getProficiencies();
 			case SOLDIER:			 return (ArrayList<String>)((Soldier)     	    selectedBackground).getProficiencies();
 			case URCHIN:			 return (ArrayList<String>)((Urchin)            selectedBackground).getProficiencies();
-			*/default:
-				break;
+			*/default: return errorProficiences;
 		}
 		
 	}
-		return s;
+		return errorProficiences;
 }
 }

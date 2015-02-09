@@ -19,7 +19,7 @@ import javax.swing.JButton;
 public class AttributeSelection implements PropertyChangeListener {
 
 	private JPanel aS;
-	private JButton btnNewButton;
+	private JButton btnBack;
 	private NumberFormat amountDisplayed = NumberFormat.getIntegerInstance();
 	Character c;
 	
@@ -33,6 +33,7 @@ public class AttributeSelection implements PropertyChangeListener {
 	
 	JFormattedTextField strengthValue, dexterityValue, constitutionValue, intelligenceValue, wisdomValue, charismaValue;
 	JTextField totalStrengthValue, totalDexterityValue, totalConstitutionValue, totalIntelligenceValue, totalWisdomValue, totalCharismaValue;
+	private JButton btnSave;
 	
 	public AttributeSelection(){
 		createJPanel();
@@ -134,11 +135,14 @@ public class AttributeSelection implements PropertyChangeListener {
 		totalCharismaValue.setEditable(false);
 		aS.add(totalCharismaValue,"cell 12 5,growx" );
 		
-		btnNewButton = new JButton("Back");
-		aS.add(btnNewButton, "cell 2 8 3 1,alignx center,aligny center");
+		btnBack = new JButton("Back");
+		aS.add(btnBack, "cell 5 8,alignx center,aligny center");
+		
+		btnSave = new JButton("Save");
+		aS.add(btnSave, "cell 7 8,alignx center,aligny center");
 		
 	}
-	public JButton backToCC(){return btnNewButton;}
+	public JButton backToCC(){return btnBack;}
 	public void updateTextFields(Character c){
 		
 		raceChoiseResults.setText("As a "+c.getRaceName()+" you Recieve These Atribute bonuses:");
@@ -165,20 +169,25 @@ public class AttributeSelection implements PropertyChangeListener {
 	}
 	
 	private void validatingValue(JFormattedTextField testedValue, JTextField savedValue, int index ){
-		int tempValue = Integer.parseInt(testedValue.getText());
-		if (tempValue > 20){
-			testedValue.setText("");
-			JOptionPane.showMessageDialog(testedValue, "The value cannot be larger than 20");
-		}
-		else{
-			int tempFinal  = tempValue + Integer.parseInt(c.getAtributes().get(index));
-			if (tempFinal > 20){
-				testedValue.setText("");
-				JOptionPane.showMessageDialog(testedValue, "Calculated Value was larger than 20 when bonus was applied");
+		try{
+			
+			int tempValue = Integer.parseInt(testedValue.getText());
+			if (tempValue > 20){
+				testedValue.setText("0");
+				JOptionPane.showMessageDialog(testedValue, "The value cannot be larger than 20");
 			}
 			else{
-				savedValue.setText(String.valueOf(tempFinal));
+				int tempFinal  = tempValue + Integer.parseInt(c.getAtributes().get(index));
+				if (tempFinal > 20){
+					testedValue.setText("0");
+					JOptionPane.showMessageDialog(testedValue, "Calculated Value was larger than 20 when bonus was applied");
+				}
+				else{
+					savedValue.setText(String.valueOf(tempFinal));
+				}
 			}
+		}catch(Exception e){
+			
 		}
     }
 }

@@ -6,13 +6,14 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import dndProject.Character.Proficiences;
 import net.miginfocom.swing.MigLayout;
 
 public class Charlatan {
 	private JPanel jp;
 	private JButton acceptBackground;
 
-		ArrayList<String> skillProf = new ArrayList<String>();
+		ArrayList<Proficiences> skillProf = new ArrayList<Proficiences>();
 		//String[] skillProf = {"Deception", "Slight of Hand"};
 		ArrayList<String> toolProf = new ArrayList<String>();
 		//String[] toolProf = {"Disguise kit", "Forgery kit"};
@@ -20,8 +21,8 @@ public class Charlatan {
 		
 	public Charlatan() {
 
-		skillProf.add("Insight");
-		skillProf.add("Religion");
+		skillProf.add(Proficiences.INSIGHT);
+		skillProf.add(Proficiences.REGLIGION);
 		toolProf.add("Disguise kit");
 		toolProf.add("Forgey kit");
 		
@@ -36,7 +37,7 @@ public class Charlatan {
 		
 		//Proficiencies
 		jp.add(new JLabel("<html><b>Proficiencies:</b></html>"), "cell 0 1,alignx right,aligny bottom");
-		jp.add(new JLabel(skillProf.get(0) +", "+skillProf.get(1)), "cell 1 1,alignx left,aligny bottom");
+		jp.add(new JLabel("Insight, Religion"), "cell 1 1,alignx left,aligny bottom");
 		
 		//tools
 		jp.add(new JLabel("<html><b>Tool Proficiencies:</b></html>"), "cell 0 2,alignx right,aligny bottom");
@@ -53,7 +54,7 @@ public class Charlatan {
 
 	public JPanel getJPanel(){return jp;}
 	public JButton getAcceptedBackground(){return acceptBackground;}
-	public ArrayList<String> getProficiencies(){return skillProf;}
+	public ArrayList<Proficiences> getProficiencies(){return skillProf;}
 	public ArrayList<String> getTools(){return toolProf;}
 }
 

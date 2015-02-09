@@ -66,17 +66,18 @@ public class DnDHandBook  {
 
 	public JFrame frame;
 	private JSplitPane raceMenu, classMenu, backgroundMenu;
-	public JPanel cCreationPanel, attributeMenu;
+	public JPanel cCreationPanel, attributeMenu, proficienciesMenu;
 	
 	//Character 
 	public Character character;
 	
 	// Main Windows 
-	public CharacterCreation  cC;
-	public RaceMenu           rM;
-	public ClassMenu          cM;
-	public BackgroundMenu     bM;
-	public AttributeSelection aS, aSv2;
+	public CharacterCreation      cC;
+	public RaceMenu               rM;
+	public ClassMenu              cM;
+	public BackgroundMenu         bM;
+	public AttributeSelection     aS;
+	public ProficienciesSelection pS;
 	
 	// Races
 	public Human             hm;
@@ -161,6 +162,7 @@ public class DnDHandBook  {
 		cM = new ClassMenu();
 		bM = new BackgroundMenu();
 		aS = new AttributeSelection();
+		pS = new ProficienciesSelection();
 		
 		// Races
 		hm  = rM.getHuman(); 
@@ -284,6 +286,17 @@ public class DnDHandBook  {
 				cCreationPanel.setVisible(true);
 				
 				
+			}
+		});
+		
+		JButton proficienciesSelectionMenu = cC.getOpenProficiencies();
+		proficienciesSelectionMenu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				pS.updateEligibleProficiencies(character);
+				proficienciesMenu = pS.getProficienciesSelectionJPanel();
+				frame.getContentPane().add(proficienciesMenu);
+				cCreationPanel.setVisible(false);
+				proficienciesMenu.setVisible(true);	
 			}
 		});
 		

@@ -12,6 +12,8 @@ public class CharacterCreation {
 	private JLabel selectedClass, selectedBackground, selectedRace;
 	private JLabel selectionResults;
 	private JButton openAttributes;
+	private JLabel listOfChangedAtributes;
+	private JButton openProficiencies;
 	
 	/**
 	 * Create the panel.
@@ -40,7 +42,13 @@ public class CharacterCreation {
 		cC.add(selectionResults, "cell 0 6 4 1,alignx center,aligny center");
 		openAttributes = new JButton("Open Attributes");
 		openAttributes.setVisible(false);
-		cC.add(openAttributes, "cell 0 7 4 1,alignx center,aligny center");
+		cC.add(openAttributes, "cell 0 7 2 1,alignx center,aligny center");
+		openProficiencies = new JButton("Open Proficiencies");
+		openProficiencies.setVisible(false);
+		cC.add(openProficiencies, "cell 0 8 2 1,alignx center,aligny center");
+		listOfChangedAtributes = new JLabel("LIST_ATRIBUTES_HERE");
+		listOfChangedAtributes.setVisible(false);
+		cC.add(listOfChangedAtributes, "cell 2 7 2 1");
 
 
 		openRaceMenu = new JButton("Open Race Menu");
@@ -85,6 +93,8 @@ public class CharacterCreation {
 				selectionResults.setText("Are you Sure you want to be a "+selectedRace.getText()+" "+selectedClass.getText()+" "+"with a background in "+selectedBackground.getText());
 				selectionResults.setVisible(true);
 				openAttributes.setVisible(true);
+				openProficiencies.setVisible(true);
+				listOfChangedAtributes.setVisible(true);
 			}
 	}
 	
@@ -93,4 +103,5 @@ public class CharacterCreation {
 	public JButton getOpenClassMenu(){return openClassMenu;}
 	public JButton getOpenBackgroundMenu(){return openBackgroundMenu;}
 	public JButton getOpenAttributes(){return openAttributes;}
+	public JButton getOpenProficiencies(){return openProficiencies;}
 }

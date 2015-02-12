@@ -6,6 +6,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import dndProject.Character.Proficiencies;
 import net.miginfocom.swing.MigLayout;
 
 public class Bard {
@@ -20,29 +21,29 @@ public class Bard {
 	String skills = "Choose any three skills and become proficient in them.";
 	String tools = "Three musical instruments of your choice";
 	
-	ArrayList<String> skillList = new ArrayList<String>();
+	ArrayList<Proficiencies> skillList = new ArrayList<Proficiencies>();
 	
 	
 	public Bard() {
 		
-		skillList.add("Acrobatics");
-		skillList.add("Sleight of Hand");
-		skillList.add("Stealth");
-		skillList.add("Athletics");
-		skillList.add("Arcana");
-		skillList.add("History");
-		skillList.add("Investigation");
-		skillList.add("Nature");
-		skillList.add("Religion");
-		skillList.add("Animal Handling");
-		skillList.add("Insight");
-		skillList.add("Medicine");
-		skillList.add("Perception");
-		skillList.add("Survival");
-		skillList.add("Deception");
-		skillList.add("Intimidation");
-		skillList.add("Performance");
-		skillList.add("Persuasion");
+		skillList.add(Proficiencies.ACROBATICS);
+		skillList.add(Proficiencies.SLEIGHT_OF_HAND);
+		skillList.add(Proficiencies.STEALTH);
+		skillList.add(Proficiencies.ATHETICS);
+		skillList.add(Proficiencies.ARCANA);
+		skillList.add(Proficiencies.HISTORY);
+		skillList.add(Proficiencies.INVESTIGATION);
+		skillList.add(Proficiencies.NATURE);
+		skillList.add(Proficiencies.REGLIGION);
+		skillList.add(Proficiencies.ANIMAL_HANDELING);
+		skillList.add(Proficiencies.INSIGHT);
+		skillList.add(Proficiencies.MEDICINE);
+		skillList.add(Proficiencies.PERCEPTION);
+		skillList.add(Proficiencies.SURVIVAL);
+		skillList.add(Proficiencies.DECEPTION);
+		skillList.add(Proficiencies.INTIMIDATION);
+		skillList.add(Proficiencies.PERFORMANCE);
+		skillList.add(Proficiencies.PERSUASION);
 		createJPanel();
 	}
 	
@@ -84,6 +85,7 @@ public class Bard {
 
 	public JPanel getJPanel(){return jp;}
 	public JButton getAcceptedClass(){return acceptClass;}
-	public ArrayList<String> getSkillList(){return skillList;}
+	public String getSkillString(){return skills;}
+	public ArrayList<Proficiencies> getProficiencies(){return skillList;}
 }
 

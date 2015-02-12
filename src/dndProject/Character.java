@@ -1,7 +1,14 @@
 package dndProject;
 
+import java.lang.reflect.Array;
+import java.net.URL;
 import java.util.ArrayList;
 
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.bouncycastle.util.test.Test;
+
+import classCollection.Barbarian;
+import classCollection.Bard;
 import backgroundCollection.Artisan;
 import backgroundCollection.Charlatan;
 import backgroundCollection.Criminal;
@@ -36,8 +43,13 @@ public class Character {
 	public enum Race{HUMAN, DROW, HIGH_ELF, WOOD_ELF, DRAGONBORN, TIEFLING, HALF_ELF, HALF_ORC, ROCK_GNOME, FORREST_GNOME, HILL_DWARF, MOUNTAIN_DWARF, LIGHTFOOT_HALFLING, STOUT_HALFLING}
 	public enum cClass{BARBARIAN, BARD, CLERIC, DRUID, FIGHTER, MONK, PALADIN, RANGER, ROGUE, SORCERER, WARLOCK, WIZZARD}
 	public enum bGround{ARTISAN, CHARLATAN, CRIMINAL, ENTERTAINER, FOLKHERO, GUILDARTISAN, HERMIT, NOBLE, OUTLANDER, SAGE, SAILOR, SOLDIER, URCHIN}
-	public enum Proficiences{ACROBATICS, ANIMAL_HANDELING, ARCANA, ATHETICS, DECEPTION, HISTORY, INSIGHT, INTIMIDATION, INVESTIGATION, MEDICINE, NATURE, PERCEPTION, PERFORMANCE, PERSUASION, REGLIGION, SLEIGHT_OF_HAND, STEALTH, SURVIVAL}
+	public enum Proficiencies{ACROBATICS, ANIMAL_HANDELING, ARCANA, ATHETICS, DECEPTION, HISTORY, INSIGHT, INTIMIDATION, INVESTIGATION, MEDICINE, NATURE, PERCEPTION, PERFORMANCE, PERSUASION, REGLIGION, SLEIGHT_OF_HAND, STEALTH, SURVIVAL}
 	
+	private static PDDocument _pdfDoc;
+	
+	ClassLoader loader = Test.class.getClassLoader();
+	
+	String characterSheetPDF = "\\DnDPlayerHandBook\\characterFourm.pdf";
 	
 	Race rName;
 	cClass cName;
@@ -51,8 +63,10 @@ public class Character {
 	String newClass;
 	String newBackground;
 	
+	ArrayList<String> proficienciesSelected = new ArrayList<String>();
+	
 	ArrayList<String> errorString = new ArrayList<String>();
-	ArrayList<Proficiences> errorProficiences= new ArrayList<Proficiences>();
+	ArrayList<Proficiencies> errorProficiences= new ArrayList<Proficiencies>();
 	
 	public Character(){
 		selectedRace = null;
@@ -93,6 +107,10 @@ public class Character {
 		this.newBackground = name;
 		this.bName = bG;
 	}
+	
+	public void setSavedProficiences(ArrayList<String> prof){
+		this.proficienciesSelected = prof;
+	}
 
 	/***********************************************************************************************************/
 	/*                                   GITTERS For Character Class                                          */
@@ -100,7 +118,11 @@ public class Character {
 	 public String getRaceName(){return newRace;}
 	 public String getClassName(){return newClass;}
 	 public String getBackgroundName(){return newBackground;}
-
+	 
+	 public Race get_Race(){return rName;}
+	 public cClass get_Class(){return cName;}
+	 public bGround get_Background(){return bName;}
+	 
 	/***********************************************************************************************************/
 	/*                                   GITTERS From Race Classes                                             */
 	/***********************************************************************************************************/
@@ -131,26 +153,71 @@ public class Character {
 		return errorString;
 	}
 	
-	public ArrayList<Proficiences> getProficiencies(){
+	public ArrayList<Proficiencies> getBackgroundProficiencies(){
 		if (selectedBackground != null){
 			switch(bName){
-			case ARTISAN:            return (ArrayList<Proficiences>)((Artisan)           selectedBackground).getProficiencies();
-			case CHARLATAN:          return (ArrayList<Proficiences>)((Charlatan)         selectedBackground).getProficiencies();
-			/*case CRIMINAL:			 return (ArrayList<String>)((Criminal)			selectedBackground).getProficiencies();
-			case ENTERTAINER:		 return (ArrayList<String>)((Entertainer)       selectedBackground).getProficiencies();
-			case FOLKHERO:           return (ArrayList<String>)((FolkHero)          selectedBackground).getProficiencies();
-			case GUILDARTISAN:		 return (ArrayList<String>)((GuildArtisan)      selectedBackground).getProficiencies();
-			case HERMIT:			 return (ArrayList<String>)((Hermit)            selectedBackground).getProficiencies();
-			case NOBLE:				 return (ArrayList<String>)((Noble)             selectedBackground).getProficiencies();
-			case OUTLANDER:			 return (ArrayList<String>)((Outlander)         selectedBackground).getProficiencies();
-			case SAGE:				 return (ArrayList<String>)((Sage)       		selectedBackground).getProficiencies();
-			case SAILOR:			 return (ArrayList<String>)((Sailor)            selectedBackground).getProficiencies();
-			case SOLDIER:			 return (ArrayList<String>)((Soldier)     	    selectedBackground).getProficiencies();
-			case URCHIN:			 return (ArrayList<String>)((Urchin)            selectedBackground).getProficiencies();
+			case ARTISAN:      return (ArrayList<Proficiencies>)((Artisan)      selectedBackground).getProficiencies();
+			case CHARLATAN:    return (ArrayList<Proficiencies>)((Charlatan)    selectedBackground).getProficiencies();
+			/*case CRIMINAL:   return (ArrayList<Proficiences>)((Criminal)	   selectedBackground).getProficiencies();
+			case ENTERTAINER:  return (ArrayList<Proficiences>)((Entertainer)  selectedBackground).getProficiencies();
+			case FOLKHERO:     return (ArrayList<Proficiences>)((FolkHero)     selectedBackground).getProficiencies();
+			case GUILDARTISAN: return (ArrayList<Proficiences>)((GuildArtisan) selectedBackground).getProficiencies();
+			case HERMIT:	   return (ArrayList<Proficiences>)((Hermit)       selectedBackground).getProficiencies();
+			case NOBLE:		   return (ArrayList<Proficiences>)((Noble)        selectedBackground).getProficiencies();
+			case OUTLANDER:	   return (ArrayList<Proficiences>)((Outlander)    selectedBackground).getProficiencies();
+			case SAGE:		   return (ArrayList<Proficiences>)((Sage)         selectedBackground).getProficiencies();
+			case SAILOR:	   return (ArrayList<Proficiences>)((Sailor)       selectedBackground).getProficiencies();
+			case SOLDIER:      return (ArrayList<Proficiences>)((Soldier)      selectedBackground).getProficiencies();
+			case URCHIN:	   return (ArrayList<Proficiences>)((Urchin)       selectedBackground).getProficiencies();
 			*/default: return errorProficiences;
+			}
 		}
-		
-	}
 		return errorProficiences;
-}
+	}
+	
+	public ArrayList<Proficiencies> getClassProficiencies(){
+		if (selectedClass != null){
+			switch(cName){
+			case BARBARIAN: return (ArrayList<Proficiencies>)((Barbarian) selectedClass).getProficiencies();
+			case BARD:      return (ArrayList<Proficiencies>)((Bard)      selectedClass).getProficiencies();
+			case CLERIC:
+			case DRUID:
+			case FIGHTER:
+			case MONK:
+			case PALADIN:
+			case RANGER:
+			case ROGUE:
+			case SORCERER:
+			case WARLOCK:
+			case WIZZARD:
+			default: return errorProficiences;
+			}
+		}
+		return errorProficiences;
+	}
+	
+	public String getClassSkillString(){
+		if (selectedClass != null){
+			switch(cName){
+			case BARBARIAN: return "BarBarian: " + (String)((Barbarian) selectedClass).getSkillString();
+			case BARD:      return "Bard: " +      (String)((Bard)      selectedClass).getSkillString();
+			case CLERIC:
+			case DRUID:
+			case FIGHTER:
+			case MONK:
+			case PALADIN:
+			case RANGER:
+			case ROGUE:
+			case SORCERER:
+			case WARLOCK:
+			case WIZZARD:
+			default: return "";
+			}
+		}
+		return "";
+	}
+	
+	public void exportPDF(){
+		System.out.println(loader);
+	}
 }

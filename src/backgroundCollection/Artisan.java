@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import dndProject.Character.Proficiences;
+import dndProject.Character.Proficiencies;
 import net.miginfocom.swing.MigLayout;
 
 public class Artisan {
@@ -13,7 +13,7 @@ public class Artisan {
 	private JButton acceptBackground;
 
 	//artisan strings
-	ArrayList<Proficiences> skillProf = new ArrayList<Proficiences>();
+	ArrayList<Proficiencies> skillProf = new ArrayList<Proficiencies>();
 	String language = "Two of your choice";
 	String equipment = "A holy symbol, a prayer book or prayer wheel, 5 sticks of incense, vestments, a set of common clothes, and a belt pouch containing 15 GP";
 	
@@ -21,8 +21,8 @@ public class Artisan {
 	
 	public Artisan() {
 	
-		skillProf.add(Proficiences.INSIGHT);
-		skillProf.add(Proficiences.REGLIGION);
+		skillProf.add(Proficiencies.INSIGHT);
+		skillProf.add(Proficiencies.REGLIGION);
 		createJPanel();
 	}
 	
@@ -52,6 +52,6 @@ public class Artisan {
 
 	public JPanel getJPanel(){return jp;}
 	public JButton getAcceptedBackground(){return acceptBackground;}
-	public ArrayList<Proficiences> getProficiencies(){return skillProf;}
+	public ArrayList<Proficiencies> getProficiencies(){return skillProf;}
 }
 

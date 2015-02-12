@@ -77,4 +77,5 @@ public class Druid {
 	public JPanel getJPanel(){return jp;}
 	public JButton getAcceptedClass(){return acceptClass;}
 	public ArrayList<String> getSkillList(){return skillList;}
+	public String getSkillString(){return skills;}
 }

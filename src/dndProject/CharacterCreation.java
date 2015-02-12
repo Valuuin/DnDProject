@@ -1,7 +1,11 @@
 package dndProject;
 
+import java.util.ArrayList;
+
 import javax.swing.JPanel;
+
 import net.miginfocom.swing.MigLayout;
+
 import javax.swing.JLabel;
 import javax.swing.JButton;
 
@@ -14,6 +18,7 @@ public class CharacterCreation {
 	private JButton openAttributes;
 	private JLabel listOfChangedAtributes;
 	private JButton openProficiencies;
+	private JLabel proficienciesResults;
 	
 	/**
 	 * Create the panel.
@@ -49,6 +54,8 @@ public class CharacterCreation {
 		listOfChangedAtributes = new JLabel("LIST_ATRIBUTES_HERE");
 		listOfChangedAtributes.setVisible(false);
 		cC.add(listOfChangedAtributes, "cell 2 7 2 1");
+		proficienciesResults = new JLabel("");
+		cC.add(proficienciesResults, "cell 2 8 2 1,alignx left,aligny center");
 
 
 		openRaceMenu = new JButton("Open Race Menu");
@@ -69,6 +76,7 @@ public class CharacterCreation {
 		
 		selectedBackground = new JLabel("None Selected");
 		cC.add(selectedBackground, "cell 2 4 2 1,alignx center,aligny center");
+		
 				
 	}
 			
@@ -84,6 +92,14 @@ public class CharacterCreation {
 		selectedBackground.setText(backgroundName);
 		displaySelectionResults();
 	}
+	public void setProficienciesREsults(ArrayList<String> s){
+		String prof = "";
+		for (String p : s){
+			prof = prof  +", "+ p;
+		}
+		proficienciesResults.setText("<html>Selected Proficiencies:<br>"+prof.substring(1));			
+	}
+	
 	
 	private void displaySelectionResults(){
 		if ( !selectedRace.getText().equalsIgnoreCase("None Selected") &&

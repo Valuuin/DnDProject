@@ -59,6 +59,7 @@ import raceCollection.halflingMenu.StoutHalfling;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
 
 import net.miginfocom.swing.MigLayout;
 
@@ -229,6 +230,12 @@ public class DnDHandBook  {
 		JButton createCharacter = new JButton("Create Character");
 		startMenu.add(createCharacter, "cell 0 7,alignx center,aligny center");
 		
+		
+		
+		/*
+		 *  BUTTON LISTENERS!!!!!!!
+		 */
+		
 		createCharacter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				cCreationPanel = cC.getCharacterCreationPanel();
@@ -249,7 +256,7 @@ public class DnDHandBook  {
 		});
 
 		JButton classMenuOpen = cC.getOpenClassMenu();
-		classMenuOpen.addActionListener(new ActionListener() {            // LOOK AT THIS
+		classMenuOpen.addActionListener(new ActionListener() {         
 			public void actionPerformed(ActionEvent arg0) {
 				classMenu = cM.getClassMenuSplitPane();
 				frame.getContentPane().add(classMenu);
@@ -267,7 +274,7 @@ public class DnDHandBook  {
 				backgroundMenu.setVisible(true);	
 			}
 		});
-
+		
 		JButton attributeSelectionMenu = cC.getOpenAttributes();
 		attributeSelectionMenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -284,8 +291,6 @@ public class DnDHandBook  {
 			public void actionPerformed(ActionEvent e) {
 				attributeMenu.setVisible(false);
 				cCreationPanel.setVisible(true);
-				
-				
 			}
 		});
 		
@@ -297,6 +302,26 @@ public class DnDHandBook  {
 				frame.getContentPane().add(proficienciesMenu);
 				cCreationPanel.setVisible(false);
 				proficienciesMenu.setVisible(true);	
+			}
+		});
+		
+		JButton proficienciesBackButton = pS.getProfBack();
+		proficienciesBackButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				pS.resetProficiencies();
+				proficienciesMenu.setVisible(false);
+				cCreationPanel.setVisible(true);
+			}
+		});
+		
+		JButton proficienciesSaveButton = pS.getProfSave();
+		proficienciesSaveButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ArrayList<String> prof = pS.getProficienciesResults();
+				character.setSavedProficiences(pS.getProficienciesResults());
+				cC.setProficienciesREsults(prof);
+				proficienciesMenu.setVisible(false);
+				cCreationPanel.setVisible(true);
 			}
 		});
 		

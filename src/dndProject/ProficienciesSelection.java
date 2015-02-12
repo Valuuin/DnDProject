@@ -9,8 +9,10 @@ import net.miginfocom.swing.MigLayout;
 
 import javax.swing.JRadioButton;
 import javax.swing.JButton;
+import javax.swing.plaf.basic.BasicInternalFrameTitlePane.RestoreAction;
 
-import dndProject.Character.Proficiences;
+import dndProject.Character.Proficiencies;
+import dndProject.Character.cClass;
 
 public class ProficienciesSelection {
 
@@ -39,7 +41,7 @@ public class ProficienciesSelection {
 		backgroundLabel = new JLabel();
 		pS.add(backgroundLabel, "cell 1 1 5 1,alignx left,aligny top");
 		
-		classLabel = new JLabel("<html>Since your choise of INSERT_CLASS you get to chooise 2 Proficiencies from:<br> LIST OF PROFICIENCIES FROM CLASS HERE</html>");
+		classLabel = new JLabel();
 		pS.add(classLabel, "cell 1 2 5 1,alignx left,aligny top");
 		
 		btnAcrobatics = new JRadioButton("Acrobatics");
@@ -123,11 +125,135 @@ public class ProficienciesSelection {
 	}
 	
 	public void updateEligibleProficiencies(Character c){
+		String bList = setBackgroundProficiencies(c.getBackgroundProficiencies());
+		setClassProficiencies(c.getClassProficiencies());
+		backgroundLabel.setText("<html>Since your choise of "+c.getBackgroundName()+" you automatically gained the proficiencies in:"+bList.substring(1));
+		classLabel.setText(c.getClassSkillString());
+	}
+	
+	
+	
+	/*
+	 *  Gitter Method called in DndHandbook.java
+	 */
+	public JButton getProfBack(){return btnBack;}
+	public JButton getProfSave(){return btnSave;}
+	public JPanel getProficienciesSelectionJPanel(){return pS;}
+	public void resetProficiencies(){
+		btnAcrobatics.setSelected(false);
+		btnAcrobatics.setEnabled(false);
 		
-		ArrayList<Proficiences> backgroundList = c.getProficiencies();
+		btnAnimalHandeling.setSelected(false);
+		btnAnimalHandeling.setEnabled(false);
+		
+		btnArcana.setSelected(false);
+		btnArcana.setEnabled(false);
+		
+		btnAthetics.setSelected(false);
+		btnAthetics.setEnabled(false);
+		
+		btnDeception.setSelected(false);
+		btnDeception.setEnabled(false);
+		
+		btnHistory.setSelected(false);
+		btnHistory.setEnabled(false);
+		
+		btnInsight.setSelected(false);
+		btnInsight.setEnabled(false);
+		
+		btnIntimidation.setSelected(false);
+		btnIntimidation.setEnabled(false);
+		
+		btnInvestigation.setSelected(false);
+		btnInvestigation.setEnabled(false);
+		
+		btnMedicine.setSelected(false);
+		btnMedicine.setEnabled(false);
+		
+		btnNature.setSelected(false);
+		btnNature.setEnabled(false);
+		
+		btnPerception.setSelected(false);
+		btnPerception.setEnabled(false);
+		
+		btnPerformance.setSelected(false);
+		btnPerformance.setEnabled(false);
+		
+		btnPersuasion.setSelected(false);
+		btnPersuasion.setEnabled(false);
+		
+		btnReligion.setSelected(false);
+		btnReligion.setEnabled(false);
+		
+		btnSleightOfHand.setSelected(false);
+		btnSleightOfHand.setEnabled(false);
+		
+		btnStealth.setSelected(false);
+		btnStealth.setEnabled(false);
+		
+		btnSurvival.setSelected(false);
+		btnSurvival.setEnabled(false);
+	}
+	public ArrayList<String> getProficienciesResults(){
+		ArrayList<String> results = new ArrayList<String>();
+		
+		if(btnAcrobatics.isSelected())     {results.add("Acrobatics");}
+		if(btnAnimalHandeling.isSelected()){results.add("Animal Handeling");}
+		if(btnArcana.isSelected())         {results.add("Arcana");}
+		if(btnAthetics.isSelected())       {results.add("Athetics");}
+		if(btnDeception.isSelected())      {results.add("Deception");}
+		if(btnHistory.isSelected())        {results.add("History");}
+		if(btnInsight.isSelected())        {results.add("Insight");}
+		if(btnIntimidation.isSelected())   {results.add("Intimidation");}
+		if(btnInvestigation.isSelected())  {results.add("Investigation");}
+		if(btnMedicine.isSelected())       {results.add("Medicine");}
+		if(btnNature.isSelected())         {results.add("Nature");}
+		if(btnPerception.isSelected())     {results.add("Perception");}
+		if(btnPerformance.isSelected())    {results.add("Performance");}
+		if(btnPersuasion.isSelected())     {results.add("Persuasion");}
+		if(btnReligion.isSelected())       {results.add("Religion");}
+		if(btnSleightOfHand.isSelected())  {results.add("Sleight of Hand");}
+		if(btnStealth.isSelected())        {results.add("Stealth");}
+		if(btnSurvival.isSelected())       {results.add("Survival");}
+		
+		resetProficiencies();
+		
+		return results;
+	}
+	
+	
+	/*
+	 *  HElper Methods
+	 */
+	private void setClassProficiencies(ArrayList<Proficiencies> classList){
+		for (Proficiencies s : classList){
+			switch(s){
+			case ACROBATICS:       checkingClassProficiencies(btnAcrobatics);      break;
+			case ANIMAL_HANDELING: checkingClassProficiencies(btnAnimalHandeling); break;
+			case ARCANA:           checkingClassProficiencies(btnArcana);          break;
+			case ATHETICS:         checkingClassProficiencies(btnAthetics);        break;
+			case DECEPTION:        checkingClassProficiencies(btnDeception);       break;
+			case HISTORY:          checkingClassProficiencies(btnHistory);         break;
+			case INSIGHT:          checkingClassProficiencies(btnInsight);         break;
+			case INTIMIDATION:     checkingClassProficiencies(btnIntimidation);    break;
+			case INVESTIGATION:    checkingClassProficiencies(btnInvestigation);   break;
+			case MEDICINE:         checkingClassProficiencies(btnMedicine);        break;
+			case NATURE:           checkingClassProficiencies(btnNature);          break;
+			case PERCEPTION:       checkingClassProficiencies(btnPerception);      break;
+			case PERFORMANCE:      checkingClassProficiencies(btnPerformance);     break;
+			case PERSUASION:       checkingClassProficiencies(btnPersuasion);      break;
+			case REGLIGION:        checkingClassProficiencies(btnReligion);        break;
+			case SLEIGHT_OF_HAND:  checkingClassProficiencies(btnSleightOfHand);   break;
+			case STEALTH:          checkingClassProficiencies(btnStealth);         break;
+			case SURVIVAL:         checkingClassProficiencies(btnSurvival);        break;
+			default:break;
+			}
+		}
+	}
+	
+	private String setBackgroundProficiencies(ArrayList<Proficiencies> backgroundList){
 		String bList = "";
-			
-		for(Proficiences s : backgroundList){
+		for(Proficiencies s : backgroundList){
 			switch(s){
 			case ACROBATICS:
 				bList = bList + ", Acrobatics";
@@ -203,20 +329,15 @@ public class ProficienciesSelection {
 				break;
 			default:
 				break;
-			
 			}
 		}
-
-		backgroundLabel.setText("<html>Since your choise of "+c.getBackgroundName()+" you automatically gained the proficiencies in:"+bList);
+		return bList;
 	}
 	
+	private void checkingClassProficiencies(JRadioButton profButton){
+		if(!profButton.isSelected()){
+			profButton.setEnabled(true);
+		}
+	}
 	
-	
-	/*
-	 *  Gitter Method called in DndHandbook.java
-	 */
-	public JButton getProfBack(){return btnBack;}
-	public JButton getProfSave(){return btnSave;}
-	public JPanel getProficienciesSelectionJPanel(){return pS;}
-		
 }

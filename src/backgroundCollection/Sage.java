@@ -1,12 +1,9 @@
 package backgroundCollection;
 
-import java.util.ArrayList;
-
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import dndProject.Character.Proficiences;
 import net.miginfocom.swing.MigLayout;
 
 public class Sage {
@@ -16,17 +13,13 @@ public class Sage {
 	private JButton acceptBackground;
 
 	//String unique to sage
-	//String[] skillProf = {"Arcana", "History"};
-	ArrayList<Proficiences> skillProf = new ArrayList<Proficiences>();
+	String[] skillProf = {"Arcana", "History"};
 	String languages = "Two of your choice";
 	String equipment = "A bottle of black ink, a quill, a small knife, a letter froma dead colleague posing a question you have not been able to answer, a set of common clothes, and 10 GP.";
 	String toolProf = "none";
 	
 	public Sage() {
 
-		skillProf.add(Proficiences.ARCANA);
-		skillProf.add(Proficiences.HISTORY);
-		
 		jp = new JPanel();
 		jp.setSize(640, 480);
 		jp.setLayout(new MigLayout("", "[25%][75%]", "[10%][10%][10%][10%][10%][10%][10%][10%][10%][10%][10%]"));
@@ -35,7 +28,7 @@ public class Sage {
 		
 		//Proficiencies
 		jp.add(new JLabel("<html><b>Proficiencies:</b></html>"), "cell 0 1,alignx right,aligny bottom");
-		jp.add(new JLabel("Arcana, History"), "cell 1 1,alignx left,aligny bottom");
+		jp.add(new JLabel(skillProf[0] +", "+skillProf[1]), "cell 1 1,alignx left,aligny bottom");
 		
 		//tools
 		jp.add(new JLabel("<html><b>Tool Proficiencies:</b></html>"), "cell 0 2,alignx right,aligny bottom");
@@ -56,6 +49,5 @@ public class Sage {
 
 	public JPanel getJPanel(){return jp;}
 	public JButton getAcceptedBackground(){return acceptBackground;}
-	public ArrayList<Proficiences> getProficiencies(){return skillProf;}
 }
 

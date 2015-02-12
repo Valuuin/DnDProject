@@ -1,7 +1,11 @@
 package dndProject;
 
+import java.util.ArrayList;
+
 import javax.swing.JPanel;
+
 import net.miginfocom.swing.MigLayout;
+
 import javax.swing.JLabel;
 import javax.swing.JButton;
 
@@ -12,8 +16,10 @@ public class CharacterCreation {
 	private JLabel selectedClass, selectedBackground, selectedRace;
 	private JLabel selectionResults;
 	private JButton openAttributes;
-	private JLabel listOfChangedAtributes;
+	private JLabel attributesResults;
 	private JButton openProficiencies;
+	private JLabel proficienciesResults;
+	private JButton btnToPDF;
 	
 	/**
 	 * Create the panel.
@@ -46,9 +52,13 @@ public class CharacterCreation {
 		openProficiencies = new JButton("Open Proficiencies");
 		openProficiencies.setVisible(false);
 		cC.add(openProficiencies, "cell 0 8 2 1,alignx center,aligny center");
-		listOfChangedAtributes = new JLabel("LIST_ATRIBUTES_HERE");
-		listOfChangedAtributes.setVisible(false);
-		cC.add(listOfChangedAtributes, "cell 2 7 2 1");
+		attributesResults = new JLabel();
+		cC.add(attributesResults, "cell 2 7 2 1");
+		proficienciesResults = new JLabel("");
+		cC.add(proficienciesResults, "cell 2 8 2 1,alignx left,aligny center");
+		btnToPDF = new JButton("Export To PDF");
+		btnToPDF.setVisible(false);
+		cC.add(btnToPDF, "cell 1 10 2 1,alignx center");
 
 
 		openRaceMenu = new JButton("Open Race Menu");
@@ -69,6 +79,8 @@ public class CharacterCreation {
 		
 		selectedBackground = new JLabel("None Selected");
 		cC.add(selectedBackground, "cell 2 4 2 1,alignx center,aligny center");
+		
+		
 				
 	}
 			
@@ -76,15 +88,47 @@ public class CharacterCreation {
 		selectedRace.setText(race);
 		displaySelectionResults();
 	}
+	
 	public void setClass(String className){
 		selectedClass.setText(className);
 		displaySelectionResults();
 	}
+	
 	public void setBackground(String backgroundName){
 		selectedBackground.setText(backgroundName);
 		displaySelectionResults();
 	}
 	
+	public void setAttributesResults(ArrayList<String> s){
+		attributesResults.setText("Str: "+s.get(0)+", Dex: "+s.get(1)+", Con: "+s.get(2)+", Int: "+s.get(3)+", Wis: "+s.get(4)+", Chr: "+s.get(5));
+		attributesResults.setVisible(true);
+		displayPDFButton();
+	}
+	
+	public void resetAttributesResults(){
+		attributesResults.setVisible(false);
+		btnToPDF.setVisible(false);
+	}
+	
+	public void setProficienciesResults(ArrayList<String> s){
+		String prof = "";
+		for (String p : s){
+			prof = prof  +", "+ p;
+		}
+		proficienciesResults.setText("<html>Selected Proficiencies:<br>"+prof.substring(1));
+		proficienciesResults.setVisible(true);
+		displayPDFButton();
+	}
+	
+	public void resetProficienciesResults(){
+		proficienciesResults.setVisible(false);
+		btnToPDF.setVisible(false);
+	}
+	
+	private void displayPDFButton(){
+		if(proficienciesResults.isVisible() && attributesResults.isVisible())
+			btnToPDF.setVisible(true);
+	}
 	private void displaySelectionResults(){
 		if ( !selectedRace.getText().equalsIgnoreCase("None Selected") &&
 		     !selectedClass.getText().equalsIgnoreCase("None Selected") &&	
@@ -94,7 +138,6 @@ public class CharacterCreation {
 				selectionResults.setVisible(true);
 				openAttributes.setVisible(true);
 				openProficiencies.setVisible(true);
-				listOfChangedAtributes.setVisible(true);
 			}
 	}
 	

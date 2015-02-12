@@ -1,12 +1,9 @@
 package backgroundCollection;
 
-import java.util.ArrayList;
-
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import dndProject.Character.Proficiences;
 import net.miginfocom.swing.MigLayout;
 
 public class Outlander {
@@ -16,8 +13,7 @@ public class Outlander {
 	private JButton acceptBackground;
 
 	//String unique to outlander
-	//String[] skillProf = {"Athletics", "Survival"};
-	ArrayList<Proficiences> skillProf = new ArrayList<Proficiences>();
+	String[] skillProf = {"Athletics", "Survival"};
 	String toolProf = "One type of musical instrument";
 	String languages = "One of your choice";
 	String equipment = "A staff, a hunting trap, a trophy from an animal you killed, a set of traveler's clothes, and a belt pouch containing 10GP";
@@ -31,7 +27,7 @@ public class Outlander {
 		
 		//Proficiencies
 		jp.add(new JLabel("<html><b>Proficiencies:</b></html>"), "cell 0 1,alignx right,aligny bottom");
-		jp.add(new JLabel("Athletics, Survival"), "cell 1 1,alignx left,aligny bottom");
+		jp.add(new JLabel(skillProf[0] +", "+skillProf[1]), "cell 1 1,alignx left,aligny bottom");
 		
 		//tools
 		jp.add(new JLabel("<html><b>Tool Proficiencies:</b></html>"), "cell 0 2,alignx right,aligny bottom");
@@ -52,7 +48,6 @@ public class Outlander {
 
 	public JPanel getJPanel(){return jp;}
 	public JButton getAcceptedBackground(){return acceptBackground;}
-	public ArrayList<Proficiences> getProficiencies(){return skillProf;}
 }
 
 

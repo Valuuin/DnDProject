@@ -1,12 +1,9 @@
 package backgroundCollection;
 
-import java.util.ArrayList;
-
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import dndProject.Character.Proficiences;
 import net.miginfocom.swing.MigLayout;
 
 public class Entertainer {
@@ -14,16 +11,12 @@ public class Entertainer {
 	private JButton acceptBackground;
 
 	//String unique to Entertainer
-	//String[] skillProf = {"Acrobatics", "Performance"};
-	ArrayList<Proficiences> skillProf = new ArrayList<Proficiences>();
+	String[] skillProf = {"Acrobatics", "Performance"};
 	String[] toolProf = {"Disguise kit", "one type of musical instrument"};
 	String equipment = "A musical instrument, the favor of an admirer, a costume, and a belt pouch containing 15 GP.";
 	
 	
 	public Entertainer() {
-		
-		skillProf.add(Proficiences.ACROBATICS);
-		skillProf.add(Proficiences.PERFORMANCE);
 
 		jp = new JPanel();
 		jp.setSize(640, 480);
@@ -32,7 +25,7 @@ public class Entertainer {
 		
 		//Proficiencies
 		jp.add(new JLabel("<html><b>Proficiencies:</b></html>"), "cell 0 1,alignx right,aligny bottom");
-		jp.add(new JLabel("Acrobatics, Performance"), "cell 1 1,alignx left,aligny bottom");
+		jp.add(new JLabel(skillProf[0] +", "+skillProf[1]), "cell 1 1,alignx left,aligny bottom");
 		
 		//tools
 		jp.add(new JLabel("<html><b>Tool Proficiencies:</b></html>"), "cell 0 2,alignx right,aligny bottom");
@@ -49,6 +42,5 @@ public class Entertainer {
 
 	public JPanel getJPanel(){return jp;}
 	public JButton getAcceptedBackground(){return acceptBackground;}
-	public ArrayList<Proficiences> getProficiencies(){return skillProf;}
 }
 

@@ -59,6 +59,7 @@ import raceCollection.halflingMenu.StoutHalfling;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
 
 import net.miginfocom.swing.MigLayout;
 
@@ -229,6 +230,12 @@ public class DnDHandBook  {
 		JButton createCharacter = new JButton("Create Character");
 		startMenu.add(createCharacter, "cell 0 7,alignx center,aligny center");
 		
+		
+		
+		/*
+		 *  BUTTON LISTENERS!!!!!!!
+		 */
+		
 		createCharacter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				cCreationPanel = cC.getCharacterCreationPanel();
@@ -249,7 +256,7 @@ public class DnDHandBook  {
 		});
 
 		JButton classMenuOpen = cC.getOpenClassMenu();
-		classMenuOpen.addActionListener(new ActionListener() {            // LOOK AT THIS
+		classMenuOpen.addActionListener(new ActionListener() {         
 			public void actionPerformed(ActionEvent arg0) {
 				classMenu = cM.getClassMenuSplitPane();
 				frame.getContentPane().add(classMenu);
@@ -267,7 +274,7 @@ public class DnDHandBook  {
 				backgroundMenu.setVisible(true);	
 			}
 		});
-
+		
 		JButton attributeSelectionMenu = cC.getOpenAttributes();
 		attributeSelectionMenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -279,13 +286,23 @@ public class DnDHandBook  {
 			}
 		});
 		
-		JButton attributeSelectionBack = aS.backToCC();
+		JButton attributeSelectionBack = aS.getAttributeSelectionBack();
 		attributeSelectionBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				aS.resetAttributes();
 				attributeMenu.setVisible(false);
 				cCreationPanel.setVisible(true);
-				
-				
+			}
+		});
+		
+		JButton attributeSelectionSave = aS.getAttributeSelectionSave();
+		attributeSelectionSave.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ArrayList<String> attri = aS.getAttributeResults();
+				cC.setAttributesResults(attri);
+				character.setSavedAttributes(attri);
+				attributeMenu.setVisible(false);
+				cCreationPanel.setVisible(true);
 			}
 		});
 		
@@ -297,6 +314,26 @@ public class DnDHandBook  {
 				frame.getContentPane().add(proficienciesMenu);
 				cCreationPanel.setVisible(false);
 				proficienciesMenu.setVisible(true);	
+			}
+		});
+		
+		JButton proficienciesBackButton = pS.getProfBack();
+		proficienciesBackButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				pS.resetProficiencies();
+				proficienciesMenu.setVisible(false);
+				cCreationPanel.setVisible(true);
+			}
+		});
+		
+		JButton proficienciesSaveButton = pS.getProfSave();
+		proficienciesSaveButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ArrayList<String> prof = pS.getProficienciesResults();
+				character.setSavedProficiences(pS.getProficienciesResults());
+				cC.setProficienciesResults(prof);
+				proficienciesMenu.setVisible(false);
+				cCreationPanel.setVisible(true);
 			}
 		});
 		
@@ -349,6 +386,8 @@ public class DnDHandBook  {
 	public void waitForRaceAcceptance( JButton race, final String name, final Object r, final Race rName){
 			race.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				if (character.getRaceName() != name)
+					resetAtributesAndProficiences();
 				raceMenu.setVisible(false);
 				character.setRace(r,name,rName);
 				cC.setRace(name);
@@ -360,6 +399,8 @@ public class DnDHandBook  {
 	public void waitForClassAcceptance( JButton classButton, final String className, final Object c, final cClass cName){
 		classButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				if(character.getClassName() != className)
+					resetAtributesAndProficiences();
 				classMenu.setVisible(false);
 				character.setClass(c,className,cName);
 				cC.setClass(className);
@@ -371,12 +412,21 @@ public class DnDHandBook  {
 	public void waitForBackgroundAcceptance( JButton backgroundButton, final String backgroundName, final Object b, final bGround bName){
 		backgroundButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				if(character.getBackgroundName() != backgroundName)
+					resetAtributesAndProficiences();
 				backgroundMenu.setVisible(false);
 				character.setBackground(b, backgroundName,bName);
 				cC.setBackground(backgroundName);
 				cCreationPanel.setVisible(true);
 			}
 		});
+	}
+	
+	private void resetAtributesAndProficiences(){
+		pS.resetProficiencies();
+		cC.resetProficienciesResults();
+		aS.resetAttributes();
+		cC.resetAttributesResults();
 	}
 
 }

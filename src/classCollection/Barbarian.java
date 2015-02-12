@@ -6,6 +6,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import dndProject.Character.Proficiencies;
 import net.miginfocom.swing.MigLayout;
 
 public class Barbarian {
@@ -19,19 +20,16 @@ public class Barbarian {
 	String savingThrows = "Strength and Constitution are a Barbarian's saving throws";
 	String skills = "Choose two from Animal Handling, Athletics, Intimidation, Nature, Perception, and Survival.";
 	
-	ArrayList<String> skillList = new ArrayList<String>();
-	
-	
-	
+	ArrayList<Proficiencies> skillList = new ArrayList<Proficiencies>();
 	
 	public Barbarian() {
 		
-		skillList.add("Animal Handling");
-		skillList.add("Athletics");
-		skillList.add("Intimidation");
-		skillList.add("Nature");
-		skillList.add("Perception");
-		skillList.add("Survival");
+		skillList.add(Proficiencies.ANIMAL_HANDELING);
+		skillList.add(Proficiencies.ATHETICS);
+		skillList.add(Proficiencies.INTIMIDATION);
+		skillList.add(Proficiencies.NATURE);
+		skillList.add(Proficiencies.PERCEPTION);
+		skillList.add(Proficiencies.SURVIVAL);
 		createJPanel();	
 			
 		}
@@ -70,5 +68,6 @@ public class Barbarian {
 
 	public JPanel getJPanel(){return jp;}
 	public JButton getAcceptedClass(){return acceptClass;}
-	public ArrayList<String> getSkillList(){return skillList;}
+	public ArrayList<Proficiencies> getProficiencies(){return skillList;}
+	public String getSkillString(){return skills;}
 }

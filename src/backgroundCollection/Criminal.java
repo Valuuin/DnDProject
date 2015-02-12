@@ -1,9 +1,12 @@
 package backgroundCollection;
 
+import java.util.ArrayList;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import dndProject.Character.Proficiences;
 import net.miginfocom.swing.MigLayout;
 
 public class Criminal {
@@ -11,11 +14,16 @@ public class Criminal {
 	private JButton acceptBackground;
 
 	//Strings unique to Criminal
-	String[] skillProf = {"Deception", "Stealth"};
+	//String[] skillProf = {"Deception", "Stealth"};
+	ArrayList<Proficiences> skillProf = new ArrayList<Proficiences>();
 	String[] toolProf = {"One type of gaming set", "Thieves' tools"};
 	String equipment = "A crowbar, a set of dark common clothes including a hood, and a belt pouch containing 15 GP.";
 
 	public Criminal() {
+		
+		
+		skillProf.add(Proficiences.DECEPTION);
+		skillProf.add(Proficiences.STEALTH);
 
 		jp = new JPanel();
 		jp.setSize(640, 480);
@@ -24,7 +32,7 @@ public class Criminal {
 		
 		//Proficiencies
 		jp.add(new JLabel("<html><b>Proficiencies:</b></html>"), "cell 0 1,alignx right,aligny bottom");
-		jp.add(new JLabel(skillProf[0] +", "+skillProf[1]), "cell 1 1,alignx left,aligny bottom");
+		jp.add(new JLabel("Deception, Stealth"), "cell 1 1,alignx left,aligny bottom");
 		
 		//tools
 		jp.add(new JLabel("<html><b>Tool Proficiencies:</b></html>"), "cell 0 2,alignx right,aligny bottom");
@@ -42,5 +50,6 @@ public class Criminal {
 
 	public JPanel getJPanel(){return jp;}
 	public JButton getAcceptedBackground(){return acceptBackground;}
+	public ArrayList<Proficiences> getProficiencies(){return skillProf;}
 }
 

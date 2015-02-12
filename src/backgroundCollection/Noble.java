@@ -1,9 +1,12 @@
 package backgroundCollection;
 
+import java.util.ArrayList;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import dndProject.Character.Proficiences;
 import net.miginfocom.swing.MigLayout;
 
 public class Noble {
@@ -12,13 +15,17 @@ public class Noble {
 	private JButton acceptBackground;
 
 	//String unique to nobles
-	String[] skillProf = {"History", "Persuasion"};
+	//String[] skillProf = {"History", "Persuasion"};
+	ArrayList<Proficiences> skillProf = new ArrayList<Proficiences>();
 	String toolProf = "One type of gaming set";
 	String languages = "One of your choice";
 	String equipment = "A set of fine clothes, a signet ring, a scroll of pedigree, and a purse containing 25 GP.";
 	
 	
 	public Noble() {
+		
+		skillProf.add(Proficiences.HISTORY);
+		skillProf.add(Proficiences.PERSUASION);
 
 		jp = new JPanel();
 		jp.setSize(640, 480);
@@ -27,7 +34,7 @@ public class Noble {
 		
 		//Proficiencies
 		jp.add(new JLabel("<html><b>Proficiencies:</b></html>"), "cell 0 1,alignx right,aligny bottom");
-		jp.add(new JLabel(skillProf[0] +", "+skillProf[1]), "cell 1 1,alignx left,aligny bottom");
+		jp.add(new JLabel("History, Persuasion"), "cell 1 1,alignx left,aligny bottom");
 		
 		//tools
 		jp.add(new JLabel("<html><b>Tool Proficiencies:</b></html>"), "cell 0 2,alignx right,aligny bottom");
@@ -49,5 +56,6 @@ public class Noble {
 
 	public JPanel getJPanel(){return jp;}
 	public JButton getAcceptedBackground(){return acceptBackground;}
+	public ArrayList<Proficiences> getProficiencies(){return skillProf;}
 }
 

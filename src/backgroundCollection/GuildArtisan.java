@@ -1,9 +1,12 @@
 package backgroundCollection;
 
+import java.util.ArrayList;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import dndProject.Character.Proficiences;
 import net.miginfocom.swing.MigLayout;
 
 public class GuildArtisan {
@@ -11,7 +14,8 @@ public class GuildArtisan {
 	private JButton acceptBackground;
 
 	//Guild artisan strings
-	String[] skillProf = {"Insight", "Persuasion"};
+	//String[] skillProf = {"Insight", "Persuasion"};
+	ArrayList<Proficiences> skillProf = new ArrayList<Proficiences>();
 	String toolProf = "One type of artisan's tools";
 	String languages = "One of your choice";
 	String equipment = "A set of artisan's tools, a letter of introduction from your guild, a set of traveler's clothes, and a belt pouch containing 15 GP";
@@ -19,6 +23,9 @@ public class GuildArtisan {
 	
 	public GuildArtisan() {
 
+		skillProf.add(Proficiences.INSIGHT);
+		skillProf.add(Proficiences.PERSUASION);
+		
 		jp = new JPanel();
 		jp.setSize(640, 480);
 		jp.setLayout(new MigLayout("", "[25%][75%]", "[10%][10%][10%][10%][10%][10%][10%][10%][10%][10%][10%]"));
@@ -27,7 +34,7 @@ public class GuildArtisan {
 		
 		//Proficiencies
 		jp.add(new JLabel("<html><b>Proficiencies:</b></html>"), "cell 0 1,alignx right,aligny bottom");
-		jp.add(new JLabel(skillProf[0] +", "+skillProf[1]), "cell 1 1,alignx left,aligny bottom");
+		jp.add(new JLabel("Insight, Persuasion"), "cell 1 1,alignx left,aligny bottom");
 		
 		//tools
 		jp.add(new JLabel("<html><b>Tool Proficiencies:</b></html>"), "cell 0 2,alignx right,aligny bottom");
@@ -48,6 +55,7 @@ public class GuildArtisan {
 
 	public JPanel getJPanel(){return jp;}
 	public JButton getAcceptedBackground(){return acceptBackground;}
+	public ArrayList<Proficiences> getProficiencies(){return skillProf;}
 }
 
 

@@ -6,6 +6,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import org.apache.pdfbox.cos.COSBoolean;
 import org.apache.pdfbox.cos.COSName;
 import org.apache.pdfbox.exceptions.COSVisitorException;
@@ -55,7 +56,7 @@ public class Character {
 	
 	private static PDDocument pdfTemplate;
 	static PDAcroForm acroForm;
-	
+
 	Race rName;
 	cClass cName;
 	bGround bName;

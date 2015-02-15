@@ -6,6 +6,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import dndProject.Character.Attributes;
 import net.miginfocom.swing.MigLayout;
 
 public class Cleric {
@@ -20,7 +21,7 @@ public class Cleric {
 	String skills = "Choose two from History, Insight, Medicine, Persuasion, and Religion";
 	
 	ArrayList<String> skillList = new ArrayList<String>();
-	
+	ArrayList<Attributes> sThrows = new ArrayList<Attributes>(); 
 	
 	public Cleric() {
 		
@@ -29,6 +30,9 @@ public class Cleric {
 		skillList.add("Medicine");
 		skillList.add("Persuasion");
 		skillList.add("Religion");
+		
+		sThrows.add(Attributes.WIS);
+		sThrows.add(Attributes.CHA);
 		createJPanel();
 		
 		
@@ -71,4 +75,5 @@ public class Cleric {
 	public JButton getAcceptedClass(){return acceptClass;}
 	public ArrayList<String> getSkillList(){return skillList;}
 	public String getSkillString(){return skills;}
+	public ArrayList<Attributes> getSavingThrows(){return sThrows;}
 }

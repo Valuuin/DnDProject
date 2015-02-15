@@ -6,6 +6,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import dndProject.Character.Attributes;
 import dndProject.Character.Proficiencies;
 import net.miginfocom.swing.MigLayout;
 
@@ -22,7 +23,7 @@ public class Bard {
 	String tools = "Three musical instruments of your choice";
 	
 	ArrayList<Proficiencies> skillList = new ArrayList<Proficiencies>();
-	
+	ArrayList<Attributes> sThrows = new ArrayList<Attributes>(); 
 	
 	public Bard() {
 		
@@ -44,6 +45,9 @@ public class Bard {
 		skillList.add(Proficiencies.INTIMIDATION);
 		skillList.add(Proficiencies.PERFORMANCE);
 		skillList.add(Proficiencies.PERSUASION);
+		
+		sThrows.add(Attributes.DEX);
+		sThrows.add(Attributes.CHA);
 		createJPanel();
 	}
 	
@@ -87,5 +91,6 @@ public class Bard {
 	public JButton getAcceptedClass(){return acceptClass;}
 	public String getSkillString(){return skills;}
 	public ArrayList<Proficiencies> getProficiencies(){return skillList;}
+	public ArrayList<Attributes> getSavingThrows(){return sThrows;}
 }
 

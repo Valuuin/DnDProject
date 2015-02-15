@@ -6,6 +6,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import dndProject.Character.Attributes;
 import net.miginfocom.swing.MigLayout;
 
 public class Monk {
@@ -21,7 +22,7 @@ public class Monk {
 	String skills = "Choose two from Acrobatics, Athletics, History, Insight, Religion, and Stealth.";
 	
 	ArrayList<String> skillList = new ArrayList<String>();
-	
+	ArrayList<Attributes> sThrows = new ArrayList<Attributes>(); 
 	
 	public Monk() {
 		
@@ -31,6 +32,10 @@ public class Monk {
 		skillList.add("Insight");
 		skillList.add("Religion");
 		skillList.add("Stealth");
+		
+		sThrows.add(Attributes.STR);
+		sThrows.add(Attributes.DEX);
+		
 		createJPanel();
 		
 		
@@ -76,4 +81,5 @@ public class Monk {
 	public JButton getAcceptedClass(){return acceptClass;}
 	public ArrayList<String> getSkillList(){return skillList;}
 	public String getSkillString(){return skills;}
+	public ArrayList<Attributes> getSavingThrows(){return sThrows;}
 }

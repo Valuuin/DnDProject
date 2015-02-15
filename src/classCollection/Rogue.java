@@ -6,6 +6,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import dndProject.Character.Attributes;
 import net.miginfocom.swing.MigLayout;
 
 public class Rogue {
@@ -23,6 +24,7 @@ public class Rogue {
 	String skills = "Choose four from Acrobatics, Athletics, Deception, Insight, Intimidation, Investigation, Perception, Performance, Persuasion, Sleight of Hand, and Stealth.";
 	
 	ArrayList<String> skillList = new ArrayList<String>();
+	ArrayList<Attributes> sThrows = new ArrayList<Attributes>(); 
 	
 	public Rogue() {
 		
@@ -36,6 +38,10 @@ public class Rogue {
 		skillList.add("Persuasion");
 		skillList.add("Sleight of Hand");
 		skillList.add("Stealth");
+		
+		sThrows.add(Attributes.DEX);
+		sThrows.add(Attributes.INT);
+		
 		createJPanel();
 		
 	}
@@ -79,5 +85,6 @@ public class Rogue {
 	public JPanel getJPanel(){return jp;}
 	public JButton getAcceptedClass(){return acceptClass;}
 	public ArrayList<String> getSkillList(){return skillList;}
+	public ArrayList<Attributes> getSavingThrows(){return sThrows;}
 }
 

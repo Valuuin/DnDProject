@@ -6,6 +6,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import dndProject.Character.Attributes;
 import net.miginfocom.swing.MigLayout;
 
 public class Ranger {
@@ -21,6 +22,7 @@ public class Ranger {
 	String skills = "Choose three from Animal Handling, Athletics, Insight, Investigation, Nature, Perception, Stealth, and Survial.";
 	
 	ArrayList<String> skillList = new ArrayList<String>();
+	ArrayList<Attributes> sThrows = new ArrayList<Attributes>(); 
 	
 	public Ranger() {
 
@@ -32,6 +34,10 @@ public class Ranger {
 		skillList.add("Perception");
 		skillList.add("Stealth");
 		skillList.add("Survival");
+		
+		sThrows.add(Attributes.DEX);
+		sThrows.add(Attributes.STR);
+		
 		createJPanel();
 		
 	}
@@ -71,5 +77,6 @@ public class Ranger {
 	public JPanel getJPanel(){return jp;}
 	public JButton getAcceptedClass(){return acceptClass;}
 	public ArrayList<String> getSkillList(){return skillList;}
+	public ArrayList<Attributes> getSavingThrows(){return sThrows;}
 }
 

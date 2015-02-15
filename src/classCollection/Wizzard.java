@@ -6,6 +6,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import dndProject.Character.Attributes;
 import net.miginfocom.swing.MigLayout;
 
 public class Wizzard {
@@ -21,7 +22,7 @@ public class Wizzard {
 	String skills = "Choose two from Arcana, History, Insight, Investigation, Medicine, and Religion.";
 	
 	ArrayList<String> skillList = new ArrayList<String>();
-	
+	ArrayList<Attributes> sThrows = new ArrayList<Attributes>(); 
 	
 	public Wizzard() {
 	
@@ -31,6 +32,10 @@ public class Wizzard {
 		skillList.add("Investigation");
 		skillList.add("Medicine");
 		skillList.add("Religion");
+		
+		sThrows.add(Attributes.INT);
+		sThrows.add(Attributes.CHA);
+		
 		createJPanel();
 		
 	}
@@ -69,4 +74,5 @@ public class Wizzard {
 	public JPanel getJPanel(){return jp;}
 	public JButton getAcceptedClass(){return acceptClass;}
 	public ArrayList<String> getSkillList(){return skillList;}
+	public ArrayList<Attributes> getSavingThrows(){return sThrows;}
 }

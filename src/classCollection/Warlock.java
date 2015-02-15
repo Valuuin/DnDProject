@@ -6,6 +6,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import dndProject.Character.Attributes;
 import net.miginfocom.swing.MigLayout;
 
 public class Warlock {
@@ -21,6 +22,7 @@ public class Warlock {
 	String skills = "Choose two skills from Arcana, Deception, History, Intimidation, Investigation, Nature, and Religion.";
 	
 	ArrayList<String> skillList = new ArrayList<String>();
+	ArrayList<Attributes> sThrows = new ArrayList<Attributes>(); 
 	
 	
 	public Warlock() {
@@ -32,6 +34,10 @@ public class Warlock {
 		skillList.add("Investigation");
 		skillList.add("Nature");
 		skillList.add("Religion");
+		
+		sThrows.add(Attributes.WIS);
+		sThrows.add(Attributes.CHA);
+		
 		createJPanel();
 		
 	}
@@ -70,5 +76,6 @@ public class Warlock {
 	public JPanel getJPanel(){return jp;}
 	public JButton getAcceptedClass(){return acceptClass;}
 	public ArrayList<String> getSkillList(){return skillList;}
+	public ArrayList<Attributes> getSavingThrows(){return sThrows;}
 }
 

@@ -6,6 +6,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import dndProject.Character.Attributes;
 import net.miginfocom.swing.MigLayout;
 
 public class Druid {
@@ -22,6 +23,7 @@ public class Druid {
 	String skills = "Choose two from Arcana, Animal Handling, Insight, Medicine, Nature, Perception, Religion and Survival.";
 	
 	ArrayList<String> skillList = new ArrayList<String>();
+	ArrayList<Attributes> sThrows = new ArrayList<Attributes>(); 
 	
 	public Druid() {
 		skillList.add("Arcana");
@@ -33,6 +35,10 @@ public class Druid {
 		skillList.add("Perception");
 		skillList.add("Religion");
 		skillList.add("Survival");
+		
+		sThrows.add(Attributes.INT);
+		sThrows.add(Attributes.WIS);
+		
 		createJPanel();
 		
 
@@ -78,4 +84,5 @@ public class Druid {
 	public JButton getAcceptedClass(){return acceptClass;}
 	public ArrayList<String> getSkillList(){return skillList;}
 	public String getSkillString(){return skills;}
+	public ArrayList<Attributes> getSavingThrows(){return sThrows;}
 }

@@ -6,6 +6,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import dndProject.Character.Attributes;
 import net.miginfocom.swing.MigLayout;
 
 public class Fighter {
@@ -21,7 +22,7 @@ public class Fighter {
 	String skills = "Choose two skills from Acrobatics, Animal Handling, Athletics, History, Insight, Intimidation, Perception, and Survival.";
 	
 	ArrayList<String> skillList = new ArrayList<String>();
-	
+	ArrayList<Attributes> sThrows = new ArrayList<Attributes>(); 
 	
 	
 	
@@ -35,6 +36,10 @@ public class Fighter {
 		skillList.add("Intimidation");
 		skillList.add("Perception");
 		skillList.add("Survival");
+		
+		sThrows.add(Attributes.STR);
+		sThrows.add(Attributes.CON);
+		
 		createJPanel();
 		
 		
@@ -75,4 +80,5 @@ public class Fighter {
 	public JButton getAcceptedClass(){return acceptClass;}
 	public ArrayList<String> getSkillList(){return skillList;}
 	public String getSkillString(){return skills;}
+	public ArrayList<Attributes> getSavingThrows(){return sThrows;}
 }

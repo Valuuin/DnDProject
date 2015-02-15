@@ -6,6 +6,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import dndProject.Character.Attributes;
 import net.miginfocom.swing.MigLayout;
 
 public class Sorcerer {
@@ -21,7 +22,7 @@ public class Sorcerer {
 	String skills = "Choose two from Arcana, Deception, Insight, Intimidation, Persuasion, and Religion.";
 			
 	ArrayList<String> skillList = new ArrayList<String>();
-	
+	ArrayList<Attributes> sThrows = new ArrayList<Attributes>(); 
 	
 	public Sorcerer() {
 
@@ -31,6 +32,10 @@ public class Sorcerer {
 		skillList.add("Intimidation");
 		skillList.add("Persuasion");
 		skillList.add("Religion");
+		
+		sThrows.add(Attributes.CHA);
+		sThrows.add(Attributes.CON);
+		
 		createJPanel();
 		
 	}
@@ -69,4 +74,5 @@ public class Sorcerer {
 	public JPanel getJPanel(){return jp;}
 	public JButton getAcceptedClass(){return acceptClass;}
 	public ArrayList<String> getSkillList(){return skillList;}
+	public ArrayList<Attributes> getSavingThrows(){return sThrows;}
 }

@@ -147,4 +147,5 @@ public class CharacterCreation {
 	public JButton getOpenBackgroundMenu(){return openBackgroundMenu;}
 	public JButton getOpenAttributes(){return openAttributes;}
 	public JButton getOpenProficiencies(){return openProficiencies;}
+	public JButton getSaveToPDF(){return btnToPDF;}
 }

@@ -229,27 +229,11 @@ public class DnDHandBook  {
 		JLabel titleName = new JLabel("DnD Hand Book");
 		titleName.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		startMenu.add(titleName, "cell 0 2,alignx center,aligny center");
-		
-		JButton loadCharacter = new JButton("Load Character");
-		startMenu.add(loadCharacter, "cell 0 6,alignx center,aligny center");
-		
+			
 		JButton createCharacter = new JButton("Create Character");
 		startMenu.add(createCharacter, "cell 0 7,alignx center,aligny center");
 		
-		loadCharacter.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				fC = new FileChooser();
-				try {
-					fC.openFileChooser(character.savePDF());
-				} catch (COSVisitorException | IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}		
-			}
-		});
-		
+	
 		/*
 		 *  BUTTON LISTENERS!!!!!!!
 		 */
@@ -352,6 +336,20 @@ public class DnDHandBook  {
 				cC.setProficienciesResults(prof);
 				proficienciesMenu.setVisible(false);
 				cCreationPanel.setVisible(true);
+			}
+		});
+		
+		JButton saveToPDF = cC.getSaveToPDF();
+		saveToPDF.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				fC = new FileChooser();
+				try {
+					fC.openFileChooser(character.savePDF());
+				} catch (COSVisitorException | IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}		
 			}
 		});
 		

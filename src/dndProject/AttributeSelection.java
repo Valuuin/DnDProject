@@ -1,8 +1,11 @@
 package dndProject;
 
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.text.NumberFormat;
+import java.util.ArrayList;
 
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
@@ -16,7 +19,7 @@ import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.NumberFormatter;
 import javax.swing.JButton;
 
-public class AttributeSelection implements PropertyChangeListener {
+public class AttributeSelection implements FocusListener {
 
 	private JPanel aS;
 	private JButton btnBack;
@@ -60,42 +63,42 @@ public class AttributeSelection implements PropertyChangeListener {
 		JLabel strength = new JLabel("Strength:");
 		aS.add(strength, "cell 1 4,alignx center,aligny center");
 		strengthValue = new JFormattedTextField( new DefaultFormatterFactory(new NumberFormatter(amountDisplayed)));
-		strengthValue.addPropertyChangeListener("value", this);
+		strengthValue.addFocusListener(this);
 		aS.add(strengthValue,"cell 2 4,growx" );
 		strength.setToolTipText("<html> Measures: Natural athleticism,  bodily power<br> Important for:  Barbarian, Fighter,  Paladin</html>");
 		
 		JLabel dexterity = new JLabel("Dexterity:");
 		aS.add(dexterity, "cell 3 4,alignx center,aligny center");
 		dexterityValue = new JFormattedTextField( new DefaultFormatterFactory(new NumberFormatter(amountDisplayed)));
-		dexterityValue.addPropertyChangeListener("value", this);
+		dexterityValue.addFocusListener(this);
 		aS.add(dexterityValue,"cell 4 4,growx" );
 		dexterity.setToolTipText("<html>Measures: Physical agility, reflexes, balance, poise<br>Important for: Monk, Ranger, Rogue</html>");
 		
 		JLabel constitution = new JLabel("Constitution:");
 		aS.add(constitution, "cell 5 4,alignx center,aligny center");
 		constitutionValue = new JFormattedTextField( new DefaultFormatterFactory(new NumberFormatter(amountDisplayed)));
-		constitutionValue.addPropertyChangeListener("value", this);
+		constitutionValue.addFocusListener(this);
 		aS.add(constitutionValue,"cell 6 4,growx" );
 		constitution.setToolTipText("<html>Measures: Health, stamina, vital force<br>Important for: Everyone</html>");
 		
 		JLabel intelligence = new JLabel("Intelligence:");
 		aS.add(intelligence, "cell 7 4,alignx center,aligny center");
 		intelligenceValue = new JFormattedTextField( new DefaultFormatterFactory(new NumberFormatter(amountDisplayed)));
-		intelligenceValue.addPropertyChangeListener("value", this);
+		intelligenceValue.addFocusListener(this);
 		aS.add(intelligenceValue,"cell 8 4,growx" );
 		intelligence.setToolTipText("<html>Measures: Mental acuity, information recall, analytical skill<br>Important for: Wizard</html>");
 		
 		JLabel wisdom = new JLabel("Wisdom:");
 		aS.add(wisdom, "cell 9 4,alignx center,aligny center");
 		wisdomValue = new JFormattedTextField( new DefaultFormatterFactory(new NumberFormatter(amountDisplayed)));
-		wisdomValue.addPropertyChangeListener("value", this);
+		wisdomValue.addFocusListener(this);
 		aS.add(wisdomValue,"cell 10 4,growx" );
 		wisdom.setToolTipText("<html>Measures: Awareness, intuition, insight<br>Important for: Cleric, Druid </html>");
 		
 		JLabel charisma = new JLabel("Charisma:");
 		aS.add(charisma, "cell 11 4,alignx center,aligny center");
 		charismaValue = new JFormattedTextField( new DefaultFormatterFactory(new NumberFormatter(amountDisplayed)));
-		charismaValue.addPropertyChangeListener("value", this);
+		charismaValue.addFocusListener(this);
 		aS.add(charismaValue,"cell 12 4,growx" );
 		charisma.setToolTipText("<html>Measures: Confidence, eloquence, leadership<br>Important for: Bard,  sorcerer, warlock</html>");
 		
@@ -142,7 +145,9 @@ public class AttributeSelection implements PropertyChangeListener {
 		aS.add(btnSave, "cell 7 8,alignx center,aligny center");
 		
 	}
-	public JButton backToCC(){return btnBack;}
+	public JButton getAttributeSelectionBack(){return btnBack;}
+	public JButton getAttributeSelectionSave(){return btnSave;} 
+	
 	public void updateTextFields(Character c){
 		
 		raceChoiseResults.setText("As a "+c.getRaceName()+" you Recieve These Atribute bonuses:");
@@ -157,9 +162,45 @@ public class AttributeSelection implements PropertyChangeListener {
 	}
 	
 	public JPanel getAttributeSelectionPanel(){return aS;}
+	
+	public ArrayList<String> getAttributeResults(){
+		ArrayList<String> results = new ArrayList<String>();
+		results.add(totalStrengthValue.getText());
+		results.add(totalDexterityValue.getText());
+		results.add(totalConstitutionValue.getText());
+		results.add(totalIntelligenceValue.getText());
+		results.add(totalWisdomValue.getText());
+		results.add(totalCharismaValue.getText());
+		return results;
+	}
+	
+	public void resetAttributes(){
+		strengthValue.setText("");
+		totalStrengthValue.setText("");
+	
+		dexterityValue.setText("");
+		totalDexterityValue.setText("");
+	
+		constitutionValue.setText("");
+		totalConstitutionValue.setText("");
+		
+		intelligenceValue.setText("");
+		totalIntelligenceValue.setText("");
+		
+		wisdomValue.setText("");
+		totalWisdomValue.setText("");
+		
+		charismaValue.setText("");
+		totalCharismaValue.setText("");
+	}
+	
 
-	public void propertyChange(PropertyChangeEvent evt) {
-		Object source = evt.getSource();
+	public void focusGained(FocusEvent e) {
+		
+	}
+
+	public void focusLost(FocusEvent e) {
+		Object source = e.getSource();
 		if(source == strengthValue){validatingValue(strengthValue,totalStrengthValue,0);}
 		else if(source == dexterityValue){validatingValue(dexterityValue,totalDexterityValue,1);}
 		else if(source == constitutionValue){validatingValue(constitutionValue,totalConstitutionValue,2);}
@@ -170,16 +211,15 @@ public class AttributeSelection implements PropertyChangeListener {
 	
 	private void validatingValue(JFormattedTextField testedValue, JTextField savedValue, int index ){
 		try{
-			
 			int tempValue = Integer.parseInt(testedValue.getText());
 			if (tempValue > 20){
-				testedValue.setText("0");
+				testedValue.setText("");
 				JOptionPane.showMessageDialog(testedValue, "The value cannot be larger than 20");
 			}
 			else{
 				int tempFinal  = tempValue + Integer.parseInt(c.getAtributes().get(index));
 				if (tempFinal > 20){
-					testedValue.setText("0");
+					testedValue.setText("");
 					JOptionPane.showMessageDialog(testedValue, "Calculated Value was larger than 20 when bonus was applied");
 				}
 				else{
@@ -189,5 +229,5 @@ public class AttributeSelection implements PropertyChangeListener {
 		}catch(Exception e){
 			
 		}
-    }
+	}
 }

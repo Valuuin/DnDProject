@@ -14,6 +14,10 @@ import java.awt.Font;
 
 import javax.swing.JSplitPane;
 
+import org.apache.pdfbox.exceptions.COSVisitorException;
+
+import components.FileChooser;
+
 import backgroundCollection.Artisan;
 import backgroundCollection.Charlatan;
 import backgroundCollection.Criminal;
@@ -59,6 +63,7 @@ import raceCollection.halflingMenu.StoutHalfling;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import net.miginfocom.swing.MigLayout;
@@ -79,6 +84,7 @@ public class DnDHandBook  {
 	public BackgroundMenu         bM;
 	public AttributeSelection     aS;
 	public ProficienciesSelection pS;
+	public FileChooser		  fC;
 	
 	// Races
 	public Human             hm;
@@ -230,7 +236,19 @@ public class DnDHandBook  {
 		JButton createCharacter = new JButton("Create Character");
 		startMenu.add(createCharacter, "cell 0 7,alignx center,aligny center");
 		
-		
+		loadCharacter.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				fC = new FileChooser();
+				try {
+					fC.openFileChooser(character.savePDF());
+				} catch (COSVisitorException | IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}		
+			}
+		});
 		
 		/*
 		 *  BUTTON LISTENERS!!!!!!!
@@ -286,9 +304,21 @@ public class DnDHandBook  {
 			}
 		});
 		
-		JButton attributeSelectionBack = aS.backToCC();
+		JButton attributeSelectionBack = aS.getAttributeSelectionBack();
 		attributeSelectionBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				aS.resetAttributes();
+				attributeMenu.setVisible(false);
+				cCreationPanel.setVisible(true);
+			}
+		});
+		
+		JButton attributeSelectionSave = aS.getAttributeSelectionSave();
+		attributeSelectionSave.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ArrayList<String> attri = aS.getAttributeResults();
+				cC.setAttributesResults(attri);
+				character.setSavedAttributes(attri);
 				attributeMenu.setVisible(false);
 				cCreationPanel.setVisible(true);
 			}
@@ -319,7 +349,7 @@ public class DnDHandBook  {
 			public void actionPerformed(ActionEvent e) {
 				ArrayList<String> prof = pS.getProficienciesResults();
 				character.setSavedProficiences(pS.getProficienciesResults());
-				cC.setProficienciesREsults(prof);
+				cC.setProficienciesResults(prof);
 				proficienciesMenu.setVisible(false);
 				cCreationPanel.setVisible(true);
 			}
@@ -374,6 +404,8 @@ public class DnDHandBook  {
 	public void waitForRaceAcceptance( JButton race, final String name, final Object r, final Race rName){
 			race.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				if (character.getRaceName() != name)
+					resetAtributesAndProficiences();
 				raceMenu.setVisible(false);
 				character.setRace(r,name,rName);
 				cC.setRace(name);
@@ -385,6 +417,8 @@ public class DnDHandBook  {
 	public void waitForClassAcceptance( JButton classButton, final String className, final Object c, final cClass cName){
 		classButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				if(character.getClassName() != className)
+					resetAtributesAndProficiences();
 				classMenu.setVisible(false);
 				character.setClass(c,className,cName);
 				cC.setClass(className);
@@ -396,12 +430,21 @@ public class DnDHandBook  {
 	public void waitForBackgroundAcceptance( JButton backgroundButton, final String backgroundName, final Object b, final bGround bName){
 		backgroundButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				if(character.getBackgroundName() != backgroundName)
+					resetAtributesAndProficiences();
 				backgroundMenu.setVisible(false);
 				character.setBackground(b, backgroundName,bName);
 				cC.setBackground(backgroundName);
 				cCreationPanel.setVisible(true);
 			}
 		});
+	}
+	
+	private void resetAtributesAndProficiences(){
+		pS.resetProficiencies();
+		cC.resetProficienciesResults();
+		aS.resetAttributes();
+		cC.resetAttributesResults();
 	}
 
 }

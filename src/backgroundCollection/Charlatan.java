@@ -21,10 +21,10 @@ public class Charlatan {
 		
 	public Charlatan() {
 
-		skillProf.add(Proficiencies.INSIGHT);
-		skillProf.add(Proficiencies.REGLIGION);
+		skillProf.add(Proficiencies.DECEPTION);
+		skillProf.add(Proficiencies.SLEIGHT_OF_HAND);
 		toolProf.add("Disguise kit");
-		toolProf.add("Forgey kit");
+		toolProf.add("Forgery kit");
 		
 		createJPanel();
 	}
@@ -41,7 +41,7 @@ public class Charlatan {
 		
 		//tools
 		jp.add(new JLabel("<html><b>Tool Proficiencies:</b></html>"), "cell 0 2,alignx right,aligny bottom");
-		jp.add(new JLabel(toolProf.get(0) +", "+toolProf.get(1)), "cell 1 2,alignx left,aligny bottom");		
+		jp.add(new JLabel("Disguise kit, Forgery kit"), "cell 1 2,alignx left,aligny bottom");		
 		
 		//equipment
 		jp.add(new JLabel("<html><b>Equipment:</b></html>"), "cell 0 3,alignx right,aligny bottom");

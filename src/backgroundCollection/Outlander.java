@@ -1,9 +1,12 @@
 package backgroundCollection;
 
+import java.util.ArrayList;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import dndProject.Character.Proficiencies;
 import net.miginfocom.swing.MigLayout;
 
 public class Outlander {
@@ -13,13 +16,24 @@ public class Outlander {
 	private JButton acceptBackground;
 
 	//String unique to outlander
-	String[] skillProf = {"Athletics", "Survival"};
-	String toolProf = "One type of musical instrument";
+	//String[] skillProf = {"Athletics", "Survival"};
+	ArrayList<Proficiencies> skillProf = new ArrayList<Proficiencies>();
+	//String toolProf = "One type of musical instrument";
+	ArrayList<String> toolProf = new ArrayList<String>();
 	String languages = "One of your choice";
 	String equipment = "A staff, a hunting trap, a trophy from an animal you killed, a set of traveler's clothes, and a belt pouch containing 10GP";
 	
 	public Outlander() {
 
+		skillProf.add(Proficiencies.ATHETICS);
+		skillProf.add(Proficiencies.SURVIVAL);
+		toolProf.add("One type of musical instrument"");
+	
+		
+		createJPanel();
+	}
+		
+		public void createJPanel(){
 		jp = new JPanel();
 		jp.setSize(640, 480);
 		jp.setLayout(new MigLayout("", "[25%][75%]", "[10%][10%][10%][10%][10%][10%][10%][10%][10%][10%][10%]"));
@@ -27,11 +41,11 @@ public class Outlander {
 		
 		//Proficiencies
 		jp.add(new JLabel("<html><b>Proficiencies:</b></html>"), "cell 0 1,alignx right,aligny bottom");
-		jp.add(new JLabel(skillProf[0] +", "+skillProf[1]), "cell 1 1,alignx left,aligny bottom");
+		jp.add(new JLabel("Athletics, Survival"), "cell 1 1,alignx left,aligny bottom");
 		
 		//tools
 		jp.add(new JLabel("<html><b>Tool Proficiencies:</b></html>"), "cell 0 2,alignx right,aligny bottom");
-		jp.add(new JLabel(toolProf), "cell 1 2,alignx left,aligny bottom");		
+		jp.add(new JLabel("One type of musical instrument"), "cell 1 2,alignx left,aligny bottom");		
 		
 		//equipment
 		jp.add(new JLabel("<html><b>Equipment:</b></html>"), "cell 0 3,alignx right,aligny bottom");
@@ -48,6 +62,8 @@ public class Outlander {
 
 	public JPanel getJPanel(){return jp;}
 	public JButton getAcceptedBackground(){return acceptBackground;}
+	public ArrayList<Proficiencies> getProficiencies(){return skillProf;}
+	public ArrayList<String> getTools(){return toolProf;}
 }
 
 

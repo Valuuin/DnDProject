@@ -6,25 +6,15 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
-
-
-
-
-
-
-
-
-
-
 import org.apache.pdfbox.cos.COSBoolean;
 import org.apache.pdfbox.cos.COSName;
 import org.apache.pdfbox.exceptions.COSVisitorException;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDDocumentCatalog;
 import org.apache.pdfbox.pdmodel.interactive.form.PDAcroForm;
+import org.apache.pdfbox.pdmodel.interactive.form.PDCheckbox;
 import org.apache.pdfbox.pdmodel.interactive.form.PDField;
+import org.apache.pdfbox.pdmodel.interactive.form.PDRadioCollection;
 import org.apache.pdfbox.pdmodel.interactive.form.PDXFA;
 
 import classCollection.Barbarian;
@@ -78,7 +68,8 @@ public class Character {
 	
 	private static PDDocument pdfTemplate;
 	static PDAcroForm acroForm;
-
+	static PDDocumentCatalog docCatalog;
+	
 	Race rName;
 	cClass cName;
 	bGround bName;
@@ -96,12 +87,13 @@ public class Character {
 	ArrayList<String> proficienciesSelected = new ArrayList<String>();
 	ArrayList<String> attributesSelected = new ArrayList<String>();
 	
-	ArrayList<String> errorString = new ArrayList<String>();
+	ArrayList<String>        errorString = new ArrayList<String>();
 	ArrayList<Proficiencies> errorProficiences= new ArrayList<Proficiencies>();
-	ArrayList<Attributes> savingThrows = new ArrayList<Attributes>();
+	ArrayList<Attributes>    savingThrows = new ArrayList<Attributes>();
 	
-	String[] savingThrowsResults = new String[] {"2","2","2","2","2","2"};
+	String[] savingThrowsResults = new String[] {"0","0","0","0","0","0"};
 	String[] attributesModifiers = new String[6];
+	String[] skillProficiences   = new String[18];
 	
 	public Character(){
 		selectedRace = null;
@@ -122,7 +114,7 @@ public class Character {
 			e.printStackTrace();
 		}
 
-	    PDDocumentCatalog docCatalog = pdfTemplate.getDocumentCatalog();
+	    docCatalog = pdfTemplate.getDocumentCatalog();
 	    acroForm = docCatalog.getAcroForm();
 	    acroForm.getDictionary().setItem(COSName.getPDFName("NeedAppearances"), COSBoolean.TRUE);
 		
@@ -273,17 +265,17 @@ public class Character {
 		if (selectedClass != null){
 			switch(cName){
 			case BARBARIAN: savingThrows = (ArrayList<Attributes>)((Barbarian) selectedClass).getSavingThrows(); break;
-			case BARD:      savingThrows = (ArrayList<Attributes>)((Bard) selectedClass).getSavingThrows(); break;
-			case CLERIC:	savingThrows = (ArrayList<Attributes>)((Cleric) selectedClass).getSavingThrows(); break;
-			case DRUID:		savingThrows = (ArrayList<Attributes>)((Druid) selectedClass).getSavingThrows(); break;
-			case FIGHTER:	savingThrows = (ArrayList<Attributes>)((Fighter) selectedClass).getSavingThrows(); break;
-			case MONK:		savingThrows = (ArrayList<Attributes>)((Monk) selectedClass).getSavingThrows(); break;
-			case PALADIN:	savingThrows = (ArrayList<Attributes>)((Paladin) selectedClass).getSavingThrows(); break;
-			case RANGER:	savingThrows = (ArrayList<Attributes>)((Ranger) selectedClass).getSavingThrows(); break;
-			case ROGUE:		savingThrows = (ArrayList<Attributes>)((Rogue) selectedClass).getSavingThrows(); break;
-			case SORCERER:	savingThrows = (ArrayList<Attributes>)((Sorcerer) selectedClass).getSavingThrows(); break;
-			case WARLOCK:	savingThrows = (ArrayList<Attributes>)((Warlock) selectedClass).getSavingThrows(); break;
-			case WIZZARD:	savingThrows = (ArrayList<Attributes>)((Wizzard) selectedClass).getSavingThrows(); break;
+			case BARD:      savingThrows = (ArrayList<Attributes>)((Bard)      selectedClass).getSavingThrows(); break;
+			case CLERIC:	savingThrows = (ArrayList<Attributes>)((Cleric)    selectedClass).getSavingThrows(); break;
+			case DRUID:		savingThrows = (ArrayList<Attributes>)((Druid)     selectedClass).getSavingThrows(); break;
+			case FIGHTER:	savingThrows = (ArrayList<Attributes>)((Fighter)   selectedClass).getSavingThrows(); break;
+			case MONK:		savingThrows = (ArrayList<Attributes>)((Monk)      selectedClass).getSavingThrows(); break;
+			case PALADIN:	savingThrows = (ArrayList<Attributes>)((Paladin)   selectedClass).getSavingThrows(); break;
+			case RANGER:	savingThrows = (ArrayList<Attributes>)((Ranger)    selectedClass).getSavingThrows(); break;
+			case ROGUE:		savingThrows = (ArrayList<Attributes>)((Rogue)     selectedClass).getSavingThrows(); break;
+			case SORCERER:	savingThrows = (ArrayList<Attributes>)((Sorcerer)  selectedClass).getSavingThrows(); break;
+			case WARLOCK:	savingThrows = (ArrayList<Attributes>)((Warlock)   selectedClass).getSavingThrows(); break;
+			case WIZZARD:	savingThrows = (ArrayList<Attributes>)((Wizzard)   selectedClass).getSavingThrows(); break;
 			default: return "";
 			}
 		}
@@ -292,11 +284,10 @@ public class Character {
 
 	public PDDocument savePDF() throws IOException, COSVisitorException{
 		setModifiers();
-		setSavingThrowMod();
-		 
-		setField("Class&Level", "newClass" + " LvL: 1");
-		setField("Race",        "newRace");
-		setField("Background",  "newBackground");
+
+		setField("Class&Level", newClass + " LvL: 1");
+		setField("Race",        newRace);
+		setField("Background",  newBackground);
 		setField("ProfBonus" ,  profBonus );
 		
 		// Attributes
@@ -314,77 +305,13 @@ public class Character {
 		setField("CHA02", attributesModifiers[5]);
 	
 		// Saving Throws
-		setField("STR04",   ""  ); // Button 
-		setField("STR03", savingThrowsResults[0] );
-		setField("DEX04",   ""  ); // Button
-		setField("DEX03", savingThrowsResults[1] );
-		setField("CON04",   ""  ); // Button
-		setField("CON03", savingThrowsResults[2] );
-		setField("INT04",   ""  ); // Button
-		setField("INT03", savingThrowsResults[3] );
-		setField("WIS04",   ""  ); // Button
-		setField("WIS03", savingThrowsResults[4] );
-		setField("CHA04",   ""  ); // Button
-		setField("CHA03", savingThrowsResults[5] );
+		setSavingThrowMod();
 		
 		// Skills
-		setField("acro02", ""); //Btn
-		setField("acro01", "");
-		setField("Anim02", ""); //Btn
-		setField("anim01", "");
-		setField("arca02", ""); //Btn
-		setField("arca01", "");
-		setField("athl02", ""); //Btn
-		setField("Athl01", "");
-		setField("dece02", ""); //Btn
-		setField("dece01", "");
-		setField("hist02", ""); //Btn
-		setField("hist01", "");
-		setField("insi02", ""); //Btn
-		setField("insi01", "");
-		setField("inti02", ""); //Btn
-		setField("inti01", "");
-		setField("inve02", ""); //Btn
-		setField("inve01", "");
-		setField("medi02", ""); //Btn
-		setField("medi01", "");
-		setField("natu02", ""); //Btn
-		setField("natu01", "");
-		setField("perc02", ""); //Btn
-		setField("perc01", "");
-		setField("perf02", ""); //Btn
-		setField("perf01", "");
-	    setField("pers02", ""); //Btn
-	    setField("pers01", "");
-	    setField("reli02", ""); //Btn
-	    setField("reli01", "");
-	    setField("slei02", ""); //Btn
-	    setField("slei01", "");
-	    setField("stea02", ""); //Btn
-	    setField("stea01", "");
-	    setField("surv02", ""); //Btn
-	    setField("surv01", "");
+		setSkillProficiences();
 		
-		setField("Perception",   "");
-		setField("ArmorClass01", "");
-		setField("Initiative01", "");
-		setField("Speed01",      "");
-		setField("HP max",       "");
-		setField("HD Total",     "");
+		setField("Perception", attributesSelected.get(4));
 		
-		
-		
-	    // Get field names
-	    @SuppressWarnings("unchecked")
-		List<PDField> fieldList = acroForm.getFields();
-
-	    // String the object array
-	   
-	    for (PDField sField : fieldList) {
-	        System.out.print("f : "+  sField.getFullyQualifiedName());
-	        System.out.println(" Type: "+ sField.getFieldType());
-	    }
-	    
 	    // Save edited file
 	    return pdfTemplate;
 	    //pdfTemplate.save("s.pdf");
@@ -401,24 +328,269 @@ public class Character {
 		}
 	}
 	
-	private static void toggelButton(String name){}
+	private static void toggelButton(String name) throws IOException{
+		PDField buttonToggel = acroForm.getField(name);
+		if(buttonToggel != null){
+		  ((PDCheckbox) buttonToggel).check();
+		}
+		else{
+			System.err.println( "No field found with name:" + name );
+		}
+	}
 
-	private void setSavingThrowMod() {
-		setSavingThrows();
+	
+	private void setSkillProficiences() throws IOException{
+		
+		System.out.println("prof size : "+ proficienciesSelected.size());
+		
+		for(int i = 0; i < attributesModifiers.length; i++){
+			switch(i){
+			case 0:{//STR
+				// Athletics
+				if(proficienciesSelected.contains("Athletics")){
+					toggelButton("athl02"); //Btn
+					setField("Athl01", addModAndProfBonus(i));
+				}
+				else{
+					setField("Athl01", attributesModifiers[0]);
+				}
+				break;
+			}
+			case 1:{//DEX
+				// Acrobatics
+				if(proficienciesSelected.contains("Acrobatics")) {
+					toggelButton("acro02"); //Btn
+					setField("acro01", addModAndProfBonus(i));
+				}
+				else{
+					setField("acro01", attributesModifiers[1]);
+				}
+				// Sleight of hand
+				if(proficienciesSelected.contains("Sleight of Hand")) {
+					toggelButton("slei02"); //Btn
+				    setField("slei01", addModAndProfBonus(i));
+				}
+				else{
+				    setField("slei01", attributesModifiers[1]);
+				}
+				// Stealth
+				if(proficienciesSelected.contains("Stealth")){
+					toggelButton("stea02"); //Btn
+					setField("stea01", addModAndProfBonus(i));
+				}
+				else{
+					setField("stea01", attributesModifiers[1]);
+				}
 				
-		for(Attributes a : savingThrows){
-			switch (a) {
-			case CHA:  attributesModifiers[5]=String.valueOf(Integer.parseInt(attributesModifiers[5]) + Integer.parseInt(profBonus)); break;
-			case CON:  attributesModifiers[2]=String.valueOf(Integer.parseInt(attributesModifiers[2]) + Integer.parseInt(profBonus)); break;
-			case DEX:  attributesModifiers[1]=String.valueOf(Integer.parseInt(attributesModifiers[1]) + Integer.parseInt(profBonus)); break;
-			case INT:  attributesModifiers[3]=String.valueOf(Integer.parseInt(attributesModifiers[3]) + Integer.parseInt(profBonus)); break;
-			case STR:  attributesModifiers[0]=String.valueOf(Integer.parseInt(attributesModifiers[0]) + Integer.parseInt(profBonus)); break;
-			case WIS:  attributesModifiers[4]=String.valueOf(Integer.parseInt(attributesModifiers[4]) + Integer.parseInt(profBonus)); break;
+				break;
+			}
+			case 2:{//CON
+				break;
+			}
+			case 3:{//INT
+				
+				// Arcana
+				if(proficienciesSelected.contains("Arcana"))   {
+					toggelButton("arca02"); //Btn
+					setField("arca01", addModAndProfBonus(i));
+				}
+				else{
+					setField("arca01", attributesModifiers[3]);
+				}
+				
+				// History
+				if(proficienciesSelected.contains("History"))  {
+					toggelButton("hist02"); //Btn
+					setField("hist01", addModAndProfBonus(i));
+				}
+				else{
+					setField("hist01", attributesModifiers[3]);
+				}
+				
+				// Investigation
+				if(proficienciesSelected.contains("Sleight of Hand")) {
+					toggelButton("inve02"); //Btn
+					setField("inve01", addModAndProfBonus(i));
+				}
+				else{
+					setField("inve01", attributesModifiers[3]);
+				}
+				
+				// Nature
+				if(proficienciesSelected.contains("Nature")){
+					toggelButton("natu02"); //Btn
+					setField("natu01", addModAndProfBonus(i));
+				}
+				else{
+					setField("natu01", attributesModifiers[3]);
+				}
+				
+				// Religion
+				if(proficienciesSelected.contains("Religion")){
+					toggelButton("reli02"); //Btn
+				    setField("reli01", addModAndProfBonus(i));
+				}
+				else{
+				    setField("reli01", attributesModifiers[3]);
+				}
+
+				break;
+			}
+			case 4:{//WIS
+				
+				// Animal Handling
+				if(proficienciesSelected.contains("Animal Handling")){
+					toggelButton("Anim02"); //Btn
+					setField("anim01", addModAndProfBonus(i));
+				}
+				else{
+					setField("anim01", attributesModifiers[4]);
+				}
+				
+				// Insight
+				if(proficienciesSelected.contains("Religion")){
+					toggelButton("insi02"); //Btn
+					setField("insi01", addModAndProfBonus(i));
+				}
+				else{
+					setField("insi01", attributesModifiers[4]);
+				}
+				
+				// Medicine
+				if(proficienciesSelected.contains("Medicine")){
+					toggelButton("medi02"); //Btn
+					setField("medi01", addModAndProfBonus(i));
+				}
+				else{
+					setField("medi01", attributesModifiers[4]);
+				}
+				
+				// Perception
+				if(proficienciesSelected.contains("Perception")){
+					toggelButton("perc02"); //Btn
+					setField("perc01", addModAndProfBonus(i));
+				}
+				else{
+					setField("perc01", attributesModifiers[4]);
+				}
+				
+				// Survival
+				if(proficienciesSelected.contains("Survival")){
+					toggelButton("surv02"); //Btn
+				    setField("surv01", addModAndProfBonus(i));
+				}
+				else{
+				    setField("surv01", attributesModifiers[4]);
+				}
+			
+				break;
+			}
+			case 5:{///CHA
+				// Deception
+				if(proficienciesSelected.contains("Deception")){
+					toggelButton("dece02"); //Btn
+					setField("dece01", addModAndProfBonus(i));
+				}
+				else{
+					setField("dece01", attributesModifiers[5]);
+				}
+				
+				// Intimidation
+				if(proficienciesSelected.contains("Intimidation")){
+					toggelButton("inti02"); //Btn
+					setField("inti01", addModAndProfBonus(i));
+				}
+				else{
+					setField("inti01", attributesModifiers[5]);
+				}
+				
+				// Performance
+				if(proficienciesSelected.contains("Performance")){
+					toggelButton("perf02"); //Btn
+					setField("perf01", addModAndProfBonus(i));
+				}
+				else{
+					setField("perf01", attributesModifiers[5]);
+				}
+				
+				// Persuasion
+				if(proficienciesSelected.contains("Persuasion")){
+					toggelButton("pers02"); //Btn
+				    setField("pers01", addModAndProfBonus(i));
+				}
+				else{
+				    setField("pers01", attributesModifiers[5]);
+				}
+
+				break;
+			}
 			default: break;
 			}
 		}
 	}
-
+	
+	private String addModAndProfBonus(int i){
+		return String.valueOf(Integer.parseInt(attributesModifiers[i]) + Integer.parseInt(profBonus)); 
+	}
+	
+	private void setSavingThrowMod() throws IOException {
+		setSavingThrows();
+		
+		//CHA
+		if(savingThrows.contains(Attributes.CHA)){
+			toggelButton("CHA04"); // Button
+			setField("CHA03", addModAndProfBonus(5));
+		}
+		else{
+			setField("CHA03", attributesModifiers[5]);
+		}
+		
+		//DEX
+		if(savingThrows.contains(Attributes.DEX)){
+			toggelButton("DEX04"); // Button
+			setField("DEX03", addModAndProfBonus(1));
+		}
+		else{
+			setField("DEX03", attributesModifiers[1]);
+		}
+		
+		//INT
+		if(savingThrows.contains(Attributes.INT)){
+			toggelButton("INT04"); // Button
+			setField("INT03", addModAndProfBonus(3)); 
+		}
+		else{
+			setField("INT03", attributesModifiers[3]); 
+		}
+		
+		//STR
+		if(savingThrows.contains(Attributes.STR)){
+			toggelButton("STR04"); // Button 
+			setField("STR03", addModAndProfBonus(0)); 
+		}
+		else{
+			setField("STR03", attributesModifiers[0]); 
+		}
+		
+		//CON
+		if(savingThrows.contains(Attributes.CON)){
+			toggelButton("CON04"); // Button
+			setField("CON03", addModAndProfBonus(2)); 
+		}
+		else{
+			setField("CON03", attributesModifiers[2]); 
+		}
+		
+		//WIS
+		if(savingThrows.contains(Attributes.WIS)){
+			toggelButton("WIS04"); // Button
+			setField("WIS03", addModAndProfBonus(4));
+		}
+		else{
+			setField("WIS03", attributesModifiers[4]);
+		}
+	
+	}
 
 	private void setModifiers(){
 		int index = 0;

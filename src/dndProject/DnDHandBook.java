@@ -332,7 +332,7 @@ public class DnDHandBook  {
 		proficienciesSaveButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ArrayList<String> prof = pS.getProficienciesResults();
-				character.setSavedProficiences(pS.getProficienciesResults());
+				character.setSavedProficiences(prof);
 				cC.setProficienciesResults(prof);
 				proficienciesMenu.setVisible(false);
 				cCreationPanel.setVisible(true);

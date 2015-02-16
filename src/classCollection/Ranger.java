@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
+import dndProject.Character.Proficiencies;
 import dndProject.Character.Attributes;
 import net.miginfocom.swing.MigLayout;
 
@@ -21,19 +21,19 @@ public class Ranger {
 	String savingThrows = "Strength and Dexterity are the Ranger's saving throws.";
 	String skills = "Choose three from Animal Handling, Athletics, Insight, Investigation, Nature, Perception, Stealth, and Survial.";
 	
-	ArrayList<String> skillList = new ArrayList<String>();
+	ArrayList<Proficiencies> skillList = new ArrayList<Proficiencies>();
 	ArrayList<Attributes> sThrows = new ArrayList<Attributes>(); 
 	
 	public Ranger() {
 
-		skillList.add("Animal Handling");
-		skillList.add("Athletics");
-		skillList.add("Insight");
-		skillList.add("Investigation");
-		skillList.add("Nature");
-		skillList.add("Perception");
-		skillList.add("Stealth");
-		skillList.add("Survival");
+		skillList.add(Proficiencies.ANIMAL_HANDELING);
+		skillList.add(Proficiencies.ATHETICS);
+		skillList.add(Proficiencies.INSIGHT);
+		skillList.add(Proficiencies.INVESTIGATION);
+		skillList.add(Proficiencies.NATURE);
+		skillList.add(Proficiencies.PERCEPTION);
+		skillList.add(Proficiencies.STEALTH);
+		skillList.add(Proficiencies.SURVIVAL);
 		
 		sThrows.add(Attributes.DEX);
 		sThrows.add(Attributes.STR);
@@ -76,7 +76,16 @@ public class Ranger {
 
 	public JPanel getJPanel(){return jp;}
 	public JButton getAcceptedClass(){return acceptClass;}
-	public ArrayList<String> getSkillList(){return skillList;}
 	public ArrayList<Attributes> getSavingThrows(){return sThrows;}
+
+	public String getSkillString() {
+		// TODO Auto-generated method stub
+		return skills;
+	}
+
+	public ArrayList<Proficiencies> getProficiencies() {
+		// TODO Auto-generated method stub
+		return skillList;
+	}
 }
 

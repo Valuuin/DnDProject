@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
+import dndProject.Character.Proficiencies;
 import dndProject.Character.Attributes;
 import net.miginfocom.swing.MigLayout;
 
@@ -23,21 +23,21 @@ public class Rogue {
 	String savingThrows = "Dexterity and Intelligence are the Rogue's saving throws.";
 	String skills = "Choose four from Acrobatics, Athletics, Deception, Insight, Intimidation, Investigation, Perception, Performance, Persuasion, Sleight of Hand, and Stealth.";
 	
-	ArrayList<String> skillList = new ArrayList<String>();
+	ArrayList<Proficiencies> skillList = new ArrayList<Proficiencies>();
 	ArrayList<Attributes> sThrows = new ArrayList<Attributes>(); 
 	
 	public Rogue() {
 		
-		skillList.add("Acrobatics");
-		skillList.add("Athletics");
-		skillList.add("Deception");
-		skillList.add("Insight");
-		skillList.add("Intimidation");
-		skillList.add("Perception");
-		skillList.add("Performance");
-		skillList.add("Persuasion");
-		skillList.add("Sleight of Hand");
-		skillList.add("Stealth");
+		skillList.add(Proficiencies.ACROBATICS);
+		skillList.add(Proficiencies.ATHETICS);
+		skillList.add(Proficiencies.DECEPTION);
+		skillList.add(Proficiencies.INSIGHT);
+		skillList.add(Proficiencies.INTIMIDATION);
+		skillList.add(Proficiencies.PERCEPTION);
+		skillList.add(Proficiencies.PERFORMANCE);
+		skillList.add(Proficiencies.PERSUASION);
+		skillList.add(Proficiencies.SLEIGHT_OF_HAND);
+		skillList.add(Proficiencies.STEALTH);
 		
 		sThrows.add(Attributes.DEX);
 		sThrows.add(Attributes.INT);
@@ -84,7 +84,16 @@ public class Rogue {
 
 	public JPanel getJPanel(){return jp;}
 	public JButton getAcceptedClass(){return acceptClass;}
-	public ArrayList<String> getSkillList(){return skillList;}
 	public ArrayList<Attributes> getSavingThrows(){return sThrows;}
+
+	public String getSkillString() {
+		// TODO Auto-generated method stub
+		return skills;
+	}
+
+	public ArrayList<Proficiencies> getProficiencies() {
+		// TODO Auto-generated method stub
+		return skillList;
+	}
 }
 

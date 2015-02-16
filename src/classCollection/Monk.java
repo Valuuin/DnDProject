@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
+import dndProject.Character.Proficiencies;
 import dndProject.Character.Attributes;
 import net.miginfocom.swing.MigLayout;
 
@@ -21,17 +21,17 @@ public class Monk {
 	String savingThrows = "Strength and Dexterity are the Monk's saving throws.";
 	String skills = "Choose two from Acrobatics, Athletics, History, Insight, Religion, and Stealth.";
 	
-	ArrayList<String> skillList = new ArrayList<String>();
+	ArrayList<Proficiencies> skillList = new ArrayList<Proficiencies>();
 	ArrayList<Attributes> sThrows = new ArrayList<Attributes>(); 
 	
 	public Monk() {
 		
-		skillList.add("Acrobatics");
-		skillList.add("Athletics");
-		skillList.add("History");
-		skillList.add("Insight");
-		skillList.add("Religion");
-		skillList.add("Stealth");
+		skillList.add(Proficiencies.ACROBATICS);
+		skillList.add(Proficiencies.ATHETICS);
+		skillList.add(Proficiencies.HISTORY);
+		skillList.add(Proficiencies.INSIGHT);
+		skillList.add(Proficiencies.REGLIGION);
+		skillList.add(Proficiencies.STEALTH);
 		
 		sThrows.add(Attributes.STR);
 		sThrows.add(Attributes.DEX);
@@ -79,7 +79,12 @@ public class Monk {
 
 	public JPanel getJPanel(){return jp;}
 	public JButton getAcceptedClass(){return acceptClass;}
-	public ArrayList<String> getSkillList(){return skillList;}
 	public String getSkillString(){return skills;}
 	public ArrayList<Attributes> getSavingThrows(){return sThrows;}
+
+
+	public ArrayList<Proficiencies> getProficiencies() {
+		// TODO Auto-generated method stub
+		return skillList;
+	}
 }

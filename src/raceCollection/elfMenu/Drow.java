@@ -18,8 +18,12 @@ public class Drow extends Elf{
 	String ASI = abilityScoreIncrease;
 	String darkElf_ASI = "Your Charisma score increases by 1.";
 	String superiorDarkvision = "Your darkvision has a radius of 120 feet.";
-	String sunlightSensitivity = "You have disadvantage on attack rolls and on Wisdom (Perception) checks that rely on sight when you, the target of your attack, or whatever you are trying to perceive is in direct sunlight.";
-	String drowMagic = "You know the dancing lights cantrip. When you reach 3rd level, you can cast the faerie fire spell once per day. When you reach 5th level, you can also cast the darkness spell once per day. Charisma is your spellcasting ability for these spells.";
+	String sunlightSensitivity = "<html>You have disadvantage on attack rolls and on Wisdom (Perception) checks that rely on sight "
+			+ 	"when you, the target of your attack, or whatever you are trying to perceive is in direct sunlight.<br>";
+	String drowMagic = "<html>You know the dancing lights cantrip. When you reach 3rd level, "
+			+ "you can cast the faerie fire spell once <br>"
+			+ 	" per day. When you reach 5th level, you can also cast the darkness spell once per day. <br>"
+			+   " Charisma is your spellcasting ability for these spells.<html>";
 	String drowWeaponTraining = "You have proficiency with rapiers, shortswords, and hand crossbows.";
 	
 	ArrayList<String> atri = new ArrayList<String>();
@@ -51,7 +55,7 @@ public class Drow extends Elf{
 				
 		// alignment
 		jp.add(new JLabel("<html><b>Alignment:</b></html>"), "cell 0 2,alignx right,aligny bottom");
-		jp.add(new JLabel(alignment), "cell 1 2,alignx left,aligny bottom");
+		jp.add(new JLabel(alignment), "cell 1 2,alignx left,aligny top");
 				
 		//Size
 		jp.add(new JLabel("<html><b>Size:</b></html>"), "cell 0 3,alignx right, aligny top");
@@ -80,10 +84,10 @@ public class Drow extends Elf{
 		
 		//Drow Weapon Training
 		jp.add(new JLabel("<html><b>Drow Weapon Training:</b></html>"), "cell 0 9,alignx right, aligny top");
-		jp.add(new JLabel(drowWeaponTraining), "cell 1 9,alignx left, aligny top");
+		jp.add(new JLabel(drowWeaponTraining), "cell 1 9,alignx left,aligny top");
 		
 		acceptRace = new JButton("Accept Drow as Your Race");
-		jp.add(acceptRace, "cell 0 9 2 1,alignx center,aligny center");
+		jp.add(acceptRace, "cell 1 10,alignx center,aligny center");
 		
 	}
 

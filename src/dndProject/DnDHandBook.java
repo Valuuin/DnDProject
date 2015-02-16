@@ -385,8 +385,8 @@ public class DnDHandBook  {
 		
 		// Waiting for Chosen Background
 		waitForBackgroundAcceptance(  a.getAcceptedBackground(),"Artisan",       a,   bGround.ARTISAN);
-		waitForBackgroundAcceptance(crM.getAcceptedBackground(),"Criminal",      crM, bGround.CHARLATAN);
-		waitForBackgroundAcceptance( cL.getAcceptedBackground(),"Charlatan",     cL,  bGround.CRIMINAL);
+		waitForBackgroundAcceptance(crM.getAcceptedBackground(),"Criminal",      crM, bGround.CRIMINAL);
+		waitForBackgroundAcceptance( cL.getAcceptedBackground(),"Charlatan",     cL,  bGround.CHARLATAN);
 		waitForBackgroundAcceptance(  e.getAcceptedBackground(),"Entertainer",   e,   bGround.ENTERTAINER);
 		waitForBackgroundAcceptance( fH.getAcceptedBackground(),"Folk Hero",     fH,  bGround.FOLKHERO);
 		waitForBackgroundAcceptance( gA.getAcceptedBackground(),"Guild Artisan", gA,  bGround.GUILDARTISAN);

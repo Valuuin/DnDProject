@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
+import dndProject.Character.Proficiencies;
 import dndProject.Character.Attributes;
 import net.miginfocom.swing.MigLayout;
 
@@ -21,17 +21,17 @@ public class Sorcerer {
 	String savingThrows = "Constitution and Charisma are the Sorcerer's saving throws.";
 	String skills = "Choose two from Arcana, Deception, Insight, Intimidation, Persuasion, and Religion.";
 			
-	ArrayList<String> skillList = new ArrayList<String>();
+	ArrayList<Proficiencies> skillList = new ArrayList<Proficiencies>();
 	ArrayList<Attributes> sThrows = new ArrayList<Attributes>(); 
 	
 	public Sorcerer() {
 
-		skillList.add("Arcana");
-		skillList.add("Deception");
-		skillList.add("Insight");
-		skillList.add("Intimidation");
-		skillList.add("Persuasion");
-		skillList.add("Religion");
+		skillList.add(Proficiencies.ARCANA);
+		skillList.add(Proficiencies.DECEPTION);
+		skillList.add(Proficiencies.INSIGHT);
+		skillList.add(Proficiencies.INTIMIDATION);
+		skillList.add(Proficiencies.PERSUASION);
+		skillList.add(Proficiencies.REGLIGION);
 		
 		sThrows.add(Attributes.CHA);
 		sThrows.add(Attributes.CON);
@@ -73,6 +73,13 @@ public class Sorcerer {
 
 	public JPanel getJPanel(){return jp;}
 	public JButton getAcceptedClass(){return acceptClass;}
-	public ArrayList<String> getSkillList(){return skillList;}
 	public ArrayList<Attributes> getSavingThrows(){return sThrows;}
+	public String getSkillString() {
+		// TODO Auto-generated method stub
+		return skills;
+	}
+	public ArrayList<Proficiencies> getProficiencies() {
+		// TODO Auto-generated method stub
+		return skillList;
+	}
 }

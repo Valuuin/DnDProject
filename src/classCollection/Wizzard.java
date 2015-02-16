@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
+import dndProject.Character.Proficiencies;
 import dndProject.Character.Attributes;
 import net.miginfocom.swing.MigLayout;
 
@@ -21,17 +21,17 @@ public class Wizzard {
 	String savingThrows = "Intelligence and Wisdom are the Wizard's saving throws.";
 	String skills = "Choose two from Arcana, History, Insight, Investigation, Medicine, and Religion.";
 	
-	ArrayList<String> skillList = new ArrayList<String>();
+	ArrayList<Proficiencies> skillList = new ArrayList<Proficiencies>();
 	ArrayList<Attributes> sThrows = new ArrayList<Attributes>(); 
 	
 	public Wizzard() {
 	
-		skillList.add("Arcana");
-		skillList.add("History");
-		skillList.add("Insight");
-		skillList.add("Investigation");
-		skillList.add("Medicine");
-		skillList.add("Religion");
+		skillList.add(Proficiencies.ARCANA);
+		skillList.add(Proficiencies.HISTORY);
+		skillList.add(Proficiencies.INSIGHT);
+		skillList.add(Proficiencies.INVESTIGATION);
+		skillList.add(Proficiencies.MEDICINE);
+		skillList.add(Proficiencies.REGLIGION);
 		
 		sThrows.add(Attributes.INT);
 		sThrows.add(Attributes.CHA);
@@ -73,6 +73,13 @@ public class Wizzard {
 
 	public JPanel getJPanel(){return jp;}
 	public JButton getAcceptedClass(){return acceptClass;}
-	public ArrayList<String> getSkillList(){return skillList;}
 	public ArrayList<Attributes> getSavingThrows(){return sThrows;}
+	public String getSkillString() {
+		// TODO Auto-generated method stub
+		return skills;
+	}
+	public ArrayList<Proficiencies> getProficiencies() {
+		// TODO Auto-generated method stub
+		return skillList;
+	}
 }

@@ -8,6 +8,16 @@ import java.util.List;
 
 
 
+
+
+
+
+
+
+
+
+
+
 import org.apache.pdfbox.cos.COSBoolean;
 import org.apache.pdfbox.cos.COSName;
 import org.apache.pdfbox.exceptions.COSVisitorException;
@@ -19,6 +29,16 @@ import org.apache.pdfbox.pdmodel.interactive.form.PDXFA;
 
 import classCollection.Barbarian;
 import classCollection.Bard;
+import classCollection.Cleric;
+import classCollection.Druid;
+import classCollection.Fighter;
+import classCollection.Monk;
+import classCollection.Paladin;
+import classCollection.Ranger;
+import classCollection.Rogue;
+import classCollection.Sorcerer;
+import classCollection.Warlock;
+import classCollection.Wizzard;
 import backgroundCollection.Artisan;
 import backgroundCollection.Charlatan;
 import backgroundCollection.Criminal;
@@ -80,7 +100,7 @@ public class Character {
 	ArrayList<Proficiencies> errorProficiences= new ArrayList<Proficiencies>();
 	ArrayList<Attributes> savingThrows = new ArrayList<Attributes>();
 	
-	String[] savingThrowsResults = new String[6];
+	String[] savingThrowsResults = new String[] {"2","2","2","2","2","2"};
 	String[] attributesModifiers = new String[6];
 	
 	public Character(){
@@ -190,18 +210,18 @@ public class Character {
 			switch(bName){
 			case ARTISAN:      return (ArrayList<Proficiencies>)((Artisan)      selectedBackground).getProficiencies();
 			case CHARLATAN:    return (ArrayList<Proficiencies>)((Charlatan)    selectedBackground).getProficiencies();
-			/*case CRIMINAL:   return (ArrayList<Proficiences>)((Criminal)	   selectedBackground).getProficiencies();
-			case ENTERTAINER:  return (ArrayList<Proficiences>)((Entertainer)  selectedBackground).getProficiencies();
-			case FOLKHERO:     return (ArrayList<Proficiences>)((FolkHero)     selectedBackground).getProficiencies();
-			case GUILDARTISAN: return (ArrayList<Proficiences>)((GuildArtisan) selectedBackground).getProficiencies();
-			case HERMIT:	   return (ArrayList<Proficiences>)((Hermit)       selectedBackground).getProficiencies();
-			case NOBLE:		   return (ArrayList<Proficiences>)((Noble)        selectedBackground).getProficiencies();
-			case OUTLANDER:	   return (ArrayList<Proficiences>)((Outlander)    selectedBackground).getProficiencies();
-			case SAGE:		   return (ArrayList<Proficiences>)((Sage)         selectedBackground).getProficiencies();
-			case SAILOR:	   return (ArrayList<Proficiences>)((Sailor)       selectedBackground).getProficiencies();
-			case SOLDIER:      return (ArrayList<Proficiences>)((Soldier)      selectedBackground).getProficiencies();
-			case URCHIN:	   return (ArrayList<Proficiences>)((Urchin)       selectedBackground).getProficiencies();
-			*/default: return errorProficiences;
+			case CRIMINAL:     return (ArrayList<Proficiencies>)((Criminal)	    selectedBackground).getProficiencies();
+			case ENTERTAINER:  return (ArrayList<Proficiencies>)((Entertainer)  selectedBackground).getProficiencies();
+			case FOLKHERO:     return (ArrayList<Proficiencies>)((FolkHero)     selectedBackground).getProficiencies();
+			case GUILDARTISAN: return (ArrayList<Proficiencies>)((GuildArtisan) selectedBackground).getProficiencies();
+			case HERMIT:	   return (ArrayList<Proficiencies>)((Hermit)       selectedBackground).getProficiencies();
+			case NOBLE:		   return (ArrayList<Proficiencies>)((Noble)        selectedBackground).getProficiencies();
+			case OUTLANDER:	   return (ArrayList<Proficiencies>)((Outlander)    selectedBackground).getProficiencies();
+			case SAGE:		   return (ArrayList<Proficiencies>)((Sage)         selectedBackground).getProficiencies();
+			case SAILOR:	   return (ArrayList<Proficiencies>)((Sailor)       selectedBackground).getProficiencies();
+			case SOLDIER:      return (ArrayList<Proficiencies>)((Soldier)      selectedBackground).getProficiencies();
+			case URCHIN:	   return (ArrayList<Proficiencies>)((Urchin)       selectedBackground).getProficiencies();
+			default: return errorProficiences;
 			}
 		}
 		return errorProficiences;
@@ -210,18 +230,18 @@ public class Character {
 	public ArrayList<Proficiencies> getClassProficiencies(){
 		if (selectedClass != null){
 			switch(cName){
-			case BARBARIAN: return (ArrayList<Proficiencies>)((Barbarian) selectedClass).getProficiencies();
-			case BARD:      return (ArrayList<Proficiencies>)((Bard)      selectedClass).getProficiencies();
-			case CLERIC:
-			case DRUID:
-			case FIGHTER:
-			case MONK:
-			case PALADIN:
-			case RANGER:
-			case ROGUE:
-			case SORCERER:
-			case WARLOCK:
-			case WIZZARD:
+			case BARBARIAN: return (ArrayList<Proficiencies>)((Barbarian)     selectedClass).getProficiencies();
+			case BARD:      return (ArrayList<Proficiencies>)((Bard)          selectedClass).getProficiencies();
+			case CLERIC:	return (ArrayList<Proficiencies>)((Cleric)        selectedClass).getProficiencies();
+			case DRUID:		return (ArrayList<Proficiencies>)((Druid)         selectedClass).getProficiencies();
+			case FIGHTER:	return (ArrayList<Proficiencies>)((Fighter)       selectedClass).getProficiencies();
+			case MONK:		return (ArrayList<Proficiencies>)((Monk)          selectedClass).getProficiencies();
+			case PALADIN:	return (ArrayList<Proficiencies>)((Paladin)       selectedClass).getProficiencies();
+			case RANGER:	return (ArrayList<Proficiencies>)((Ranger)        selectedClass).getProficiencies();
+			case ROGUE:		return (ArrayList<Proficiencies>)((Rogue)         selectedClass).getProficiencies();
+			case SORCERER:	return (ArrayList<Proficiencies>)((Sorcerer)      selectedClass).getProficiencies();
+			case WARLOCK:	return (ArrayList<Proficiencies>)((Warlock)       selectedClass).getProficiencies();
+			case WIZZARD:	return (ArrayList<Proficiencies>)((Wizzard)       selectedClass).getProficiencies();
 			default: return errorProficiences;
 			}
 		}
@@ -233,16 +253,16 @@ public class Character {
 			switch(cName){
 			case BARBARIAN: return "Barbarian: " + (String)((Barbarian) selectedClass).getSkillString();
 			case BARD:      return "Bard: " +      (String)((Bard)      selectedClass).getSkillString();
-			case CLERIC:
-			case DRUID:
-			case FIGHTER:
-			case MONK:
-			case PALADIN:
-			case RANGER:
-			case ROGUE:
-			case SORCERER:
-			case WARLOCK:
-			case WIZZARD:
+			case CLERIC:	return "Cleric: " +    (String)((Cleric)    selectedClass).getSkillString();
+			case DRUID:		return "Druid:  " +    (String)((Druid)     selectedClass).getSkillString();
+			case FIGHTER:	return "Fighter: " +   (String)((Fighter)   selectedClass).getSkillString();
+			case MONK:		return "Monk:  " +     (String)((Monk)      selectedClass).getSkillString();
+			case PALADIN:	return "Paladin:  " +  (String)((Paladin)   selectedClass).getSkillString();
+			case RANGER:	return "Ranger:  " +   (String)((Ranger)    selectedClass).getSkillString();
+			case ROGUE:		return "Rogue:  " +    (String)((Rogue)     selectedClass).getSkillString();
+			case SORCERER:	return "Sorcerer:  " + (String)((Sorcerer)  selectedClass).getSkillString();
+			case WARLOCK:	return "Warlock:  " +  (String)((Warlock)   selectedClass).getSkillString();
+			case WIZZARD:	return "Wizzard:  " +   (String)((Wizzard)  selectedClass).getSkillString();
 			default: return "";
 			}
 		}
@@ -253,17 +273,17 @@ public class Character {
 		if (selectedClass != null){
 			switch(cName){
 			case BARBARIAN: savingThrows = (ArrayList<Attributes>)((Barbarian) selectedClass).getSavingThrows(); break;
-			case BARD:      
-			case CLERIC:
-			case DRUID:
-			case FIGHTER:
-			case MONK:
-			case PALADIN:
-			case RANGER:
-			case ROGUE:
-			case SORCERER:
-			case WARLOCK:
-			case WIZZARD:
+			case BARD:      savingThrows = (ArrayList<Attributes>)((Bard) selectedClass).getSavingThrows(); break;
+			case CLERIC:	savingThrows = (ArrayList<Attributes>)((Cleric) selectedClass).getSavingThrows(); break;
+			case DRUID:		savingThrows = (ArrayList<Attributes>)((Druid) selectedClass).getSavingThrows(); break;
+			case FIGHTER:	savingThrows = (ArrayList<Attributes>)((Fighter) selectedClass).getSavingThrows(); break;
+			case MONK:		savingThrows = (ArrayList<Attributes>)((Monk) selectedClass).getSavingThrows(); break;
+			case PALADIN:	savingThrows = (ArrayList<Attributes>)((Paladin) selectedClass).getSavingThrows(); break;
+			case RANGER:	savingThrows = (ArrayList<Attributes>)((Ranger) selectedClass).getSavingThrows(); break;
+			case ROGUE:		savingThrows = (ArrayList<Attributes>)((Rogue) selectedClass).getSavingThrows(); break;
+			case SORCERER:	savingThrows = (ArrayList<Attributes>)((Sorcerer) selectedClass).getSavingThrows(); break;
+			case WARLOCK:	savingThrows = (ArrayList<Attributes>)((Warlock) selectedClass).getSavingThrows(); break;
+			case WIZZARD:	savingThrows = (ArrayList<Attributes>)((Wizzard) selectedClass).getSavingThrows(); break;
 			default: return "";
 			}
 		}

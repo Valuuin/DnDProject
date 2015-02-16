@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
+import dndProject.Character.Proficiencies;
 import dndProject.Character.Attributes;
 import net.miginfocom.swing.MigLayout;
 
@@ -21,19 +21,19 @@ public class Warlock {
 	String savingThrows = "Wisdom and Charisma are the Warlock's saving throws.";
 	String skills = "Choose two skills from Arcana, Deception, History, Intimidation, Investigation, Nature, and Religion.";
 	
-	ArrayList<String> skillList = new ArrayList<String>();
+	ArrayList<Proficiencies> skillList = new ArrayList<Proficiencies>();
 	ArrayList<Attributes> sThrows = new ArrayList<Attributes>(); 
 	
 	
 	public Warlock() {
 		
-		skillList.add("Arcana");
-		skillList.add("Deception");
-		skillList.add("History");
-		skillList.add("Intimidation");
-		skillList.add("Investigation");
-		skillList.add("Nature");
-		skillList.add("Religion");
+		skillList.add(Proficiencies.ARCANA);
+		skillList.add(Proficiencies.DECEPTION);
+		skillList.add(Proficiencies.HISTORY);
+		skillList.add(Proficiencies.INTIMIDATION);
+		skillList.add(Proficiencies.INVESTIGATION);
+		skillList.add(Proficiencies.NATURE);
+		skillList.add(Proficiencies.REGLIGION);
 		
 		sThrows.add(Attributes.WIS);
 		sThrows.add(Attributes.CHA);
@@ -75,7 +75,16 @@ public class Warlock {
 
 	public JPanel getJPanel(){return jp;}
 	public JButton getAcceptedClass(){return acceptClass;}
-	public ArrayList<String> getSkillList(){return skillList;}
 	public ArrayList<Attributes> getSavingThrows(){return sThrows;}
+
+	public String getSkillString() {
+		// TODO Auto-generated method stub
+		return skills;
+	}
+
+	public ArrayList<Proficiencies> getProficiencies() {
+		// TODO Auto-generated method stub
+		return skillList;
+	}
 }
 

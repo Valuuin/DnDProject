@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import dndProject.Character.Proficiencies;
 
 import dndProject.Character.Attributes;
 import net.miginfocom.swing.MigLayout;
@@ -22,19 +23,18 @@ public class Druid {
 	String tools = "Druids are proficient with Herbalism kits";
 	String skills = "Choose two from Arcana, Animal Handling, Insight, Medicine, Nature, Perception, Religion and Survival.";
 	
-	ArrayList<String> skillList = new ArrayList<String>();
+	ArrayList<Proficiencies> skillList = new ArrayList<Proficiencies>();
 	ArrayList<Attributes> sThrows = new ArrayList<Attributes>(); 
 	
 	public Druid() {
-		skillList.add("Arcana");
-		skillList.add("Animal Handling");
-		skillList.add("Insight");
-		skillList.add("Medicine");
-		skillList.add("Nature");
-		skillList.add("Nature");
-		skillList.add("Perception");
-		skillList.add("Religion");
-		skillList.add("Survival");
+		skillList.add(Proficiencies.ARCANA);
+		skillList.add(Proficiencies.ANIMAL_HANDELING);
+		skillList.add(Proficiencies.INSIGHT);
+		skillList.add(Proficiencies.MEDICINE);
+		skillList.add(Proficiencies.NATURE);
+		skillList.add(Proficiencies.PERCEPTION);
+		skillList.add(Proficiencies.REGLIGION);
+		skillList.add(Proficiencies.SURVIVAL);
 		
 		sThrows.add(Attributes.INT);
 		sThrows.add(Attributes.WIS);
@@ -82,7 +82,10 @@ public class Druid {
 
 	public JPanel getJPanel(){return jp;}
 	public JButton getAcceptedClass(){return acceptClass;}
-	public ArrayList<String> getSkillList(){return skillList;}
 	public String getSkillString(){return skills;}
 	public ArrayList<Attributes> getSavingThrows(){return sThrows;}
+	public ArrayList<Proficiencies> getProficiencies() {
+		// TODO Auto-generated method stub
+		return skillList;
+	}
 }

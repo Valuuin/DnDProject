@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 
 import dndProject.Character.Attributes;
 import net.miginfocom.swing.MigLayout;
+import dndProject.Character.Proficiencies;
 
 public class Cleric {
 	private JPanel jp;
@@ -20,16 +21,16 @@ public class Cleric {
 	String savingThrows = "Wisdom and Charisma are a Cleric's saving throws";
 	String skills = "Choose two from History, Insight, Medicine, Persuasion, and Religion";
 	
-	ArrayList<String> skillList = new ArrayList<String>();
+	ArrayList<Proficiencies> skillList = new ArrayList<Proficiencies>();
 	ArrayList<Attributes> sThrows = new ArrayList<Attributes>(); 
 	
 	public Cleric() {
 		
-		skillList.add("History");
-		skillList.add("Insight");
-		skillList.add("Medicine");
-		skillList.add("Persuasion");
-		skillList.add("Religion");
+		skillList.add(Proficiencies.HISTORY);
+		skillList.add(Proficiencies.INSIGHT);
+		skillList.add(Proficiencies.MEDICINE);
+		skillList.add(Proficiencies.PERSUASION);
+		skillList.add(Proficiencies.REGLIGION);
 		
 		sThrows.add(Attributes.WIS);
 		sThrows.add(Attributes.CHA);
@@ -73,7 +74,11 @@ public class Cleric {
 
 	public JPanel getJPanel(){return jp;}
 	public JButton getAcceptedClass(){return acceptClass;}
-	public ArrayList<String> getSkillList(){return skillList;}
 	public String getSkillString(){return skills;}
 	public ArrayList<Attributes> getSavingThrows(){return sThrows;}
+
+	public ArrayList<Proficiencies> getProficiencies() {
+		// TODO Auto-generated method stub
+		return skillList;
+	}
 }

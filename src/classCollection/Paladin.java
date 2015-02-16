@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
+import dndProject.Character.Proficiencies;
 import dndProject.Character.Attributes;
 import net.miginfocom.swing.MigLayout;
 
@@ -20,17 +20,17 @@ public class Paladin {
 	String savingThrows = "Wisdom and Charisma are the Paladin's saving throws.";
 	String skills = "Choose two from Athletics, Insight, Intimidation, Medicine, Persuasion, and Religion.";
 	
-	ArrayList<String> skillList = new ArrayList<String>();
+	ArrayList<Proficiencies> skillList = new ArrayList<Proficiencies>();
 	ArrayList<Attributes> sThrows = new ArrayList<Attributes>(); 
 	
 	public Paladin() {
 
-	skillList.add("Athletics");
-	skillList.add("Insight");
-	skillList.add("Intimidation");
-	skillList.add("Medicine");
-	skillList.add("Persuasion");
-	skillList.add("Religion");
+	skillList.add(Proficiencies.ATHETICS);
+	skillList.add(Proficiencies.INSIGHT);
+	skillList.add(Proficiencies.INTIMIDATION);
+	skillList.add(Proficiencies.MEDICINE);
+	skillList.add(Proficiencies.PERSUASION);
+	skillList.add(Proficiencies.REGLIGION);
 	
 	sThrows.add(Attributes.WIS);
 	sThrows.add(Attributes.CHA);
@@ -74,7 +74,16 @@ public class Paladin {
 
 	public JPanel getJPanel(){return jp;}
 	public JButton getAcceptedClass(){return acceptClass;}
-	public ArrayList<String> getSkillList(){return skillList;}
 	public ArrayList<Attributes> getSavingThrows(){return sThrows;}
+
+	public String getSkillString() {
+		// TODO Auto-generated method stub
+		return skills;
+	}
+
+	public ArrayList<Proficiencies> getProficiencies() {
+		// TODO Auto-generated method stub
+		return skillList;
+	}
 }
 

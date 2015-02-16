@@ -27,7 +27,7 @@ public class Outlander {
 
 		skillProf.add(Proficiencies.ATHETICS);
 		skillProf.add(Proficiencies.SURVIVAL);
-		toolProf.add("One type of musical instrument"");
+		toolProf.add("One type of musical instrument");
 	
 		
 		createJPanel();
